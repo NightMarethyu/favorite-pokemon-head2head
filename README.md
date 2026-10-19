@@ -1,6 +1,6 @@
 # Favorite Pokémon Head-to-Head
 
-A small static website for finding your favorite Pokémon by picking between them two at a time.
+A small website for finding your favorite Pokémon by picking between them two at a time.
 
 ## The idea
 
@@ -10,31 +10,45 @@ Two Pokémon are shown side by side. You choose the one you like more, then a ne
 
 🚧 **Coming soon.** The site currently shows a placeholder page. The next steps are:
 
-- [ ] Gather the Pokémon data (names, images, and any other details to show)
+- [ ] Gather the Pokémon data and save it as a static file in the repo
+- [ ] Decide how to handle Pokémon images (link to an external source or keep copies in the repo)
 - [ ] Plan the matchup logic and the page design
 - [ ] Build the head-to-head interface
+- [ ] Save picks in the browser (`localStorage`)
 
-## Hosting
+## Tech stack
 
-The site is hosted with [GitHub Pages](https://pages.github.com/) and served as plain static files from the root of the default branch. `index.html` is the entry point, and the empty `.nojekyll` file tells GitHub Pages to serve the files as-is without running Jekyll.
+- [React](https://react.dev/) + [Vite](https://vite.dev/) (JavaScript)
+- [oxlint](https://oxc.rs/docs/guide/usage/linter) for linting
+- Hosted on [GitHub Pages](https://pages.github.com/), built and deployed by GitHub Actions
 
-To turn on GitHub Pages for this repository:
+Pokémon data is fetched ahead of time and committed as a static file, so the site needs no backend. Picks are saved in the visitor's browser. If the project later moves to a full MERN stack, picks would move to a database.
 
-1. Go to **Settings → Pages**.
-2. Under **Build and deployment**, set **Source** to **Deploy from a branch**.
-3. Choose the `main` branch and the `/ (root)` folder, then save.
+## Getting started
 
-Once it is published, the site will be at `https://nightmarethyu.github.io/favorite-pokemon-head2head/`.
-
-## Running locally
-
-No build step is needed. Open `index.html` in a browser, or serve the folder with any static server, for example:
+Requires Node.js 22 or later.
 
 ```sh
-python3 -m http.server 8000
+npm install
+npm run dev
 ```
 
-Then visit <http://localhost:8000>.
+Then open the local URL Vite prints (by default <http://localhost:5173/favorite-pokemon-head2head/>).
+
+| Command           | What it does                                   |
+| ----------------- | ---------------------------------------------- |
+| `npm run dev`     | Start the dev server with hot reload           |
+| `npm run build`   | Build the production site into `dist/`         |
+| `npm run preview` | Serve the `dist/` build locally to check it    |
+| `npm run lint`    | Lint the code with oxlint                      |
+
+## Deployment
+
+Every push to `main` runs [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml), which lints, builds, and publishes `dist/` to GitHub Pages. It can also be run by hand from the **Actions** tab.
+
+One-time setup: in **Settings → Pages**, set **Source** to **GitHub Actions**.
+
+The site is published at <https://nightmarethyu.github.io/favorite-pokemon-head2head/>. Because it is served from a subpath, `base` in `vite.config.js` is set to `/favorite-pokemon-head2head/`. If the repository is renamed or moved to a custom domain, update `base` to match.
 
 ## License
 
