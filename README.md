@@ -4,17 +4,35 @@ A small website for finding your favorite Pokémon by picking between them two a
 
 ## The idea
 
-Two Pokémon are shown side by side. You choose the one you like more, then a new matchup appears. Over many matchups, your picks narrow down to your favorite.
+Two Pokémon are shown side by side (stacked on small screens). You pick the one you like more, then a new matchup appears.
+
+## How it plays
+
+- Every Pokémon appears exactly once, in a random order.
+- The winner of each matchup stays on the left (on top on mobile) as the champion. The number in its bottom-left corner counts how many Pokémon it has beaten in a row.
+- When a challenger wins, it becomes the new champion with 1 win.
+- **Your Team** lists the six Pokémon with the longest win streaks, including the current champion.
+- Click a card, or use the arrow keys (←/↑ for the champion, →/↓ for the challenger).
+- Dark mode is the default; the toggle in the header switches to light mode and remembers your choice.
 
 ## Status
 
-🚧 **Coming soon.** The site currently shows a placeholder page. The next steps are:
+- [x] Gather the Pokémon data and save it as a static file in the repo
+- [x] Plan the matchup logic and the page design
+- [x] Build the head-to-head interface (names only)
+- [ ] Add Pokémon sprites
+- [ ] Choose a generation, game, or type to play with
+- [ ] Save game progress in the browser (`localStorage`)
 
-- [ ] Gather the Pokémon data and save it as a static file in the repo
-- [ ] Decide how to handle Pokémon images (link to an external source or keep copies in the repo)
-- [ ] Plan the matchup logic and the page design
-- [ ] Build the head-to-head interface
-- [ ] Save picks in the browser (`localStorage`)
+## Project layout
+
+| Path                         | What it holds                                                        |
+| ---------------------------- | -------------------------------------------------------------------- |
+| `src/data/`                  | Pokémon JSON and `pokedex.js`, which normalizes it and builds the pool (`getPokemonPool(filters)`) |
+| `src/game/`                  | Pure game logic (`head2head.js`) and its React hook (`useHead2Head.js`) |
+| `src/components/`            | UI components                                                        |
+| `src/hooks/useTheme.js`      | Dark/light theme state                                               |
+| `src/assets/fonts/`          | Self-hosted VT323 and Bytesized fonts, with their licenses (OFL)    |
 
 ## Tech stack
 

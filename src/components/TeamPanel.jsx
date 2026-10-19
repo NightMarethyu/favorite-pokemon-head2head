@@ -1,0 +1,27 @@
+import { TEAM_SIZE } from '../game/head2head.js'
+
+function TeamPanel({ team, title = 'Your Team' }) {
+  const slots = Array.from({ length: TEAM_SIZE }, (_, index) => team[index] ?? null)
+
+  return (
+    <section className="team" aria-label={title}>
+      <h2 className="team-title">{title}</h2>
+      <ol className="team-list">
+        {slots.map((member, index) =>
+          member ? (
+            <li key={member.pokemon.id} className="team-slot">
+              <span className="team-name">{member.pokemon.name}</span>
+              <span className="team-streak">{member.streak}</span>
+            </li>
+          ) : (
+            <li key={`empty-${index}`} className="team-slot team-slot-empty">
+              <span className="team-name">—</span>
+            </li>
+          ),
+        )}
+      </ol>
+    </section>
+  )
+}
+
+export default TeamPanel

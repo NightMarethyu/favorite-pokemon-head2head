@@ -1,15 +1,44 @@
-:root {
-  --bg: #f7f7f9;
-  --fg: #1d1d22;
-  --muted: #5c5c66;
+@font-face {
+  font-family: 'VT323';
+  src: url('./assets/fonts/VT323/VT323-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --bg: #16161a;
-    --fg: #ececf1;
-    --muted: #a0a0ab;
-  }
+@font-face {
+  font-family: 'Bytesized';
+  src: url('./assets/fonts/Bytesized/Bytesized-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Dark is the default; light applies only when chosen. */
+:root {
+  --bg: #121218;
+  --surface: #1e1e28;
+  --surface-hover: #2a2a38;
+  --border: #3a3a4c;
+  --fg: #ececf1;
+  --muted: #9a9aa8;
+  --accent: #f2c94c;
+  --accent-fg: #121218;
+  --font-display: 'Bytesized', 'VT323', monospace;
+  --font-body: 'VT323', ui-monospace, monospace;
+  color-scheme: dark;
+}
+
+:root[data-theme='light'] {
+  --bg: #f4f4f7;
+  --surface: #ffffff;
+  --surface-hover: #ececf3;
+  --border: #c9c9d6;
+  --fg: #1d1d22;
+  --muted: #5c5c66;
+  --accent: #d13b3b;
+  --accent-fg: #ffffff;
+  color-scheme: light;
 }
 
 * {
@@ -19,22 +48,249 @@
 body {
   margin: 0;
   min-height: 100vh;
-  display: grid;
-  place-items: center;
-  padding: 16px;
   background: var(--bg);
   color: var(--fg);
-  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  font-family: var(--font-body);
+  font-size: 1.25rem;
+  line-height: 1.3;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+}
+
+.app {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 16px;
+}
+
+.app-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.app-header h1 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(1.5rem, 5vw, 2.5rem);
+}
+
+.theme-toggle {
+  flex-shrink: 0;
+  padding: 6px 12px;
+  background: var(--surface);
+  border: 2px solid var(--border);
+  border-radius: 6px;
+}
+
+.theme-toggle:hover {
+  background: var(--surface-hover);
+}
+
+.app-main {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.progress {
+  margin: 0;
+  color: var(--muted);
   text-align: center;
 }
 
-h1 {
-  margin: 0 0 0.5rem;
-  font-size: clamp(1.75rem, 5vw, 2.75rem);
+/* Arena: side by side, stacked on small screens (champion stays first). */
+.arena {
+  display: flex;
+  align-items: stretch;
+  gap: 16px;
 }
 
-p {
-  margin: 0;
+.versus {
+  align-self: center;
+  font-family: var(--font-display);
+  font-size: 2rem;
+  color: var(--accent);
+}
+
+.card {
+  position: relative;
+  flex: 1 1 0;
+  min-width: 0;
+  min-height: 260px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 40px 16px;
+  background: var(--surface);
+  border: 3px solid var(--border);
+  border-radius: 12px;
+  transition:
+    background 0.15s,
+    border-color 0.15s,
+    transform 0.1s;
+}
+
+.card:focus-visible {
+  background: var(--surface-hover);
+  border-color: var(--accent);
+  outline: none;
+}
+
+@media (hover: hover) {
+  .card:hover {
+    background: var(--surface-hover);
+    border-color: var(--accent);
+  }
+}
+
+.card:active {
+  transform: scale(0.98);
+}
+
+.card-label {
+  position: absolute;
+  top: 10px;
+  left: 0;
+  right: 0;
+  font-family: var(--font-display);
+  font-size: 1.5rem;
   color: var(--muted);
-  font-size: 1.125rem;
+}
+
+.card-name {
+  font-size: clamp(2rem, 6vw, 3.25rem);
+  line-height: 1;
+  overflow-wrap: anywhere;
+}
+
+.card-wins {
+  position: absolute;
+  bottom: 10px;
+  left: 12px;
+  padding: 2px 8px;
+  background: var(--accent);
+  color: var(--accent-fg);
+  border-radius: 4px;
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+}
+
+@media (max-width: 640px) {
+  .arena {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .card {
+    min-height: 160px;
+  }
+}
+
+/* Team */
+.team {
+  padding: 12px 16px 16px;
+  background: var(--surface);
+  border: 2px solid var(--border);
+  border-radius: 12px;
+}
+
+.team-title {
+  margin: 0 0 10px;
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 1.75rem;
+}
+
+.team-list {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+@media (max-width: 480px) {
+  .team-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.team-slot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 6px 10px;
+  border: 2px solid var(--border);
+  border-radius: 6px;
+}
+
+.team-slot-empty {
+  border-style: dashed;
+  color: var(--muted);
+}
+
+.team-name {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.team-streak {
+  flex-shrink: 0;
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  color: var(--accent);
+}
+
+/* Game over / restart */
+.game-over {
+  padding: 32px 16px;
+  text-align: center;
+  background: var(--surface);
+  border: 3px solid var(--accent);
+  border-radius: 12px;
+}
+
+.game-over h2 {
+  margin: 0 0 8px;
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 2rem;
+}
+
+.game-over p {
+  margin: 0 0 16px;
+}
+
+.restart {
+  padding: 8px 20px;
+  background: var(--accent);
+  color: var(--accent-fg);
+  border: none;
+  border-radius: 6px;
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+}
+
+.restart-subtle {
+  align-self: center;
+  background: transparent;
+  color: var(--muted);
+  border: 2px solid var(--border);
+}
+
+.restart-subtle:hover {
+  color: var(--fg);
 }
