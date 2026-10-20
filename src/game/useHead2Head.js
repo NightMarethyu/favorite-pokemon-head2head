@@ -7,8 +7,9 @@ import {
   selectTeam,
 } from './head2head.js'
 
-export function useHead2Head(pool) {
-  const [state, dispatch] = useReducer(reducer, pool, createGame)
+// initialState resumes a saved game; without it a new game starts from pool.
+export function useHead2Head(pool, initialState) {
+  const [state, dispatch] = useReducer(reducer, null, () => initialState ?? createGame(pool))
 
   const pickLeft = useCallback(() => dispatch({ type: 'PICK_CHAMPION' }), [])
   const pickRight = useCallback(() => dispatch({ type: 'PICK_CHALLENGER' }), [])
@@ -20,6 +21,7 @@ export function useHead2Head(pool) {
   const team = useMemo(() => selectTeam(state), [state])
 
   return {
+    state,
     phase: state.phase,
     champion: state.champion,
     challenger: state.challenger,

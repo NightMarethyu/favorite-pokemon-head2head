@@ -28,6 +28,13 @@ Before the game starts, narrow the pool by **Generation**, **Type**, and **Game*
 - Each finalist is placed into a ranking by comparing it with Pokémon already ranked (a binary search), so you only make about *n* × log₂ *n* picks. Losing here only moves a Pokémon down the ranking; it is never knocked out.
 - **Your Final Team** is the top six of that ranking.
 
+### Saved games
+
+- Every pick is saved in your browser (`localStorage`), so closing the tab or reloading picks up right where you left off.
+- You can keep several games going at once. **Change filters** takes you back to the start screen, where **Saved Games** lists each game with its filters, progress, and when you last played it. **Continue** resumes one; **Delete** removes it. Starting a new game never overwrites an old one.
+- Finished games stay in the list so you can look at your final team again.
+- Saves stay in the browser they were made in. Up to 20 are kept; after that the least recently played is removed.
+
 ### Controls
 
 - Click a card, or use the arrow keys (←/↑ for the left card, →/↓ for the right card).
@@ -42,7 +49,7 @@ Before the game starts, narrow the pool by **Generation**, **Type**, and **Game*
 - [x] Favorites and a Sudden Death round, so a top favorite can't block the Pokémon ranked just below it
 - [x] Add Pokémon sprites
 - [x] Choose a generation, game, or type to play with
-- [ ] Save game progress in the browser (`localStorage`)
+- [x] Save game progress in the browser (`localStorage`), with several saved games at once
 - [ ] Double-elimination mode for players who don't know the Pokémon well yet and have no favorites to mark: every Pokémon gets a second chance after its first loss, so one strong early pick can't knock out the rest
 - [ ] Show which games (if any) you could build your final team in
 - [ ] A 3×3 grid of your favorite Pokémon
@@ -56,9 +63,9 @@ Before the game starts, narrow the pool by **Generation**, **Type**, and **Game*
 | Path                         | What it holds                                                        |
 | ---------------------------- | -------------------------------------------------------------------- |
 | `src/data/`                  | Pokémon JSON; `pokedex.js`, which normalizes it, attaches sprites, and builds the pool (`getPokemonPool(filters)`); `filters.js`, the generation, game, and type options |
-| `src/game/`                  | Pure game logic (`head2head.js`) and its React hook (`useHead2Head.js`) |
+| `src/game/`                  | Pure game logic (`head2head.js`), its React hook (`useHead2Head.js`), and saved games in `localStorage` (`saves.js`) |
 | `src/components/`            | UI components                                                        |
-| `src/hooks/useTheme.js`      | Dark/light theme state                                               |
+| `src/hooks/`                 | Dark/light theme state (`useTheme.js`) and the saved games list (`useSaves.js`) |
 | `src/assets/images/sprites/` | One sprite per Pokémon, named by Pokédex number (`0001.png`)        |
 | `src/assets/fonts/`          | Self-hosted VT323 and Bytesized fonts, with their licenses (OFL)    |
 
