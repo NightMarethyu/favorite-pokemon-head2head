@@ -1,5 +1,16 @@
 import rawPokedex from './pokemon_modified.json'
 
+// Sprite URLs keyed by Pokédex number. Files are named by zero-padded number
+// (0001.png); Vite copies them into the build with hashed names.
+const spriteFiles = import.meta.glob('../assets/images/sprites/*.png', {
+  eager: true,
+  query: '?url',
+  import: 'default',
+})
+const SPRITES = new Map(
+  Object.entries(spriteFiles).map(([path, url]) => [Number(path.match(/(\d+)\.png$/)[1]), url]),
+)
+
 // Normalized shape the rest of the app works with. Keeping this mapping in one
 // place means the JSON can change without touching the game or UI code.
 function normalize(entry) {
@@ -9,6 +20,7 @@ function normalize(entry) {
     types: entry.type ?? [],
     generation: entry.generation ?? null,
     games: entry.games ?? [],
+    sprite: SPRITES.get(entry.id) ?? null,
   }
 }
 

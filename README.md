@@ -8,11 +8,15 @@ Two Pokémon are shown side by side (stacked on small screens). You pick the one
 
 ## How it plays
 
-The game has two rounds: a main round that goes through every Pokémon, then **Sudden Death** to rank the best of them.
+The game has two rounds: a main round that goes through every Pokémon you chose, then **Sudden Death** to rank the best of them.
+
+### Choosing your Pokémon
+
+Before the game starts, narrow the pool by **Generation**, **Type**, and **Game**. Leave a section empty to include everything. Within a section, a Pokémon only needs to match one of the selected options; across sections it must match all of them, so Gen I + Fire plays the Fire types from Gen I. The screen shows how many Pokémon match, and you need at least two to play. **Change filters** (during a game or at the end) brings you back here with your last choices kept.
 
 ### Main round
 
-- Every Pokémon appears exactly once, in a random order.
+- Every Pokémon in the pool appears exactly once, in a random order.
 - The winner of each matchup stays on the left (on top on mobile) as the champion. The number in its bottom-left corner counts how many Pokémon it has beaten in a row.
 - When a challenger wins, it becomes the new champion with 1 win.
 - **★ Favorite** sends a Pokémon straight to Sudden Death and takes it out of the main round. Without this, a Pokémon you love would knock out every other Pokémon you like until it was beaten, so they would end up with few or no wins. Marked favorites are listed under **Favorites**; remove one with **×** to put it back into the draw.
@@ -36,19 +40,26 @@ The game has two rounds: a main round that goes through every Pokémon, then **S
 - [x] Plan the matchup logic and the page design
 - [x] Build the head-to-head interface (names only)
 - [x] Favorites and a Sudden Death round, so a top favorite can't block the Pokémon ranked just below it
-- [ ] Add Pokémon sprites
-- [ ] Choose a generation, game, or type to play with
+- [x] Add Pokémon sprites
+- [x] Choose a generation, game, or type to play with
 - [ ] Save game progress in the browser (`localStorage`)
 - [ ] Double-elimination mode for players who don't know the Pokémon well yet and have no favorites to mark: every Pokémon gets a second chance after its first loss, so one strong early pick can't knock out the rest
+- [ ] Show which games (if any) you could build your final team in
+- [ ] A 3×3 grid of your favorite Pokémon
+- [ ] Multi-language support (the data already has names in English, Japanese, Chinese, and French)
+- [ ] Pokémon knowledge quizzes: which has the higher base-stat total, egg groups, abilities, and more
+- [ ] Type icons on the type filter (and cards) for more visual impact
+- [ ] Game cover art or title logos on the game filter for more visual impact
 
 ## Project layout
 
 | Path                         | What it holds                                                        |
 | ---------------------------- | -------------------------------------------------------------------- |
-| `src/data/`                  | Pokémon JSON and `pokedex.js`, which normalizes it and builds the pool (`getPokemonPool(filters)`) |
+| `src/data/`                  | Pokémon JSON; `pokedex.js`, which normalizes it, attaches sprites, and builds the pool (`getPokemonPool(filters)`); `filters.js`, the generation, game, and type options |
 | `src/game/`                  | Pure game logic (`head2head.js`) and its React hook (`useHead2Head.js`) |
 | `src/components/`            | UI components                                                        |
 | `src/hooks/useTheme.js`      | Dark/light theme state                                               |
+| `src/assets/images/sprites/` | One sprite per Pokémon, named by Pokédex number (`0001.png`)        |
 | `src/assets/fonts/`          | Self-hosted VT323 and Bytesized fonts, with their licenses (OFL)    |
 
 ## Tech stack

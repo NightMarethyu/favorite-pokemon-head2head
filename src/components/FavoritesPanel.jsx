@@ -13,6 +13,9 @@ function FavoritesPanel({ favorites, onRemove }) {
         <ul className="favorites-list">
           {favorites.map((pokemon) => (
             <li key={pokemon.id} className="favorites-item">
+              {pokemon.sprite && (
+                <img className="favorites-sprite" src={pokemon.sprite} alt="" />
+              )}
               <span>{pokemon.name}</span>
               {onRemove && (
                 <button

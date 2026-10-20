@@ -11,6 +11,9 @@ function TeamPanel({ team, title = 'Your Team' }) {
         {slots.map((member, index) =>
           member ? (
             <li key={member.pokemon.id} className="team-slot">
+              {member.pokemon.sprite && (
+                <img className="team-sprite" src={member.pokemon.sprite} alt="" />
+              )}
               <span className="team-name">{member.pokemon.name}</span>
               {member.rank !== undefined ? (
                 <span className="team-streak team-rank">#{member.rank}</span>

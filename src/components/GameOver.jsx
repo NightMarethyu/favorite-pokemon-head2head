@@ -1,15 +1,25 @@
-function GameOver({ champion, onRestart }) {
+function GameOver({ champion, onRestart, onChangeFilters }) {
   return (
     <section className="game-over">
       <h2>That's everyone!</h2>
       {champion && (
-        <p>
-          Your favorite: <strong>{champion.name}</strong>
-        </p>
+        <>
+          {champion.sprite && (
+            <img className="game-over-sprite" src={champion.sprite} alt="" />
+          )}
+          <p>
+            Your favorite: <strong>{champion.name}</strong>
+          </p>
+        </>
       )}
-      <button type="button" className="restart" onClick={onRestart}>
-        Play again
-      </button>
+      <div className="game-actions">
+        <button type="button" className="restart" onClick={onRestart}>
+          Play again
+        </button>
+        <button type="button" className="restart restart-subtle" onClick={onChangeFilters}>
+          Change filters
+        </button>
+      </div>
     </section>
   )
 }
