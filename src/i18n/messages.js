@@ -2,8 +2,8 @@
 // a function that builds the string. A key missing from a language falls back
 // to English, so new text can be added in English first.
 //
-// `types`, `games`, and `regions` are keyed by the English names used in the
-// Pokémon data. Pokémon names come from the data itself.
+// `types`, `games`, `regions`, `stats`, and `eggGroups` are keyed by the English
+// names used in the Pokémon data. Pokémon names come from the data itself.
 
 const ROMAN = ['I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X']
 const CHINESE_NUMERALS = ['一', '二', '三', '四', '五', '六', '七', '八', '九', '十']
@@ -183,6 +183,66 @@ const en = {
   gridNoMatches: 'No Pokémon match that search.',
   gridInGrid: (name) => `${name} (in the grid, move here)`,
 
+  // Type chart
+  typeChartTitle: 'Type Chart',
+  typeChartHint:
+    'Pick a type to see how it matches up. Defending shows what hits one or two types hard; attacking shows what one type is strong against.',
+  typeDefending: '🛡 Defending',
+  typeAttacking: '⚔ Attacking',
+  typePickDefend: 'Pick one or two types.',
+  typePickAttack: 'Pick an attacking type.',
+  typeDefendTitle: (names) => `Moves against ${names}`,
+  typeAttackTitle: (names) => `${names} moves`,
+  typeTakes: (value) =>
+    value === 4
+      ? 'Very weak to'
+      : value === 2
+        ? 'Weak to'
+        : value === 0.5
+          ? 'Resists'
+          : value === 0.25
+            ? 'Strongly resists'
+            : 'Immune to',
+  typeDeals: (value) =>
+    value > 1
+      ? 'Super effective against'
+      : value > 0
+        ? 'Not very effective against'
+        : 'No effect on',
+  typeAllNeutral: 'Every type does normal damage.',
+  typeFullChart: 'Full chart',
+  typeChartAxes:
+    'Rows are the attacking move type, columns the defending Pokémon type. Blank means normal damage.',
+  typeCell: (attack, defend, value) => `${attack} against ${defend}: ${value}`,
+
+  // Wiki
+  wikiTitle: 'Pokémon Wiki',
+  wikiHint: 'Look up any Pokémon: base stats, types, abilities, and evolutions.',
+  wikiAll: 'All Pokémon',
+  wikiPrevious: (name) => `Previous: ${name}`,
+  wikiNext: (name) => `Next: ${name}`,
+  wikiNotFound: (last) => `There's no Pokémon with that number. The Pokédex goes up to ${last}.`,
+  wikiEnglishOnly: '',
+  wikiStats: 'Base stats',
+  wikiStatOf: (value, max, percent) => `${value} of ${max} (${percent})`,
+  wikiTotal: 'Total',
+  wikiProfile: 'Profile',
+  wikiHeight: 'Height',
+  wikiWeight: 'Weight',
+  wikiGender: 'Gender',
+  wikiGenderless: 'Unknown',
+  wikiEggGroups: 'Egg groups',
+  wikiAbilities: 'Abilities',
+  wikiHidden: 'Hidden',
+  wikiMatchups: 'Damage taken',
+  wikiEvolution: 'Evolution',
+  wikiNoEvolution: "This Pokémon doesn't evolve.",
+
+  stats: {
+    'Sp. Attack': 'Sp. Atk',
+    'Sp. Defense': 'Sp. Def',
+  },
+  eggGroups: {},
   types: {},
   games: {},
   regions: {},
@@ -350,6 +410,79 @@ const ja = {
   gridNoMatches: '見つかりませんでした。',
   gridInGrid: (name) => `${name}（配置済み・ここへ移動）`,
 
+  typeChartTitle: 'タイプ相性表',
+  typeChartHint:
+    'タイプを選ぶと相性がわかります。「受ける側」は1〜2タイプが苦手な技、「攻める側」は1タイプの技が効く相手を表示します。',
+  typeDefending: '🛡 受ける側',
+  typeAttacking: '⚔ 攻める側',
+  typePickDefend: 'タイプを1つか2つ選んでください。',
+  typePickAttack: '技のタイプを1つ選んでください。',
+  typeDefendTitle: (names) => `${names}が受けるダメージ`,
+  typeAttackTitle: (names) => `${names}の技`,
+  typeTakes: (value) =>
+    value === 4
+      ? 'とても苦手'
+      : value === 2
+        ? '苦手'
+        : value === 0.5
+          ? 'いまひとつ'
+          : value === 0.25
+            ? 'かなりいまひとつ'
+            : '効果なし',
+  typeDeals: (value) =>
+    value > 1 ? 'こうかはばつぐん' : value > 0 ? 'こうかはいまひとつ' : 'こうかがない',
+  typeAllNeutral: 'どのタイプも等倍です。',
+  typeFullChart: '相性表',
+  typeChartAxes: '行が攻める技のタイプ、列が受けるポケモンのタイプです。空欄は等倍です。',
+  typeCell: (attack, defend, value) => `${attack} → ${defend}：${value}`,
+
+  wikiTitle: 'ポケモン図鑑',
+  wikiHint: 'ポケモンの種族値、タイプ、特性、進化を調べられます。',
+  wikiAll: 'すべてのポケモン',
+  wikiPrevious: (name) => `前：${name}`,
+  wikiNext: (name) => `次：${name}`,
+  wikiNotFound: (last) => `その番号のポケモンはいません。図鑑は${last}番までです。`,
+  wikiEnglishOnly: '分類、図鑑の説明、特性、進化の条件は英語のみです。',
+  wikiStats: '種族値',
+  wikiStatOf: (value, max, percent) => `${max}中${value}（${percent}）`,
+  wikiTotal: '合計',
+  wikiProfile: 'プロフィール',
+  wikiHeight: '高さ',
+  wikiWeight: '重さ',
+  wikiGender: '性別',
+  wikiGenderless: '不明',
+  wikiEggGroups: 'タマゴグループ',
+  wikiAbilities: '特性',
+  wikiHidden: '隠れ特性',
+  wikiMatchups: '受けるダメージ',
+  wikiEvolution: '進化',
+  wikiNoEvolution: 'このポケモンは進化しません。',
+
+  stats: {
+    HP: 'HP',
+    Attack: 'こうげき',
+    Defense: 'ぼうぎょ',
+    'Sp. Attack': 'とくこう',
+    'Sp. Defense': 'とくぼう',
+    Speed: 'すばやさ',
+  },
+  eggGroups: {
+    Monster: 'かいじゅう',
+    'Water 1': 'すいちゅう1',
+    'Water 2': 'すいちゅう2',
+    'Water 3': 'すいちゅう3',
+    Bug: 'むし',
+    Flying: 'ひこう',
+    Field: 'りくじょう',
+    Fairy: 'ようせい',
+    Grass: 'しょくぶつ',
+    'Human-Like': 'ひとがた',
+    Mineral: 'こうぶつ',
+    Amorphous: 'ふていけい',
+    Ditto: 'メタモン',
+    Dragon: 'ドラゴン',
+    Undiscovered: 'タマゴみはっけん',
+  },
   types: {
     Normal: 'ノーマル',
     Fire: 'ほのお',
@@ -589,6 +722,78 @@ const zh = {
   gridNoMatches: '没有找到符合的宝可梦。',
   gridInGrid: (name) => `${name}（已在格子里，移到这里）`,
 
+  typeChartTitle: '属性克制表',
+  typeChartHint:
+    '选择属性来查看克制关系。“防守”显示一到两种属性怕哪些招式，“进攻”显示一种属性的招式克制谁。',
+  typeDefending: '🛡 防守',
+  typeAttacking: '⚔ 进攻',
+  typePickDefend: '选择一到两种属性。',
+  typePickAttack: '选择一种招式属性。',
+  typeDefendTitle: (names) => `${names}受到的伤害`,
+  typeAttackTitle: (names) => `${names}属性招式`,
+  typeTakes: (value) =>
+    value === 4
+      ? '非常怕'
+      : value === 2
+        ? '怕'
+        : value === 0.5
+          ? '抵抗'
+          : value === 0.25
+            ? '强烈抵抗'
+            : '免疫',
+  typeDeals: (value) => (value > 1 ? '效果绝佳' : value > 0 ? '效果不好' : '没有效果'),
+  typeAllNeutral: '所有属性都造成普通伤害。',
+  typeFullChart: '完整克制表',
+  typeChartAxes: '行是进攻招式的属性，列是防守宝可梦的属性。空白表示普通伤害。',
+  typeCell: (attack, defend, value) => `${attack} → ${defend}：${value}`,
+
+  wikiTitle: '宝可梦图鉴',
+  wikiHint: '查看任意宝可梦的种族值、属性、特性和进化。',
+  wikiAll: '全部宝可梦',
+  wikiPrevious: (name) => `上一只：${name}`,
+  wikiNext: (name) => `下一只：${name}`,
+  wikiNotFound: (last) => `没有这个编号的宝可梦。图鉴编号最大为 ${last}。`,
+  wikiEnglishOnly: '分类、图鉴介绍、特性和进化条件只有英文。',
+  wikiStats: '种族值',
+  wikiStatOf: (value, max, percent) => `${value} / ${max}（${percent}）`,
+  wikiTotal: '总和',
+  wikiProfile: '基本资料',
+  wikiHeight: '身高',
+  wikiWeight: '体重',
+  wikiGender: '性别',
+  wikiGenderless: '不明',
+  wikiEggGroups: '蛋群',
+  wikiAbilities: '特性',
+  wikiHidden: '隐藏特性',
+  wikiMatchups: '受到的伤害',
+  wikiEvolution: '进化',
+  wikiNoEvolution: '这只宝可梦不会进化。',
+
+  stats: {
+    HP: 'HP',
+    Attack: '攻击',
+    Defense: '防御',
+    'Sp. Attack': '特攻',
+    'Sp. Defense': '特防',
+    Speed: '速度',
+  },
+  eggGroups: {
+    Monster: '怪兽',
+    'Water 1': '水中1号',
+    'Water 2': '水中2号',
+    'Water 3': '水中3号',
+    Bug: '虫',
+    Flying: '飞行',
+    Field: '陆上',
+    Fairy: '妖精',
+    Grass: '植物',
+    'Human-Like': '人型',
+    Mineral: '矿物',
+    Amorphous: '不定形',
+    Ditto: '百变怪',
+    Dragon: '龙',
+    Undiscovered: '未发现',
+  },
   types: {
     Normal: '一般',
     Fire: '火',
@@ -840,6 +1045,82 @@ const fr = {
   gridNoMatches: 'Aucun Pokémon ne correspond.',
   gridInGrid: (name) => `${name} (déjà dans la grille, le déplacer ici)`,
 
+  typeChartTitle: 'Table des types',
+  typeChartHint:
+    'Choisissez un type pour voir ses forces et faiblesses. En défense : ce qui touche fort un ou deux types. En attaque : ce contre quoi un type est efficace.',
+  typeDefending: '🛡 Défense',
+  typeAttacking: '⚔ Attaque',
+  typePickDefend: 'Choisissez un ou deux types.',
+  typePickAttack: "Choisissez un type d'attaque.",
+  typeDefendTitle: (names) => `Attaques contre ${names}`,
+  typeAttackTitle: (names) => `Attaques ${names}`,
+  typeTakes: (value) =>
+    value === 4
+      ? 'Très vulnérable à'
+      : value === 2
+        ? 'Vulnérable à'
+        : value === 0.5
+          ? 'Résiste à'
+          : value === 0.25
+            ? 'Résiste très bien à'
+            : 'Immunisé contre',
+  typeDeals: (value) =>
+    value > 1 ? 'Super efficace contre' : value > 0 ? 'Peu efficace contre' : 'Sans effet sur',
+  typeAllNeutral: 'Tous les types font des dégâts normaux.',
+  typeFullChart: 'Table complète',
+  typeChartAxes:
+    "Les lignes sont le type de l'attaque, les colonnes le type du Pokémon qui la subit. Une case vide signifie des dégâts normaux.",
+  typeCell: (attack, defend, value) => `${attack} contre ${defend} : ${value}`,
+
+  wikiTitle: 'Wiki Pokémon',
+  wikiHint:
+    "Consultez n'importe quel Pokémon : statistiques de base, types, talents et évolutions.",
+  wikiAll: 'Tous les Pokémon',
+  wikiPrevious: (name) => `Précédent : ${name}`,
+  wikiNext: (name) => `Suivant : ${name}`,
+  wikiNotFound: (last) => `Aucun Pokémon ne porte ce numéro. Le Pokédex va jusqu'à ${last}.`,
+  wikiEnglishOnly:
+    "La catégorie, la description du Pokédex, les talents et les conditions d'évolution sont en anglais.",
+  wikiStats: 'Statistiques de base',
+  wikiStatOf: (value, max, percent) => `${value} sur ${max} (${percent})`,
+  wikiTotal: 'Total',
+  wikiProfile: 'Profil',
+  wikiHeight: 'Taille',
+  wikiWeight: 'Poids',
+  wikiGender: 'Sexe',
+  wikiGenderless: 'Inconnu',
+  wikiEggGroups: "Groupes d'œufs",
+  wikiAbilities: 'Talents',
+  wikiHidden: 'Talent caché',
+  wikiMatchups: 'Dégâts subis',
+  wikiEvolution: 'Évolution',
+  wikiNoEvolution: "Ce Pokémon n'évolue pas.",
+
+  stats: {
+    HP: 'PV',
+    Attack: 'Attaque',
+    Defense: 'Défense',
+    'Sp. Attack': 'Atq. Spé.',
+    'Sp. Defense': 'Déf. Spé.',
+    Speed: 'Vitesse',
+  },
+  eggGroups: {
+    Monster: 'Monstrueux',
+    'Water 1': 'Aquatique 1',
+    'Water 2': 'Aquatique 2',
+    'Water 3': 'Aquatique 3',
+    Bug: 'Insectoïde',
+    Flying: 'Aérien',
+    Field: 'Terrestre',
+    Fairy: 'Féerique',
+    Grass: 'Végétal',
+    'Human-Like': 'Humanoïde',
+    Mineral: 'Minéral',
+    Amorphous: 'Amorphe',
+    Ditto: 'Métamorph',
+    Dragon: 'Draconique',
+    Undiscovered: 'Inconnu',
+  },
   types: {
     Normal: 'Normal',
     Fire: 'Feu',

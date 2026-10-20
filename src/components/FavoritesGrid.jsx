@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { GENERATIONS } from '../data/filters.js'
 import { ALL_POKEMON } from '../data/pokedex.js'
+import { ALL_GENERATIONS as ALL, searchPokemon } from '../data/search.js'
 import { useI18n } from '../i18n/useI18n.js'
 import { renderGrid } from '../tools/gridImage.js'
 
@@ -9,8 +10,6 @@ const SLOTS = 9
 const EMPTY_GRID = Array(SLOTS).fill(null)
 const BY_ID = new Map(ALL_POKEMON.map((pokemon) => [pokemon.id, pokemon]))
 const FILE_NAME = 'pick-a-mon-3x3.png'
-// 0 stands for every generation.
-const ALL = 0
 
 // The grid is kept in this browser so it's still there on the next visit.
 function readGrid() {
@@ -24,13 +23,6 @@ function readGrid() {
     return { ids: EMPTY_GRID, title: '' }
   }
 }
-
-// Lowercase without accents, so "flabebe" finds Flabébé.
-const fold = (text) =>
-  text
-    .normalize('NFD')
-    .replace(/\p{Diacritic}/gu, '')
-    .toLowerCase()
 
 function nextEmpty(ids, from) {
   for (let step = 1; step <= SLOTS; step += 1) {
@@ -62,27 +54,7 @@ function FavoritesGrid() {
     }
   }, [ids, title])
 
-  const results = useMemo(() => {
-    const term = fold(query.trim())
-    const number = /^#?\d+$/.test(term) ? Number(term.replace('#', '')) : null
-    const inGeneration = ALL_POKEMON.filter(
-      (pokemon) => pokemon.sprite && (generation === ALL || pokemon.generation === generation),
-    )
-    if (!term) return inGeneration
-    if (number != null) return inGeneration.filter((pokemon) => pokemon.id === number)
-    // Exact names first, then names that start with the search, then the rest.
-    const rank = (pokemon) => {
-      const names = [pokemon.name, ...Object.values(pokemon.names)].filter(Boolean).map(fold)
-      if (names.includes(term)) return 0
-      if (names.some((name) => name.startsWith(term))) return 1
-      return names.some((name) => name.includes(term)) ? 2 : -1
-    }
-    return inGeneration
-      .map((pokemon) => [rank(pokemon), pokemon])
-      .filter(([score]) => score >= 0)
-      .sort((a, b) => a[0] - b[0])
-      .map(([, pokemon]) => pokemon)
-  }, [query, generation])
+  const results = useMemo(() => searchPokemon(query, generation), [query, generation])
 
   const picked = ids.filter((id) => id != null).length
   const shownTitle = title.trim() || t('gridDefaultTitle')

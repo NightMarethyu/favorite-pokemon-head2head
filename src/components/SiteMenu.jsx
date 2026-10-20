@@ -4,7 +4,11 @@ import { useI18n } from '../i18n/useI18n.js'
 
 // The site menu: back to the game, and a Tools section for extras like the
 // 3×3 grid. New tools go in TOOLS.
-const TOOLS = [{ screen: 'grid', label: 'gridTitle' }]
+const TOOLS = [
+  { screen: 'grid', label: 'gridTitle' },
+  { screen: 'types', label: 'typeChartTitle' },
+  { screen: 'wiki', label: 'wikiTitle' },
+]
 
 function SiteMenu({ current, onNavigate }) {
   const { t } = useI18n()

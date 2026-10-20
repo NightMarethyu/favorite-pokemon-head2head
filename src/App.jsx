@@ -3,11 +3,13 @@ import FavoritesGrid from './components/FavoritesGrid.jsx'
 import Game from './components/Game.jsx'
 import HomeScreen from './components/HomeScreen.jsx'
 import LanguageSwitcher from './components/LanguageSwitcher.jsx'
+import PokemonWiki from './components/PokemonWiki.jsx'
 import QuickStart from './components/QuickStart.jsx'
 import SetupScreen from './components/SetupScreen.jsx'
 import SiteFooter from './components/SiteFooter.jsx'
 import SiteMenu from './components/SiteMenu.jsx'
 import ThemeToggle from './components/ThemeToggle.jsx'
+import TypeChart from './components/TypeChart.jsx'
 import { EMPTY_FILTERS, describeFilters } from './data/filters.js'
 import { CLASSIC, gameMode, startGame } from './game/modes.js'
 import { openSave } from './game/saves.js'
@@ -15,11 +17,16 @@ import { useSaves } from './hooks/useSaves.js'
 import { useI18n } from './i18n/useI18n.js'
 import { useTheme } from './hooks/useTheme.js'
 
-// Tools have their own address (#3x3) so they can be linked to directly.
-const TOOL_HASHES = { grid: '#3x3' }
+// Tools have their own address (#3x3) so they can be linked to directly. A
+// tool can add more after a slash, like a wiki page at #wiki/25.
+const TOOL_HASHES = { grid: '#3x3', types: '#types', wiki: '#wiki' }
+
+const hashIsFor = (hash, toolHash) => hash === toolHash || hash.startsWith(`${toolHash}/`)
 
 function screenFromHash() {
-  const entry = Object.entries(TOOL_HASHES).find(([, hash]) => hash === window.location.hash)
+  const entry = Object.entries(TOOL_HASHES).find(([, hash]) =>
+    hashIsFor(window.location.hash, hash),
+  )
   return entry ? entry[0] : 'home'
 }
 
@@ -29,7 +36,7 @@ function App() {
   const { summaries, saves, activeSave, create, update, refresh, remove, setActive, importData } =
     useSaves()
   // Without an open game: 'home', 'quick' (the short start for newcomers), or
-  // 'setup' (every filter and mode). Tools from the menu: 'grid'.
+  // 'setup' (every filter and mode). Tools from the menu: 'grid', 'types', 'wiki'.
   const [screen, setScreen] = useState(screenFromHash)
   // The open game: { id, filters, pool, state }, or null.
   const [run, setRun] = useState(null)
@@ -67,13 +74,17 @@ function App() {
     refresh()
     setRun(null)
     setScreen(next)
+    // Picking the tool you're in goes back to its start (#wiki/25 -> #wiki).
+    const hash = TOOL_HASHES[next]
+    if (!run && next === screen && hash && window.location.hash !== hash)
+      window.location.hash = hash
   }
 
   const shownScreen = run ? 'game' : screen
 
   useEffect(() => {
     const hash = TOOL_HASHES[shownScreen] ?? ''
-    if (window.location.hash === hash) return
+    if (hash ? hashIsFor(window.location.hash, hash) : !window.location.hash) return
     const { pathname, search } = window.location
     window.history.replaceState(null, '', `${pathname}${search}${hash}`)
   }, [shownScreen])
@@ -106,6 +117,10 @@ function App() {
     )
   } else if (screen === 'grid') {
     content = <FavoritesGrid />
+  } else if (screen === 'types') {
+    content = <TypeChart />
+  } else if (screen === 'wiki') {
+    content = <PokemonWiki />
   } else if (screen === 'quick') {
     content = (
       <QuickStart

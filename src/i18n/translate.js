@@ -23,6 +23,8 @@ export function makeTranslator(code) {
     typeName: lookup('types'),
     gameName: lookup('games'),
     regionName: lookup('regions'),
+    statName: lookup('stats'),
+    eggGroupName: lookup('eggGroups'),
     generationLabel: (n) => t('generationLabel', n),
     list: (items) => items.join(t('listSeparator')),
     // Names come from the data; any that are missing fall back to English.
