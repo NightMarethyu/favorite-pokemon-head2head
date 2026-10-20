@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import FavoritesGrid from './components/FavoritesGrid.jsx'
 import Game from './components/Game.jsx'
 import HomeScreen from './components/HomeScreen.jsx'
@@ -44,6 +44,14 @@ function App() {
   const [filters, setFilters] = useState(EMPTY_FILTERS)
   const [mode, setMode] = useState(CLASSIC)
 
+  // A link out of a game (a Pokémon's wiki page from the final team) remembers
+  // the game, so the browser's back button reopens it.
+  const returnTo = useRef(null)
+  const latest = useRef({ run, resume })
+  useEffect(() => {
+    latest.current = { run, resume }
+  })
+
   function start(nextFilters, pool, nextMode) {
     const state = startGame(pool, nextMode)
     const id = create(nextFilters, state)
@@ -73,6 +81,7 @@ function App() {
   function navigate(next) {
     refresh()
     setRun(null)
+    returnTo.current = null
     setScreen(next)
     // Picking the tool you're in goes back to its start (#wiki/25 -> #wiki).
     const hash = TOOL_HASHES[next]
@@ -91,9 +100,17 @@ function App() {
 
   useEffect(() => {
     const onHashChange = () => {
+      const next = screenFromHash()
+      const { run: open, resume: reopen } = latest.current
+      if (open) returnTo.current = open.id
       refresh()
+      if (next === 'home' && returnTo.current) {
+        reopen(returnTo.current)
+        returnTo.current = null
+        return
+      }
       setRun(null)
-      setScreen(screenFromHash())
+      setScreen(next)
     }
     window.addEventListener('hashchange', onHashChange)
     return () => window.removeEventListener('hashchange', onHashChange)

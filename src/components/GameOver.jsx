@@ -1,3 +1,4 @@
+import { wikiHash } from '../data/links.js'
 import { useI18n } from '../i18n/useI18n.js'
 
 function GameOver({ champion, onRestart, onChangeFilters }) {
@@ -11,8 +12,11 @@ function GameOver({ champion, onRestart, onChangeFilters }) {
           {champion.sprite && <img className="game-over-sprite" src={champion.sprite} alt="" />}
           <p>
             {t('yourFavorite')}
-            <strong>{pokemonName(champion)}</strong>
+            <a className="game-over-link" href={wikiHash(champion.id)}>
+              <strong>{pokemonName(champion)}</strong>
+            </a>
           </p>
+          <p className="game-over-hint">{t('teamWikiHint')}</p>
         </>
       )}
       <div className="game-actions">

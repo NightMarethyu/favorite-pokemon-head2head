@@ -237,6 +237,13 @@ const en = {
   wikiMatchups: 'Damage taken',
   wikiEvolution: 'Evolution',
   wikiNoEvolution: "This Pokémon doesn't evolve.",
+  wikiOpen: (name) => `${name} in the wiki`,
+  teamWikiHint: 'Tap any Pokémon on your team to read about it in the wiki.',
+  wikiTypeLink: 'See these types in the type chart',
+  wikiGames: 'Games',
+  wikiGamesCatchable: 'Catch, evolve, or receive in the game',
+  wikiGamesTransfer: 'Only by trade, event, or transfer',
+  wikiNoGames: 'Not in any main-series game yet.',
 
   stats: {
     'Sp. Attack': 'Sp. Atk',
@@ -457,6 +464,13 @@ const ja = {
   wikiMatchups: '受けるダメージ',
   wikiEvolution: '進化',
   wikiNoEvolution: 'このポケモンは進化しません。',
+  wikiOpen: (name) => `図鑑で${name}を見る`,
+  teamWikiHint: 'チームのポケモンをタップすると図鑑で詳しく見られます。',
+  wikiTypeLink: 'このタイプをタイプ相性表で見る',
+  wikiGames: '登場するゲーム',
+  wikiGamesCatchable: 'ゲーム内で捕まえる・進化させる・もらえる',
+  wikiGamesTransfer: '通信交換・配信・連れてくることでのみ入手',
+  wikiNoGames: 'まだ本編のゲームには登場していません。',
 
   stats: {
     HP: 'HP',
@@ -768,6 +782,13 @@ const zh = {
   wikiMatchups: '受到的伤害',
   wikiEvolution: '进化',
   wikiNoEvolution: '这只宝可梦不会进化。',
+  wikiOpen: (name) => `在图鉴中查看${name}`,
+  teamWikiHint: '点击队伍里的宝可梦，可以在图鉴里查看详细资料。',
+  wikiTypeLink: '在属性克制表中查看这些属性',
+  wikiGames: '登场游戏',
+  wikiGamesCatchable: '可在游戏中捕捉、进化或获得',
+  wikiGamesTransfer: '只能通过交换、配信或传送获得',
+  wikiNoGames: '还没有在正传游戏中登场。',
 
   stats: {
     HP: 'HP',
@@ -1095,6 +1116,13 @@ const fr = {
   wikiMatchups: 'Dégâts subis',
   wikiEvolution: 'Évolution',
   wikiNoEvolution: "Ce Pokémon n'évolue pas.",
+  wikiOpen: (name) => `${name} dans le wiki`,
+  teamWikiHint: 'Touchez un Pokémon de votre équipe pour le découvrir dans le wiki.',
+  wikiTypeLink: 'Voir ces types dans la table des types',
+  wikiGames: 'Jeux',
+  wikiGamesCatchable: 'À capturer, faire évoluer ou recevoir dans le jeu',
+  wikiGamesTransfer: 'Seulement par échange, distribution ou transfert',
+  wikiNoGames: "Pas encore dans un jeu de la série principale.",
 
   stats: {
     HP: 'PV',

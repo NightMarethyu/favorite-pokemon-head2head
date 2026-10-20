@@ -106,7 +106,7 @@ function Game({ pool, initialState, filterLabel, onSave, onChangeFilters }) {
         </>
       )}
 
-      <TeamPanel team={game.team} title={t(teamTitleKey(game.phase))} />
+      <TeamPanel team={game.team} title={t(teamTitleKey(game.phase))} linked={game.isOver} />
 
       {game.isOver && <TeamGames team={finalTeam} />}
 

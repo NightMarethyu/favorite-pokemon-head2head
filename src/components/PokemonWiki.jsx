@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from 'react'
-import { GENERATIONS } from '../data/filters.js'
+import { GAME_GROUPS, GENERATIONS } from '../data/filters.js'
+import { typeChartHash, wikiHash } from '../data/links.js'
 import { ALL_POKEMON, evolutionStages, pokemonDetails } from '../data/pokedex.js'
 import { ALL_GENERATIONS, searchPokemon } from '../data/search.js'
 import { TYPE_LABELS } from '../data/typeArt.js'
@@ -14,7 +15,6 @@ const LAST_ID = Math.max(...BY_ID.keys())
 // Base stats top out at 255, so a full bar is 255.
 const MAX_STAT = 255
 
-const pageHash = (id) => `#wiki/${id}`
 const dexNumber = (id) => `#${String(id).padStart(4, '0')}`
 
 // '#wiki/25' -> 25; anything else -> null (the list).
@@ -36,7 +36,7 @@ function PokemonLink({ pokemon, children }) {
   const { pokemonName } = useI18n()
   const name = pokemonName(pokemon)
   return (
-    <a className="grid-result" href={pageHash(pokemon.id)} title={name}>
+    <a className="grid-result" href={wikiHash(pokemon.id)} title={name}>
       {pokemon.sprite && <img src={pokemon.sprite} alt="" loading="lazy" />}
       <span>{name}</span>
       {children}
@@ -163,6 +163,45 @@ function Evolution({ id }) {
   )
 }
 
+// The games it's in, by generation. Games where it can be caught, evolved, or
+// received stand out from ones it only reaches by trade, event, or transfer.
+function GameList({ pokemon }) {
+  const { t, gameName, generationLabel } = useI18n()
+  const catchable = new Set(pokemon.catchable)
+  const groups = GAME_GROUPS.map((group) => ({
+    ...group,
+    games: group.games.filter((game) => pokemon.games.includes(game)),
+  })).filter((group) => group.games.length > 0)
+  if (groups.length === 0) return <p className="setup-hint">{t('wikiNoGames')}</p>
+
+  return (
+    <>
+      <p className="wiki-games-key">
+        <span className="wiki-game wiki-game-catchable">{t('wikiGamesCatchable')}</span>
+        <span className="wiki-game">{t('wikiGamesTransfer')}</span>
+      </p>
+      <dl className="wiki-games">
+        {groups.map((group) => (
+          <div key={group.label} className="wiki-games-group">
+            <dt>{group.generation ? generationLabel(group.generation) : t('otherGames')}</dt>
+            <dd>
+              {group.games.map((game) => (
+                <span
+                  key={game}
+                  className={`wiki-game${catchable.has(game) ? ' wiki-game-catchable' : ''}`}
+                  title={t(catchable.has(game) ? 'wikiGamesCatchable' : 'wikiGamesTransfer')}
+                >
+                  {gameName(game)}
+                </span>
+              ))}
+            </dd>
+          </div>
+        ))}
+      </dl>
+    </>
+  )
+}
+
 function WikiPage({ pokemon }) {
   const i18n = useI18n()
   const { t, language, locale, pokemonName, typeName, eggGroupName, generationLabel, list } = i18n
@@ -186,7 +225,7 @@ function WikiPage({ pokemon }) {
           {previous && (
             <a
               className="filter-clear"
-              href={pageHash(previous.id)}
+              href={wikiHash(previous.id)}
               aria-label={t('wikiPrevious', pokemonName(previous))}
             >
               ‹ {dexNumber(previous.id)}
@@ -195,7 +234,7 @@ function WikiPage({ pokemon }) {
           {next && (
             <a
               className="filter-clear"
-              href={pageHash(next.id)}
+              href={wikiHash(next.id)}
               aria-label={t('wikiNext', pokemonName(next))}
             >
               {dexNumber(next.id)} ›
@@ -216,7 +255,7 @@ function WikiPage({ pokemon }) {
           <p className="wiki-species" lang="en">
             {details.species}
           </p>
-          <p className="wiki-types">
+          <a className="wiki-types" href={typeChartHash(pokemon.types)} title={t('wikiTypeLink')}>
             {pokemon.types.map((type) =>
               TYPE_LABELS.has(type) ? (
                 <img
@@ -231,7 +270,7 @@ function WikiPage({ pokemon }) {
                 <span key={type}>{typeName(type)}</span>
               ),
             )}
-          </p>
+          </a>
           {otherNames.length > 0 && (
             <p className="wiki-other-names">
               {otherNames.map((entry) => (
@@ -315,11 +354,19 @@ function WikiPage({ pokemon }) {
             groups={defenseGroups(pokemon.types)}
             label={(value) => t('typeTakes', value)}
           />
+          <a className="filter-clear wiki-more" href={typeChartHash(pokemon.types)}>
+            {t('wikiTypeLink')} →
+          </a>
         </section>
 
         <section className="filter-section wiki-section">
           <h3 className="filter-legend">{t('wikiEvolution')}</h3>
           <Evolution id={pokemon.id} />
+        </section>
+
+        <section className="filter-section wiki-section wiki-section-wide">
+          <h3 className="filter-legend">{t('wikiGames')}</h3>
+          <GameList pokemon={pokemon} />
         </section>
       </div>
     </article>
