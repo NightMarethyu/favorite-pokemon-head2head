@@ -91,7 +91,7 @@ Put a cover or logo for a game in `src/assets/images/games/`, named after the ga
 - [x] Double-elimination mode for players who don't know the Pokémon well yet and have no favorites to mark: every Pokémon gets a second chance after its first loss, so one strong early pick can't knock out the rest
 - [x] Pick-a-Mon title screen, with a quick start for newcomers (one generation, Gen I suggested) and the full setup for everyone else
 - [x] Show which games (if any) you could build your final team in (game art still to come)
-- [ ] A 3×3 grid of your favorite Pokémon
+- [x] A 3×3 grid of your favorite Pokémon
 - [x] Multi-language support: English, Japanese, Chinese, and French
 - [ ] Pokémon knowledge quizzes: which has the higher base-stat total, egg groups, abilities, and more
 - [x] Type label cards on the type filter, and type icons beside each Pokémon's name on the matchup cards
