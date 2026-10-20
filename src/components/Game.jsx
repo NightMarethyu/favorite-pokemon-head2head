@@ -20,9 +20,14 @@ function usePreloadSprite(pokemon) {
   }, [pokemon])
 }
 
-function Game({ pool, filterLabel, onChangeFilters }) {
-  const game = useHead2Head(pool)
+function Game({ pool, initialState, filterLabel, onSave, onChangeFilters }) {
+  const game = useHead2Head(pool, initialState)
   usePreloadSprite(game.next)
+
+  // Save after every pick so the game can be picked up again later.
+  useEffect(() => {
+    onSave?.(game.state)
+  }, [game.state, onSave])
 
   return (
     <>

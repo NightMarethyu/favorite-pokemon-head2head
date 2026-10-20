@@ -1,21 +1,44 @@
-import { useState } from 'react'
+import { useCallback, useState } from 'react'
 import Game from './components/Game.jsx'
 import SetupScreen from './components/SetupScreen.jsx'
 import ThemeToggle from './components/ThemeToggle.jsx'
 import { EMPTY_FILTERS, describeFilters } from './data/filters.js'
+import { createGame } from './game/head2head.js'
+import { openSave } from './game/saves.js'
+import { useSaves } from './hooks/useSaves.js'
 import { useTheme } from './hooks/useTheme.js'
 
 function App() {
   const { theme, toggleTheme } = useTheme()
+  const { summaries, saves, activeSave, create, update, remove, setActive, importData } = useSaves()
+  // The open game: { id, filters, pool, state }, or null on the setup screen.
+  // A game left open last visit picks up where it was.
+  const [run, setRun] = useState(() => openSave(activeSave))
   // The last filters chosen, kept so "Change filters" starts from them.
-  const [filters, setFilters] = useState(EMPTY_FILTERS)
-  // null while on the setup screen. A new id remounts Game for a fresh run.
-  const [run, setRun] = useState(null)
+  const [filters, setFilters] = useState(() => run?.filters ?? EMPTY_FILTERS)
 
   function start(nextFilters, pool) {
+    const state = createGame(pool)
+    const id = create(nextFilters, state)
     setFilters(nextFilters)
-    setRun((current) => ({ id: (current?.id ?? 0) + 1, pool }))
+    setRun({ id, filters: nextFilters, pool, state })
   }
+
+  function resume(id) {
+    const opened = openSave(saves.find((save) => save.id === id))
+    if (!opened) return
+    setActive(id)
+    setFilters(opened.filters)
+    setRun(opened)
+  }
+
+  function leave() {
+    setActive(null)
+    setRun(null)
+  }
+
+  const runId = run?.id
+  const saveRun = useCallback((state) => update(runId, state), [update, runId])
 
   return (
     <div className="app">
@@ -29,11 +52,20 @@ function App() {
           <Game
             key={run.id}
             pool={run.pool}
-            filterLabel={describeFilters(filters)}
-            onChangeFilters={() => setRun(null)}
+            initialState={run.state}
+            filterLabel={describeFilters(run.filters)}
+            onSave={saveRun}
+            onChangeFilters={leave}
           />
         ) : (
-          <SetupScreen initialFilters={filters} onStart={start} />
+          <SetupScreen
+            initialFilters={filters}
+            saves={summaries}
+            onStart={start}
+            onResume={resume}
+            onDelete={remove}
+            onImport={importData}
+          />
         )}
       </main>
     </div>
