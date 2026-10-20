@@ -101,7 +101,6 @@ Put a cover or logo for a game in `src/assets/images/games/`, named after the ga
 - [x] Show which games (if any) you could build your final team in (game art still to come)
 - [x] A 3×3 grid of your favorite Pokémon
 - [x] Multi-language support: English, Japanese, Chinese, and French
-- [ ] Pokémon knowledge quizzes: which has the higher base-stat total, egg groups, abilities, and more
 - [x] Type label cards on the type filter, and type icons beside each Pokémon's name on the matchup cards
 - [ ] Game cover art or title logos on the game filter for more visual impact
 - [x] A type chart and a small internal Pokémon wiki (Tools menu)
