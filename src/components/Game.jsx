@@ -10,22 +10,35 @@ import TeamPanel from './TeamPanel.jsx'
 function teamTitleKey(phase) {
   if (phase === 'over') return 'yourFinalTeam'
   if (phase === 'suddenDeath') return 'rankingSoFar'
+  if (phase === 'bracket') return 'bestSoFar'
   return 'yourTeam'
 }
 
-// Start loading the next challenger's sprite so it shows up straight away.
-function usePreloadSprite(pokemon) {
+// Start loading the next sprites so they show up straight away.
+function usePreloadSprites(pokemon) {
   useEffect(() => {
-    if (!pokemon?.sprite) return
-    const image = new Image()
-    image.src = pokemon.sprite
+    for (const { sprite } of pokemon) {
+      if (!sprite) continue
+      const image = new Image()
+      image.src = sprite
+    }
   }, [pokemon])
 }
+
+const BRACKET_TITLES = {
+  winners: 'winnersBracket',
+  losers: 'losersBracket',
+  final: 'final',
+  rematch: 'finalRematch',
+}
+
+// A Pokémon's card label in double elimination: whether it can still lose once.
+const recordLabel = (record, t) => (record.losses === 0 ? t('undefeated') : t('lastChance'))
 
 function Game({ pool, initialState, filterLabel, onSave, onChangeFilters }) {
   const { t } = useI18n()
   const game = useHead2Head(pool, initialState)
-  usePreloadSprite(game.next)
+  usePreloadSprites(game.upcoming)
   const finalTeam = useMemo(() => game.team.map((member) => member.pokemon), [game.team])
 
   // Save after every pick so the game can be picked up again later.
@@ -43,6 +56,24 @@ function Game({ pool, initialState, filterLabel, onSave, onChangeFilters }) {
           onRestart={game.restart}
           onChangeFilters={onChangeFilters}
         />
+      ) : game.phase === 'bracket' ? (
+        <>
+          <p className="progress">
+            <strong className="phase-title">{t(BRACKET_TITLES[game.bracket.bracket])}</strong>
+            {t('roundStillIn', game.bracket.round, game.bracket.left, game.bracket.total)}
+          </p>
+          <Arena
+            champion={game.champion}
+            challenger={game.challenger}
+            leftLabel={recordLabel(game.match.left, t)}
+            rightLabel={recordLabel(game.match.right, t)}
+            wins={game.match.left.wins}
+            rightWins={game.match.right.wins}
+            onPickLeft={game.pickLeft}
+            onPickRight={game.pickRight}
+          />
+          <p className="bracket-hint">{t('bracketHint')}</p>
+        </>
       ) : game.phase === 'suddenDeath' ? (
         <>
           <p className="progress">

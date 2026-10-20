@@ -18,6 +18,8 @@
 
 export const TEAM_SIZE = 6
 
+export const CLASSIC = 'classic'
+
 // How many of the longest main-round streaks join the favorites in Sudden Death.
 export const STREAK_FINALISTS = TEAM_SIZE
 
@@ -33,6 +35,8 @@ export function shuffle(items, random = Math.random) {
 export function createGame(pool, random = Math.random) {
   const [champion = null, challenger = null, ...queue] = shuffle(pool, random)
   const state = {
+    // Saves from before double elimination have no mode; they are classic.
+    mode: CLASSIC,
     phase: 'main', // 'main' | 'suddenDeath' | 'over'
     total: pool.length,
     champion,

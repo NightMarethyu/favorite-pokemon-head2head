@@ -19,7 +19,13 @@ export function useSaves() {
     setStore(createSave(id, filters, state))
     return id
   }, [])
-  const update = useCallback((id, state) => setStore(updateSave(id, state)), [])
+  // Saving a pick only writes storage: re-rendering the whole app after every
+  // pick isn't needed while a game is open, and fast picks could make React
+  // give up on the chain of updates. refresh() catches the list up afterwards.
+  const update = useCallback((id, state) => {
+    updateSave(id, state)
+  }, [])
+  const refresh = useCallback(() => setStore(loadStore()), [])
   const remove = useCallback((id) => setStore(deleteSave(id)), [])
   const setActive = useCallback((id) => setStore(setActiveSave(id)), [])
   // Returns { imported, skipped }; throws if the data isn't a saved games file.
@@ -41,6 +47,7 @@ export function useSaves() {
     activeSave,
     create,
     update,
+    refresh,
     remove,
     setActive,
     importData,
