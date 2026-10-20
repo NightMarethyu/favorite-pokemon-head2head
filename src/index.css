@@ -182,6 +182,22 @@ button {
   overflow-wrap: anywhere;
 }
 
+.card-types {
+  display: inline-flex;
+  margin-left: 0.15em;
+  vertical-align: -0.12em;
+  white-space: nowrap;
+}
+
+/* The icon art has transparent padding around the circle, so pull them together. */
+.card-type-icon {
+  width: 0.95em;
+  height: 0.95em;
+  margin: 0 -0.06em;
+  pointer-events: none;
+  user-select: none;
+}
+
 .card-wins {
   position: absolute;
   bottom: 10px;
@@ -524,6 +540,45 @@ button {
   background: var(--accent);
   color: var(--accent-fg);
   border-color: var(--accent);
+}
+
+.type-chip {
+  display: inline-flex;
+  border-radius: 999px;
+  cursor: pointer;
+  user-select: none;
+  transition: opacity 0.15s;
+}
+
+.type-chip input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.type-chip img {
+  display: block;
+  width: 120px;
+  height: auto;
+}
+
+/* Once any type is picked, the unpicked labels fade so the picks stand out. */
+.type-list-active .type-chip:not(.type-chip-checked) {
+  opacity: 0.35;
+}
+
+.type-chip:hover {
+  opacity: 1 !important;
+}
+
+.type-chip-checked {
+  outline: 3px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.type-chip:has(input:focus-visible) {
+  outline: 3px dashed var(--accent);
+  outline-offset: 2px;
 }
 
 .game-groups summary {
