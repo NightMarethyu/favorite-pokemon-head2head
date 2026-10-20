@@ -23,6 +23,8 @@ export function useHead2Head(pool) {
     phase: state.phase,
     champion: state.champion,
     challenger: state.challenger,
+    // The next Pokémon to be drawn in the main round, if any.
+    next: state.phase === 'main' ? (state.queue[0] ?? null) : null,
     streak: state.streak,
     total: state.total,
     remaining: selectRemaining(state),

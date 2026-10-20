@@ -5,6 +5,16 @@ function MatchupCard({ pokemon, label, wins, onPick, onFavorite }) {
     <div className="card-slot">
       <button type="button" className="card" onClick={onPick}>
         <span className="card-label">{label}</span>
+        {pokemon.sprite && (
+          <img
+            className="card-sprite"
+            src={pokemon.sprite}
+            alt=""
+            width="512"
+            height="512"
+            draggable={false}
+          />
+        )}
         <span className="card-name">{pokemon.name}</span>
         {showWins && (
           <span className="card-wins" aria-label={`${wins} wins`}>

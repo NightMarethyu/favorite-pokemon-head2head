@@ -1,24 +1,21 @@
-import Arena from './components/Arena.jsx'
-import FavoritesPanel from './components/FavoritesPanel.jsx'
-import GameOver from './components/GameOver.jsx'
-import TeamPanel from './components/TeamPanel.jsx'
+import { useState } from 'react'
+import Game from './components/Game.jsx'
+import SetupScreen from './components/SetupScreen.jsx'
 import ThemeToggle from './components/ThemeToggle.jsx'
-import { getPokemonPool } from './data/pokedex.js'
-import { useHead2Head } from './game/useHead2Head.js'
+import { EMPTY_FILTERS, describeFilters } from './data/filters.js'
 import { useTheme } from './hooks/useTheme.js'
-
-// Future generation / game / type options will build this pool from filters.
-const POOL = getPokemonPool()
-
-function teamTitle(phase) {
-  if (phase === 'over') return 'Your Final Team'
-  if (phase === 'suddenDeath') return 'Ranking So Far'
-  return 'Your Team'
-}
 
 function App() {
   const { theme, toggleTheme } = useTheme()
-  const game = useHead2Head(POOL)
+  // The last filters chosen, kept so "Change filters" starts from them.
+  const [filters, setFilters] = useState(EMPTY_FILTERS)
+  // null while on the setup screen. A new id remounts Game for a fresh run.
+  const [run, setRun] = useState(null)
+
+  function start(nextFilters, pool) {
+    setFilters(nextFilters)
+    setRun((current) => ({ id: (current?.id ?? 0) + 1, pool }))
+  }
 
   return (
     <div className="app">
@@ -28,52 +25,15 @@ function App() {
       </header>
 
       <main className="app-main">
-        {game.isOver ? (
-          <GameOver champion={game.champion} onRestart={game.restart} />
-        ) : game.phase === 'suddenDeath' ? (
-          <>
-            <p className="progress">
-              <strong className="phase-title">Sudden Death</strong>
-              Placing {game.suddenDeath.placing} of {game.suddenDeath.total}
-            </p>
-            <Arena
-              champion={game.champion}
-              challenger={game.challenger}
-              leftLabel="Finalist"
-              rightLabel="Finalist"
-              onPickLeft={game.pickLeft}
-              onPickRight={game.pickRight}
-            />
-          </>
+        {run ? (
+          <Game
+            key={run.id}
+            pool={run.pool}
+            filterLabel={describeFilters(filters)}
+            onChangeFilters={() => setRun(null)}
+          />
         ) : (
-          <>
-            <p className="progress">
-              {game.remaining} of {game.total} left
-            </p>
-            <Arena
-              champion={game.champion}
-              challenger={game.challenger}
-              leftLabel={game.streak > 0 ? 'Champion' : 'Contender'}
-              rightLabel="Challenger"
-              wins={game.streak}
-              onPickLeft={game.pickLeft}
-              onPickRight={game.pickRight}
-              onFavoriteLeft={game.favoriteLeft}
-              onFavoriteRight={game.favoriteRight}
-            />
-          </>
-        )}
-
-        <TeamPanel team={game.team} title={teamTitle(game.phase)} />
-
-        {game.phase === 'main' && (
-          <FavoritesPanel favorites={game.favorites} onRemove={game.unfavorite} />
-        )}
-
-        {!game.isOver && (
-          <button type="button" className="restart restart-subtle" onClick={game.restart}>
-            Start over
-          </button>
+          <SetupScreen initialFilters={filters} onStart={start} />
         )}
       </main>
     </div>
