@@ -7,9 +7,10 @@ function formatTime(timestamp, locale) {
   return new Date(timestamp).toLocaleString(locale, { dateStyle: 'medium', timeStyle: 'short' })
 }
 
-function describeProgress({ phase, placing, left, total }, t) {
+function describeProgress({ phase, placing, round, left, total }, t) {
   if (phase === 'over') return t('progressFinished')
   if (phase === 'suddenDeath') return t('progressSuddenDeath', placing, total)
+  if (phase === 'bracket') return t('roundStillIn', round, left, total)
   return t('progressLeft', left, total)
 }
 
@@ -83,7 +84,7 @@ function SavedGames({ saves, onResume, onDelete, onImport }) {
                 <div className="saves-info">
                   <span className="saves-name">{label}</span>
                   <span className="saves-detail">
-                    {describeProgress(save.progress, t)}
+                    {t(`${save.mode}Mode`)} · {describeProgress(save.progress, t)}
                     {save.leader &&
                       ` · ${t('labelled', t(save.isOver ? 'leaderFavorite' : 'leaderLeading'), pokemonName(save.leader))}`}
                   </span>

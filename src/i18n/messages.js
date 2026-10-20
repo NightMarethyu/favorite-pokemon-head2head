@@ -11,8 +11,8 @@ const CHINESE_NUMERALS = ['一', '二', '三', '四', '五', '六', '七', '八'
 const roman = (n) => ROMAN[n - 1] ?? String(n)
 
 const en = {
-  siteTitle: 'Pokémon Head-to-Head',
-  pageTitle: 'Favorite Pokémon Head-to-Head',
+  siteTitle: 'Pick-a-Mon',
+  pageTitle: 'Pick-a-Mon: find your favorite Pokémon',
 
   themeDark: '☾ Dark',
   themeLight: '☀ Light',
@@ -105,14 +105,63 @@ const en = {
   teamGamesNote:
     'Counts Pokémon you can catch, evolve, or be given in the game itself, not ones that only come by trade, event, or transfer. DLC areas count. Data from Bulbapedia.',
 
+  // Home screen
+  tagline: 'Find your favorite Pokémon, two at a time.',
+  continueGame: (label) => `Continue: ${label}`,
+  familiarQuestion: 'How well do you know Pokémon?',
+  newcomerTitle: "I'm new to Pokémon",
+  newcomerBody:
+    'Start with a smaller group, like the original 151, in a simple bracket where every Pokémon gets a second chance.',
+  expertTitle: 'I know my Pokémon',
+  expertBody: 'Mix any generations, types, and games, mark favorites, and choose how to play.',
+
+  // Quick start
+  quickTitle: 'Pick a starting group',
+  quickHint:
+    'There are over 1,000 Pokémon, so it helps to start small. Generation I is the original 151 from the first games and the anime.',
+  recommended: 'Recommended',
+  pokemonCount: (n) => `${n} Pokémon`,
+  howItPlays: 'How it plays',
+  doubleEliminationHow:
+    "Pick the Pokémon you like more in each matchup. A Pokémon is out after its second loss, so one tough matchup early on won't knock out one you like.",
+  aboutPicks: (n) => `About ${n} picks`,
+  moreOptions: 'Want more options? See every filter and mode',
+  tryQuickStart: 'New to Pokémon? Try the quick start',
+
+  // Modes
+  mode: 'How to play',
+  classicMode: 'Classic',
+  classicModeBody:
+    'King of the hill: the winner stays on until it loses. Mark favorites, then rank the best in Sudden Death.',
+  doubleEliminationMode: 'Double elimination',
+  doubleEliminationModeBody:
+    "A bracket where each Pokémon is out after its second loss. Good if you don't have favorites yet.",
+  suggestGenOne: (n, picks) =>
+    `That's ${n} Pokémon, about ${picks} picks. Try Gen I (151 Pokémon) first.`,
+  useGenOne: 'Use Gen I',
+
+  // Double elimination
+  roundStillIn: (round, left, total) => `Round ${round} · ${left} of ${total} still in`,
+  winnersBracket: 'Winners bracket',
+  losersBracket: 'Second chance',
+  final: 'Final',
+  finalRematch: 'Final rematch',
+  undefeated: 'No losses',
+  lastChance: 'Last chance',
+  bracketHint: 'A Pokémon is out after its second loss.',
+  bestSoFar: 'Doing Best So Far',
+  record: (wins, losses) => `${wins}–${losses}`,
+  recordLabel: (wins, losses) =>
+    `${wins} win${wins === 1 ? '' : 's'}, ${losses} loss${losses === 1 ? '' : 'es'}`,
+
   types: {},
   games: {},
   regions: {},
 }
 
 const ja = {
-  siteTitle: 'ポケモン 一騎打ち',
-  pageTitle: 'いちばん好きなポケモン 一騎打ち',
+  siteTitle: 'Pick-a-Mon',
+  pageTitle: 'Pick-a-Mon：いちばん好きなポケモンを見つけよう',
 
   themeDark: '☾ ダーク',
   themeLight: '☀ ライト',
@@ -201,6 +250,48 @@ const ja = {
   teamGamesNote:
     'ゲーム内で捕まえる・進化させる・もらうことで入手できるポケモンだけを数えます。通信交換・イベント・ほかのソフトからの転送でしか手に入らないものは含みません。追加コンテンツの場所も含みます。データはBulbapediaより。',
 
+  tagline: '2匹ずつ選んで、いちばん好きなポケモンを見つけよう。',
+  continueGame: (label) => `つづきから：${label}`,
+  familiarQuestion: 'ポケモンにどのくらい詳しいですか？',
+  newcomerTitle: 'ポケモンはあまり知らない',
+  newcomerBody:
+    '最初の151匹のような少なめのグループで、どのポケモンにも敗者復活のチャンスがあるシンプルなトーナメントから始めます。',
+  expertTitle: 'ポケモンに詳しい',
+  expertBody: '世代・タイプ・ゲームを自由に組み合わせ、お気に入りを決めて、遊び方を選べます。',
+
+  quickTitle: '最初のグループを選ぼう',
+  quickHint:
+    'ポケモンは1,000匹以上いるので、少なめから始めるのがおすすめです。第1世代は最初のゲームやアニメに登場した151匹です。',
+  recommended: 'おすすめ',
+  pokemonCount: (n) => `${n}匹`,
+  howItPlays: '遊び方',
+  doubleEliminationHow:
+    '対戦ごとに好きなほうを選びます。2回負けると脱落なので、序盤に手ごわい相手と当たっても、好きなポケモンがすぐに消えることはありません。',
+  aboutPicks: (n) => `約${n}回選びます`,
+  moreOptions: 'もっと細かく選びたい？すべての条件と遊び方へ',
+  tryQuickStart: 'ポケモンは初めて？かんたんスタートへ',
+
+  mode: '遊び方',
+  classicMode: 'クラシック',
+  classicModeBody:
+    '勝ち抜き戦：負けるまで勝者が残ります。お気に入りを決めて、最後にサドンデスで順位を決めます。',
+  doubleEliminationMode: 'ダブルイリミネーション',
+  doubleEliminationModeBody: '2回負けると脱落するトーナメント。まだお気に入りがない人におすすめ。',
+  suggestGenOne: (n, picks) =>
+    `${n}匹だと約${picks}回選ぶことになります。まずは第1世代（151匹）から始めてみましょう。`,
+  useGenOne: '第1世代にする',
+
+  roundStillIn: (round, left, total) => `第${round}ラウンド・${total}匹中${left}匹が勝ち残り`,
+  winnersBracket: '勝者側',
+  losersBracket: '敗者復活',
+  final: '決勝',
+  finalRematch: '決勝の再戦',
+  undefeated: '無敗',
+  lastChance: 'あと1敗で脱落',
+  bracketHint: '2回負けると脱落します。',
+  bestSoFar: '現在の上位',
+  recordLabel: (wins, losses) => `${wins}勝${losses}敗`,
+
   types: {
     Normal: 'ノーマル',
     Fire: 'ほのお',
@@ -286,8 +377,8 @@ const ja = {
 }
 
 const zh = {
-  siteTitle: '宝可梦 二选一',
-  pageTitle: '最爱宝可梦 二选一',
+  siteTitle: 'Pick-a-Mon',
+  pageTitle: 'Pick-a-Mon：找出你最爱的宝可梦',
 
   themeDark: '☾ 深色',
   themeLight: '☀ 浅色',
@@ -372,6 +463,45 @@ const zh = {
   versionsJoin: ' + ',
   teamGamesNote:
     '只计算能在游戏中捕捉、进化或获赠的宝可梦，不包括只能通过通信交换、活动或从其他游戏传送获得的宝可梦。包含追加内容中的地点。数据来自 Bulbapedia。',
+
+  tagline: '每次二选一，找出你最爱的宝可梦。',
+  continueGame: (label) => `继续：${label}`,
+  familiarQuestion: '你对宝可梦有多熟悉？',
+  newcomerTitle: '我不太了解宝可梦',
+  newcomerBody: '从较小的一组开始，比如最初的151只，玩简单的淘汰赛，每只宝可梦都有一次复活机会。',
+  expertTitle: '我很熟悉宝可梦',
+  expertBody: '任意组合世代、属性和游戏，标记最爱，并选择玩法。',
+
+  quickTitle: '选择一组开始',
+  quickHint: '宝可梦有1000多只，从少量开始会轻松些。第一世代是最早的游戏和动画里的151只。',
+  recommended: '推荐',
+  pokemonCount: (n) => `${n} 只宝可梦`,
+  howItPlays: '玩法',
+  doubleEliminationHow:
+    '每场对决选出你更喜欢的那只。宝可梦输两次才出局，所以就算早早遇到强敌，你喜欢的宝可梦也不会马上被淘汰。',
+  aboutPicks: (n) => `大约要选 ${n} 次`,
+  moreOptions: '想要更多选项？查看全部筛选和玩法',
+  tryQuickStart: '第一次接触宝可梦？试试快速开始',
+
+  mode: '玩法',
+  classicMode: '经典',
+  classicModeBody: '擂台赛：胜者留在台上直到落败。标记最爱，最后在决胜战中排出名次。',
+  doubleEliminationMode: '双败淘汰',
+  doubleEliminationModeBody: '输两次才出局的淘汰赛。还没有最爱时很合适。',
+  suggestGenOne: (n, picks) =>
+    `共 ${n} 只宝可梦，大约要选 ${picks} 次。不妨先从第一世代（151只）开始。`,
+  useGenOne: '只玩第一世代',
+
+  roundStillIn: (round, left, total) => `第 ${round} 轮 · ${total} 只中还剩 ${left} 只`,
+  winnersBracket: '胜者组',
+  losersBracket: '复活组',
+  final: '决赛',
+  finalRematch: '决赛加赛',
+  undefeated: '未败',
+  lastChance: '再输即出局',
+  bracketHint: '宝可梦输两次即出局。',
+  bestSoFar: '目前表现最好',
+  recordLabel: (wins, losses) => `${wins}胜${losses}负`,
 
   types: {
     Normal: '一般',
@@ -458,8 +588,8 @@ const zh = {
 
 // French puts a no-break space before : ? and !
 const fr = {
-  siteTitle: 'Pokémon Face-à-Face',
-  pageTitle: 'Pokémon préféré : Face-à-Face',
+  siteTitle: 'Pick-a-Mon',
+  pageTitle: 'Pick-a-Mon\u00a0: trouvez votre Pokémon préféré',
 
   themeDark: '☾ Sombre',
   themeLight: '☀ Clair',
@@ -549,6 +679,51 @@ const fr = {
   versionsJoin: ' + ',
   teamGamesNote:
     "Ne compte que les Pokémon qu'on peut capturer, faire évoluer ou recevoir dans le jeu même, pas ceux obtenus uniquement par échange, événement ou transfert. Les zones des DLC comptent. Données de Bulbapedia.",
+
+  tagline: 'Trouvez votre Pokémon préféré, deux à la fois.',
+  continueGame: (label) => `Continuer : ${label}`,
+  familiarQuestion: 'Connaissez-vous bien les Pokémon ?',
+  newcomerTitle: 'Je découvre les Pokémon',
+  newcomerBody:
+    "Commencez avec un petit groupe, comme les 151 d'origine, dans un tournoi simple où chaque Pokémon a une seconde chance.",
+  expertTitle: 'Je connais mes Pokémon',
+  expertBody:
+    'Combinez générations, types et jeux, marquez vos préférés et choisissez comment jouer.',
+
+  quickTitle: 'Choisissez un groupe de départ',
+  quickHint:
+    "Il existe plus de 1 000 Pokémon, alors mieux vaut commencer petit. La Génération I, ce sont les 151 d'origine des premiers jeux et du dessin animé.",
+  recommended: 'Conseillé',
+  pokemonCount: (n) => `${n} Pokémon`,
+  howItPlays: 'Comment jouer',
+  doubleEliminationHow:
+    "À chaque duel, choisissez le Pokémon que vous préférez. Un Pokémon est éliminé à sa deuxième défaite, donc un duel difficile au début n'éliminera pas un Pokémon que vous aimez.",
+  aboutPicks: (n) => `Environ ${n} choix`,
+  moreOptions: "Plus d'options ? Voir tous les filtres et modes",
+  tryQuickStart: 'Vous découvrez les Pokémon ? Essayez le départ rapide',
+
+  mode: 'Mode de jeu',
+  classicMode: 'Classique',
+  classicModeBody:
+    "Roi de la colline : le vainqueur reste jusqu'à sa défaite. Marquez vos préférés, puis classez les meilleurs en Mort subite.",
+  doubleEliminationMode: 'Double élimination',
+  doubleEliminationModeBody:
+    "Un tournoi où chaque Pokémon est éliminé à sa deuxième défaite. Idéal si vous n'avez pas encore de préférés.",
+  suggestGenOne: (n, picks) =>
+    `Cela fait ${n} Pokémon, soit environ ${picks} choix. Essayez d'abord la Gén. I (151 Pokémon).`,
+  useGenOne: 'Jouer la Gén. I',
+
+  roundStillIn: (round, left, total) => `Tour ${round} · encore ${left} sur ${total}`,
+  winnersBracket: 'Tableau des vainqueurs',
+  losersBracket: 'Seconde chance',
+  final: 'Finale',
+  finalRematch: 'Revanche de la finale',
+  undefeated: 'Invaincu',
+  lastChance: 'Dernière chance',
+  bracketHint: 'Un Pokémon est éliminé à sa deuxième défaite.',
+  bestSoFar: "Les meilleurs pour l'instant",
+  recordLabel: (wins, losses) =>
+    `${wins} victoire${wins > 1 ? 's' : ''}, ${losses} défaite${losses > 1 ? 's' : ''}`,
 
   types: {
     Normal: 'Normal',

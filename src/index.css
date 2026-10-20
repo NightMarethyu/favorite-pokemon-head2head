@@ -82,6 +82,17 @@ button {
   font-size: clamp(1.5rem, 5vw, 2.5rem);
 }
 
+.app-title {
+  padding: 0;
+  font: inherit;
+  background: none;
+  border: none;
+}
+
+.app-title:hover {
+  color: var(--accent);
+}
+
 .header-actions {
   display: flex;
   flex-shrink: 0;
@@ -698,6 +709,258 @@ button {
 
 .setup-warning {
   color: var(--muted);
+}
+
+/* Home screen */
+.home-hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 0 4px;
+  text-align: center;
+}
+
+.home-title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(3rem, 14vw, 6rem);
+  line-height: 1;
+  color: var(--accent);
+}
+
+.home-tagline {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+.home-mascots {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.home-mascots img {
+  width: clamp(96px, 26vw, 160px);
+  height: auto;
+  image-rendering: pixelated;
+}
+
+.home-continue {
+  max-width: 100%;
+  overflow-wrap: anywhere;
+}
+
+.home-choice {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* Big option buttons (home screen) and radio cards (game mode). */
+.choice-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 12px;
+}
+
+.choice-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 12px 16px;
+  text-align: left;
+  background: var(--surface);
+  border: 2px solid var(--border);
+  border-radius: 12px;
+  cursor: pointer;
+}
+
+.choice-card input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.choice-card:hover,
+.choice-card-checked {
+  border-color: var(--accent);
+}
+
+.choice-card:focus-visible,
+.choice-card:has(input:focus-visible) {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.choice-card-checked {
+  box-shadow: inset 0 0 0 1px var(--accent);
+}
+
+.choice-title {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+}
+
+.choice-card-checked .choice-title,
+button.choice-card .choice-title {
+  color: var(--accent);
+}
+
+.choice-body {
+  color: var(--muted);
+}
+
+/* Quick start */
+.group-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 10px;
+}
+
+@media (max-width: 480px) {
+  .group-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .group-name {
+    font-size: 1.3rem;
+  }
+
+  .group-sprites img {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+.group-tile {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 10px 12px;
+  background: var(--surface);
+  border: 2px solid var(--border);
+  border-radius: 12px;
+  cursor: pointer;
+}
+
+.group-tile input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.group-tile:hover {
+  border-color: var(--accent);
+}
+
+.group-tile:has(input:focus-visible) {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.group-tile-checked {
+  border-color: var(--accent);
+  box-shadow: inset 0 0 0 1px var(--accent);
+}
+
+.group-name {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+}
+
+.group-detail {
+  color: var(--muted);
+}
+
+.group-sprites {
+  display: flex;
+  gap: 4px;
+}
+
+.group-sprites img {
+  width: 48px;
+  height: 48px;
+  image-rendering: pixelated;
+}
+
+.badge {
+  padding: 0 8px;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  background: var(--accent);
+  color: var(--accent-fg);
+  border-radius: 999px;
+}
+
+.how-it-plays,
+.suggestion {
+  padding: 12px 16px;
+  background: var(--surface);
+  border: 2px dashed var(--border);
+  border-radius: 12px;
+}
+
+.how-it-plays p,
+.suggestion p {
+  margin: 0;
+}
+
+.how-title {
+  margin: 0 0 4px;
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 1.5rem;
+}
+
+.suggestion {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  border-color: var(--accent);
+}
+
+.setup-subtitle {
+  margin: 8px 0 0;
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 1.6rem;
+}
+
+.setup-switch {
+  margin: 0;
+  text-align: center;
+}
+
+.link-button {
+  padding: 0;
+  background: none;
+  border: none;
+  color: var(--muted);
+  text-decoration: underline;
+}
+
+.link-button:hover {
+  color: var(--fg);
+}
+
+.bracket-hint {
+  margin: -8px 0 0;
+  color: var(--muted);
+  text-align: center;
+}
+
+.team-record {
+  font-family: var(--font-body);
 }
 
 /* Saved games */

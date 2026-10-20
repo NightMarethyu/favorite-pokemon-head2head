@@ -1,4 +1,4 @@
-# Favorite Pokémon Head-to-Head
+# Pick-a-Mon
 
 A small website for finding your favorite Pokémon by picking between them two at a time.
 
@@ -8,13 +8,25 @@ Two Pokémon are shown side by side (stacked on small screens). You pick the one
 
 ## How it plays
 
-The game has two rounds: a main round that goes through every Pokémon you chose, then **Sudden Death** to rank the best of them.
+### Home screen
+
+The site opens on the **Pick-a-Mon** title screen. **Continue** picks up the last game you played, if it isn't finished. Otherwise it asks how well you know Pokémon:
+
+- **I'm new to Pokémon** opens the quick start: pick one generation (Gen I, the original 151, is marked as recommended; each tile shows that generation's starters and how many Pokémon it has) and play double elimination. It shows about how many picks that will take.
+- **I know my Pokémon** opens the full setup: every filter, and a choice between the two modes.
+
+**Saved Games** are listed on the home screen too. The **Pick-a-Mon** title in the header goes back to it from anywhere.
+
+### Modes
+
+- **Classic**: a main round that goes through every Pokémon you chose, then **Sudden Death** to rank the best of them (below).
+- **Double elimination**: a bracket where each Pokémon is out after its second loss (below). It needs no favorites, so it suits players who don't know the Pokémon well yet. It takes about twice as many picks as there are Pokémon, so when the pool is over 200 the setup screen suggests starting with Gen I and has a button to switch to it.
 
 ### Choosing your Pokémon
 
-Before the game starts, narrow the pool by **Generation**, **Type**, and **Game**. Leave a section empty to include everything. Within a section, a Pokémon only needs to match one of the selected options; across sections it must match all of them, so Gen I + Fire plays the Fire types from Gen I. The screen shows how many Pokémon match, and you need at least two to play. **Change filters** (during a game or at the end) brings you back here with your last choices kept.
+In the full setup, narrow the pool by **Generation**, **Type**, and **Game**. Leave a section empty to include everything. Within a section, a Pokémon only needs to match one of the selected options; across sections it must match all of them, so Gen I + Fire plays the Fire types from Gen I. The screen shows how many Pokémon match, and you need at least two to play. **Change filters** (during a game or at the end) goes back to the screen the game was set up on (quick start or full setup) with your last choices kept.
 
-### Main round
+### Classic: main round
 
 - Every Pokémon in the pool appears exactly once, in a random order.
 - The winner of each matchup stays on the left (on top on mobile) as the champion. The number in its bottom-left corner counts how many Pokémon it has beaten in a row.
@@ -22,11 +34,20 @@ Before the game starts, narrow the pool by **Generation**, **Type**, and **Game*
 - **★ Favorite** sends a Pokémon straight to Sudden Death and takes it out of the main round. Without this, a Pokémon you love would knock out every other Pokémon you like until it was beaten, so they would end up with few or no wins. Marked favorites are listed under **Favorites**; remove one with **×** to put it back into the draw.
 - **Your Team** lists the six Pokémon with the longest win streaks, including the current champion.
 
-### Sudden Death
+### Classic: Sudden Death
 
 - Once every Pokémon has been shown, your favorites and the six longest win streaks from the main round face off.
 - Each finalist is placed into a ranking by comparing it with Pokémon already ranked (a binary search), so you only make about *n* × log₂ *n* picks. Losing here only moves a Pokémon down the ranking; it is never knocked out.
 - **Your Final Team** is the top six of that ranking.
+
+### Double elimination
+
+- Every Pokémon starts in the **winners bracket**. Its first loss moves it to the **second chance** bracket; its second loss knocks it out.
+- Play goes in rounds. Each round pairs up the Pokémon waiting in each bracket at random (with an odd number, one sits the round out), winners-bracket matches first.
+- When one Pokémon is left in each bracket they meet in the **final**. If the second-chance Pokémon wins, both have one loss, so a **final rematch** decides it.
+- A pool of *n* Pokémon takes 2*n* − 2 picks (one more if the final goes to a rematch): about 300 for Gen I.
+- Each card shows whether the Pokémon is still unbeaten or on its last chance, and its wins. **Doing Best So Far** lists the six still in with the fewest losses, then the most wins.
+- **Your Final Team** is the champion, then the rest by how long they lasted (later rounds first, more wins breaking ties).
 
 ### Games for your team
 
@@ -43,7 +64,7 @@ The site is in English, Japanese, Chinese (Simplified), and French. On the first
 ### Saved games
 
 - Every pick is saved in your browser (`localStorage`), so closing the tab or reloading picks up right where you left off.
-- You can keep several games going at once. **Change filters** takes you back to the start screen, where **Saved Games** lists each game with its filters, progress, and when you last played it. **Continue** resumes one; **Delete** removes it. Starting a new game never overwrites an old one.
+- You can keep several games going at once. **Saved Games** on the home screen lists each game with its mode, filters, progress, and when you last played it. **Continue** resumes one; **Delete** removes it. Starting a new game never overwrites an old one.
 - Finished games stay in the list so you can look at your final team again.
 - Saves stay in the browser they were made in. Up to 20 are kept; after that the least recently played is removed.
 - To move games to another device or browser, use **Export** on a game (or **Export all**) to download a `.json` save file, then **Import** it on the other device. Importing never duplicates a game: if the same game is already there, the copy played more recently is kept.
@@ -51,7 +72,7 @@ The site is in English, Japanese, Chinese (Simplified), and French. On the first
 ### Controls
 
 - Click a card, or use the arrow keys (←/↑ for the left card, →/↓ for the right card).
-- Hold **Shift** with an arrow key to mark that Pokémon as a favorite.
+- In classic mode, hold **Shift** with an arrow key to mark that Pokémon as a favorite.
 - Dark mode is the default; the toggle in the header switches to light mode and remembers your choice.
 
 ### Game art
@@ -67,7 +88,8 @@ Put a cover or logo for a game in `src/assets/images/games/`, named after the ga
 - [x] Add Pokémon sprites
 - [x] Choose a generation, game, or type to play with
 - [x] Save game progress in the browser (`localStorage`), with several saved games at once
-- [ ] Double-elimination mode for players who don't know the Pokémon well yet and have no favorites to mark: every Pokémon gets a second chance after its first loss, so one strong early pick can't knock out the rest
+- [x] Double-elimination mode for players who don't know the Pokémon well yet and have no favorites to mark: every Pokémon gets a second chance after its first loss, so one strong early pick can't knock out the rest
+- [x] Pick-a-Mon title screen, with a quick start for newcomers (one generation, Gen I suggested) and the full setup for everyone else
 - [x] Show which games (if any) you could build your final team in (game art still to come)
 - [ ] A 3×3 grid of your favorite Pokémon
 - [x] Multi-language support: English, Japanese, Chinese, and French

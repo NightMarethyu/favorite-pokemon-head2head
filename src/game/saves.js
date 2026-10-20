@@ -9,6 +9,7 @@
 // open tabs don't wipe out each other's games.
 
 import { ALL_POKEMON, getPokemonPool } from '../data/pokedex.js'
+import { DOUBLE_ELIMINATION, gameMode } from './modes.js'
 
 const STORAGE_KEY = 'head2head-saves'
 const VERSION = 1
@@ -31,7 +32,29 @@ function toPokemon(id) {
 }
 const toPokemonList = (ids) => ids.map(toPokemon)
 
+// Double elimination keeps records ({ pokemon, wins, losses, round? }).
+const mapRecord = (record, convert) => ({ ...record, pokemon: convert(record.pokemon) })
+const mapRecords = (records, convert) => records.map((record) => mapRecord(record, convert))
+const mapMatches = (matches, convert) =>
+  matches.map((match) => ({
+    ...match,
+    left: mapRecord(match.left, convert),
+    right: mapRecord(match.right, convert),
+  }))
+
+function convertBracket(state, convert) {
+  return {
+    ...state,
+    winners: mapRecords(state.winners, convert),
+    losers: mapRecords(state.losers, convert),
+    matches: mapMatches(state.matches, convert),
+    eliminated: mapRecords(state.eliminated, convert),
+    ranking: state.ranking.map(convert),
+  }
+}
+
 export function serializeGame(state) {
+  if (gameMode(state) === DOUBLE_ELIMINATION) return convertBracket(state, toId)
   return {
     ...state,
     champion: toId(state.champion),
@@ -50,6 +73,7 @@ export function serializeGame(state) {
 
 // Throws if the save names a Pokémon that is no longer in the Pokédex.
 export function deserializeGame(data) {
+  if (gameMode(data) === DOUBLE_ELIMINATION) return convertBracket(data, toPokemon)
   return {
     ...data,
     champion: toPokemon(data.champion),
@@ -85,6 +109,7 @@ export function openSave(save) {
 // `progress` is { phase, placing?, left?, total? }; the list words it.
 export function summarizeSave(save) {
   const { phase, total, champion, queue, suddenDeath, ranking } = save.state
+  const mode = gameMode(save.state)
   let progress
   let leaderId
   if (phase === 'over') {
@@ -93,18 +118,36 @@ export function summarizeSave(save) {
   } else if (phase === 'suddenDeath') {
     progress = { phase, placing: suddenDeath.ranked.length + 1, total: suddenDeath.total }
     leaderId = suddenDeath.ranked[0]
+  } else if (phase === 'bracket') {
+    const { round, left, leader } = summarizeBracket(save.state)
+    progress = { phase, round, left, total }
+    leaderId = leader
   } else {
     progress = { phase, left: queue.length, total }
     leaderId = champion
   }
   return {
     id: save.id,
+    mode,
     filters: save.filters,
     updatedAt: save.updatedAt,
     isOver: phase === 'over',
     progress,
     leader: POKEMON_BY_ID.get(leaderId) ?? null,
   }
+}
+
+// Round, how many are still in, and who is doing best (fewest losses, then most wins).
+function summarizeBracket({ round, winners, losers, matches }) {
+  const records = [...matches.flatMap((match) => [match.left, match.right]), ...winners, ...losers]
+  const best = records.reduce(
+    (top, record) =>
+      !top || record.losses < top.losses || (record.losses === top.losses && record.wins > top.wins)
+        ? record
+        : top,
+    null,
+  )
+  return { round, left: records.length, leader: best?.pokemon ?? null }
 }
 
 // --- Storage ---
@@ -188,7 +231,7 @@ export function setActiveSave(id) {
 // move to another browser or device.
 
 const EXPORT_FORMAT = 'favorite-pokemon-head2head-saves'
-const PHASES = ['main', 'suddenDeath', 'over']
+const PHASES = ['main', 'suddenDeath', 'bracket', 'over']
 
 // All saves, or only those whose id is listed.
 export function exportSaves(ids) {
@@ -204,6 +247,10 @@ function isValidSave(save) {
     ['generations', 'games', 'types'].every((key) => Array.isArray(filters?.[key])) &&
     PHASES.includes(save.state?.phase) &&
     (save.state.phase !== 'suddenDeath' || save.state.suddenDeath) &&
+    (gameMode(save.state) !== DOUBLE_ELIMINATION ||
+      ['winners', 'losers', 'matches', 'eliminated'].every((key) =>
+        Array.isArray(save.state[key]),
+      )) &&
     openSave(save) !== null
   )
 }

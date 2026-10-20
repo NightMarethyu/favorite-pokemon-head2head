@@ -1,9 +1,9 @@
 import { useMemo, useState } from 'react'
 import { getPokemonPool } from '../data/pokedex.js'
-import { GAME_GROUPS, GENERATIONS, TYPES } from '../data/filters.js'
+import { EMPTY_FILTERS, GAME_GROUPS, GENERATIONS, TYPES } from '../data/filters.js'
 import { TYPE_LABELS } from '../data/typeArt.js'
+import { DOUBLE_ELIMINATION, MODES, estimatePicks } from '../game/modes.js'
 import { useI18n } from '../i18n/useI18n.js'
-import SavedGames from './SavedGames.jsx'
 
 const ALL_GAMES = GAME_GROUPS.flatMap((group) => group.games)
 
@@ -43,13 +43,20 @@ function FilterSection({ legend, count, onClear, children }) {
   )
 }
 
-// Choose which Pokémon to play with. Within a section any selected option
-// matches; across sections all must match (Gen I + Fire = Fire types from Gen I).
-function SetupScreen({ initialFilters, saves, onStart, onResume, onDelete, onImport }) {
+// Above this many Pokémon, double elimination suggests starting with Gen I.
+const SUGGEST_ABOVE = 200
+const GEN_ONE = { ...EMPTY_FILTERS, generations: [1] }
+
+// How to play and which Pokémon to play with. Within a filter section any
+// selected option matches; across sections all must match (Gen I + Fire = Fire
+// types from Gen I).
+function SetupScreen({ initialFilters, initialMode, onStart, onQuickStart }) {
   const { t, generationLabel, regionName, typeName, gameName } = useI18n()
+  const [mode, setMode] = useState(initialMode)
   const [filters, setFilters] = useState(initialFilters)
   const pool = useMemo(() => getPokemonPool(filters), [filters])
   const canStart = pool.length >= 2
+  const suggestGenOne = mode === DOUBLE_ELIMINATION && pool.length > SUGGEST_ABOVE
 
   function update(key, values) {
     setFilters((current) => ({ ...current, [key]: values }))
@@ -59,9 +66,31 @@ function SetupScreen({ initialFilters, saves, onStart, onResume, onDelete, onImp
 
   return (
     <>
-      <SavedGames saves={saves} onResume={onResume} onDelete={onDelete} onImport={onImport} />
-      <section className="setup" aria-label={t('chooseTitle')}>
-        <h2 className="setup-title">{saves.length > 0 ? t('newGame') : t('chooseTitle')}</h2>
+      <section className="setup" aria-label={t('newGame')}>
+        <h2 className="setup-title">{t('newGame')}</h2>
+
+        <fieldset className="filter-section">
+          <legend className="filter-legend">{t('mode')}</legend>
+          <div className="choice-list">
+            {MODES.map((value) => (
+              <label
+                key={value}
+                className={`choice-card${mode === value ? ' choice-card-checked' : ''}`}
+              >
+                <input
+                  type="radio"
+                  name="mode"
+                  checked={mode === value}
+                  onChange={() => setMode(value)}
+                />
+                <span className="choice-title">{t(`${value}Mode`)}</span>
+                <span className="choice-body">{t(`${value}ModeBody`)}</span>
+              </label>
+            ))}
+          </div>
+        </fieldset>
+
+        <h3 className="setup-subtitle">{t('chooseTitle')}</h3>
         <p className="setup-hint">{t('setupHint')}</p>
 
         <FilterSection
@@ -142,6 +171,19 @@ function SetupScreen({ initialFilters, saves, onStart, onResume, onDelete, onImp
           </details>
         </FilterSection>
 
+        {suggestGenOne && (
+          <div className="suggestion" role="note">
+            <p>{t('suggestGenOne', pool.length, estimatePicks(pool.length))}</p>
+            <button
+              type="button"
+              className="restart restart-subtle"
+              onClick={() => setFilters(GEN_ONE)}
+            >
+              {t('useGenOne')}
+            </button>
+          </div>
+        )}
+
         <div className="setup-start">
           <p className="setup-count" aria-live="polite">
             <strong>{pool.length}</strong> {t('pokemonMatch')}
@@ -151,11 +193,16 @@ function SetupScreen({ initialFilters, saves, onStart, onResume, onDelete, onImp
             type="button"
             className="restart"
             disabled={!canStart}
-            onClick={() => onStart(filters, pool)}
+            onClick={() => onStart(filters, pool, mode)}
           >
             {t('start')}
           </button>
         </div>
+        <p className="setup-switch">
+          <button type="button" className="link-button" onClick={onQuickStart}>
+            {t('tryQuickStart')}
+          </button>
+        </p>
       </section>
     </>
   )

@@ -5,13 +5,14 @@ import MatchupCard from './MatchupCard.jsx'
 const LEFT_KEYS = ['ArrowLeft', 'ArrowUp']
 const RIGHT_KEYS = ['ArrowRight', 'ArrowDown']
 
-// Shift + arrow marks that side as a favorite (main round only).
+// Shift + arrow marks that side as a favorite (classic main round only).
 function Arena({
   champion,
   challenger,
   leftLabel,
   rightLabel,
   wins,
+  rightWins,
   onPickLeft,
   onPickRight,
   onFavoriteLeft,
@@ -55,6 +56,7 @@ function Arena({
       <MatchupCard
         pokemon={challenger}
         label={rightLabel}
+        wins={rightWins}
         onPick={onPickRight}
         onFavorite={onFavoriteRight}
       />
