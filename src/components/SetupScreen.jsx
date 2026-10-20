@@ -1,6 +1,7 @@
 import { useMemo, useState } from 'react'
 import { getPokemonPool } from '../data/pokedex.js'
 import { GAME_GROUPS, GENERATIONS, TYPES } from '../data/filters.js'
+import { TYPE_LABELS } from '../data/typeArt.js'
 import SavedGames from './SavedGames.jsx'
 
 const ALL_GAMES = GAME_GROUPS.flatMap((group) => group.games)
@@ -13,9 +14,9 @@ function toggle(selected, value, options) {
   return options.filter((option) => next.includes(option))
 }
 
-function Chip({ checked, onChange, children, title }) {
+function Chip({ checked, onChange, children, title, className = 'chip' }) {
   return (
-    <label className={`chip${checked ? ' chip-checked' : ''}`} title={title}>
+    <label className={`${className}${checked ? ` ${className}-checked` : ''}`} title={title}>
       <input type="checkbox" checked={checked} onChange={onChange} />
       {children}
     </label>
@@ -88,14 +89,19 @@ function SetupScreen({ initialFilters, saves, onStart, onResume, onDelete, onImp
           count={filters.types.length}
           onClear={() => update('types', [])}
         >
-          <div className="chip-list">
+          <div className={`chip-list type-list${filters.types.length > 0 ? ' type-list-active' : ''}`}>
             {TYPES.map((type) => (
               <Chip
                 key={type}
+                className="type-chip"
                 checked={filters.types.includes(type)}
                 onChange={() => update('types', toggle(filters.types, type, TYPES))}
               >
-                {type}
+                {TYPE_LABELS.has(type) ? (
+                  <img src={TYPE_LABELS.get(type)} alt={type} width="200" height="40" />
+                ) : (
+                  type
+                )}
               </Chip>
             ))}
           </div>

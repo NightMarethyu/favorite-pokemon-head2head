@@ -56,8 +56,9 @@ Before the game starts, narrow the pool by **Generation**, **Type**, and **Game*
 - [ ] A 3×3 grid of your favorite Pokémon
 - [ ] Multi-language support (the data already has names in English, Japanese, Chinese, and French)
 - [ ] Pokémon knowledge quizzes: which has the higher base-stat total, egg groups, abilities, and more
-- [ ] Type icons on the type filter (and cards) for more visual impact
+- [x] Type label cards on the type filter, and type icons beside each Pokémon's name on the matchup cards
 - [ ] Game cover art or title logos on the game filter for more visual impact
+- [ ] Link each Pokémon and type to more info: either its Bulbapedia page or a small internal wiki page
 
 ## Project layout
 
