@@ -41,7 +41,7 @@ function FilterSection({ legend, count, onClear, children }) {
 
 // Choose which Pokémon to play with. Within a section any selected option
 // matches; across sections all must match (Gen I + Fire = Fire types from Gen I).
-function SetupScreen({ initialFilters, saves, onStart, onResume, onDelete }) {
+function SetupScreen({ initialFilters, saves, onStart, onResume, onDelete, onImport }) {
   const [filters, setFilters] = useState(initialFilters)
   const pool = useMemo(() => getPokemonPool(filters), [filters])
   const canStart = pool.length >= 2
@@ -54,7 +54,7 @@ function SetupScreen({ initialFilters, saves, onStart, onResume, onDelete }) {
 
   return (
     <>
-      <SavedGames saves={saves} onResume={onResume} onDelete={onDelete} />
+      <SavedGames saves={saves} onResume={onResume} onDelete={onDelete} onImport={onImport} />
       <section className="setup" aria-label="Choose your Pokémon">
         <h2 className="setup-title">{saves.length > 0 ? 'New game' : 'Choose your Pokémon'}</h2>
         <p className="setup-hint">

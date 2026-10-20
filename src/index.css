@@ -630,6 +630,23 @@ button {
   font-size: 1.1rem;
 }
 
+.saves-empty {
+  margin: 0;
+  color: var(--muted);
+}
+
+.saves-transfer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.saves-transfer .restart {
+  padding: 4px 12px;
+  font-size: 1.25rem;
+}
+
 @media (max-width: 480px) {
   .saves-item {
     flex-wrap: wrap;

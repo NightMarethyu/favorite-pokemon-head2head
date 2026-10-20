@@ -181,6 +181,53 @@ export function setActiveSave(id) {
   return writeStore({ ...readStore(), activeId: id })
 }
 
+// --- Export and import ---
+//
+// An export file holds saves in the same form as localStorage, so a game can
+// move to another browser or device.
+
+const EXPORT_FORMAT = 'favorite-pokemon-head2head-saves'
+const PHASES = ['main', 'suddenDeath', 'over']
+
+// All saves, or only those whose id is listed.
+export function exportSaves(ids) {
+  const saves = readStore().saves.filter((save) => !ids || ids.includes(save.id))
+  return { format: EXPORT_FORMAT, version: VERSION, exportedAt: Date.now(), saves }
+}
+
+function isValidSave(save) {
+  const filters = save?.filters
+  return (
+    typeof save?.id === 'string' &&
+    Number.isFinite(save.updatedAt) &&
+    ['generations', 'games', 'types'].every((key) => Array.isArray(filters?.[key])) &&
+    PHASES.includes(save.state?.phase) &&
+    (save.state.phase !== 'suddenDeath' || save.state.suddenDeath) &&
+    openSave(save) !== null
+  )
+}
+
+// Adds the saves in an export file. A save that is already here (same id) is
+// replaced only if the imported copy was played more recently. Throws if the
+// file isn't an export.
+export function importSaves(data) {
+  if (data?.format !== EXPORT_FORMAT || data.version !== VERSION || !Array.isArray(data.saves)) {
+    throw new Error('Not a saved games file')
+  }
+  const incoming = data.saves.filter(isValidSave)
+  const store = readStore()
+  const byId = new Map(store.saves.map((save) => [save.id, save]))
+  let imported = 0
+  for (const save of incoming) {
+    const current = byId.get(save.id)
+    if (current && current.updatedAt >= save.updatedAt) continue
+    byId.set(save.id, save)
+    imported++
+  }
+  const next = writeStore({ ...store, saves: trim([...byId.values()], store.activeId) })
+  return { store: next, imported, skipped: data.saves.length - imported }
+}
+
 export function newSaveId() {
   return `${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 8)}`
 }

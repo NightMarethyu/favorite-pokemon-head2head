@@ -34,6 +34,7 @@ Before the game starts, narrow the pool by **Generation**, **Type**, and **Game*
 - You can keep several games going at once. **Change filters** takes you back to the start screen, where **Saved Games** lists each game with its filters, progress, and when you last played it. **Continue** resumes one; **Delete** removes it. Starting a new game never overwrites an old one.
 - Finished games stay in the list so you can look at your final team again.
 - Saves stay in the browser they were made in. Up to 20 are kept; after that the least recently played is removed.
+- To move games to another device or browser, use **Export** on a game (or **Export all**) to download a `.json` save file, then **Import** it on the other device. Importing never duplicates a game: if the same game is already there, the copy played more recently is kept.
 
 ### Controls
 

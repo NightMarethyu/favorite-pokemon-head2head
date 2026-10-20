@@ -10,7 +10,7 @@ import { useTheme } from './hooks/useTheme.js'
 
 function App() {
   const { theme, toggleTheme } = useTheme()
-  const { summaries, saves, activeSave, create, update, remove, setActive } = useSaves()
+  const { summaries, saves, activeSave, create, update, remove, setActive, importData } = useSaves()
   // The open game: { id, filters, pool, state }, or null on the setup screen.
   // A game left open last visit picks up where it was.
   const [run, setRun] = useState(() => openSave(activeSave))
@@ -64,6 +64,7 @@ function App() {
             onStart={start}
             onResume={resume}
             onDelete={remove}
+            onImport={importData}
           />
         )}
       </main>
