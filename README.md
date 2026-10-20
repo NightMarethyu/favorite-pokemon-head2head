@@ -108,7 +108,7 @@ Put a cover or logo for a game in `src/assets/images/games/`, named after the ga
 | `src/i18n/`                  | Languages, browser-language detection, every piece of site text per language (`messages.js`), and the `useI18n()` hook |
 | `src/hooks/`                 | Dark/light theme state (`useTheme.js`) and the saved games list (`useSaves.js`) |
 | `src/assets/images/sprites/` | One sprite per Pokémon, named by Pokédex number (`0001.png`)        |
-| `src/assets/fonts/`          | Self-hosted VT323 and Bytesized fonts, with their licenses (OFL)    |
+| `src/assets/fonts/`          | Self-hosted fonts: Iceland (headings), VT323 (text), Bytesized (accents), DotGothic16 (Japanese), ZCOOL KuaiLe (Chinese), with their licenses (OFL); Pokemon Solid for the title only |
 
 ## Tech stack
 

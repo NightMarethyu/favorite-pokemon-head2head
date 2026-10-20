@@ -7,6 +7,40 @@
 }
 
 @font-face {
+  font-family: 'Iceland';
+  src: url('./assets/fonts/Iceland/Iceland-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Japanese and Chinese only download when the page is in that language. */
+@font-face {
+  font-family: 'DotGothic16';
+  src: url('./assets/fonts/DotGothic16/DotGothic16-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'ZCOOL KuaiLe';
+  src: url('./assets/fonts/ZCOOL_KuaiLe/ZCOOLKuaiLe-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Only for the Pick-a-Mon title. */
+@font-face {
+  font-family: 'Pokemon Solid';
+  src: url('./assets/fonts/pokemon/Pokemon Solid.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
   font-family: 'Bytesized';
   src: url('./assets/fonts/Bytesized/Bytesized-Regular.ttf') format('truetype');
   font-weight: 400;
@@ -24,9 +58,28 @@
   --muted: #9a9aa8;
   --accent: #f2c94c;
   --accent-fg: #121218;
-  --font-display: 'Bytesized', 'VT323', monospace;
+  /* Headings and buttons; Bytesized is only an accent (VS, win counts). */
+  --font-display: 'Iceland', 'VT323', sans-serif;
   --font-body: 'VT323', ui-monospace, monospace;
+  --font-accent: 'Bytesized', 'VT323', monospace;
+  --font-title: 'Pokemon Solid', 'Iceland', sans-serif;
+  --title-fill: #ffcb05;
+  --title-outline: #2a75bb;
+  --title-shadow: #1d3f87;
   color-scheme: dark;
+}
+
+/* Each language's own font; the accent falls back to it for non-Latin text. */
+:root:lang(ja) {
+  --font-display: 'DotGothic16', sans-serif;
+  --font-body: 'DotGothic16', sans-serif;
+  --font-accent: 'Bytesized', 'DotGothic16', sans-serif;
+}
+
+:root:lang(zh) {
+  --font-display: 'ZCOOL KuaiLe', sans-serif;
+  --font-body: 'ZCOOL KuaiLe', sans-serif;
+  --font-accent: 'Bytesized', 'ZCOOL KuaiLe', sans-serif;
 }
 
 :root[data-theme='light'] {
@@ -77,7 +130,7 @@ button {
 
 .app-header h1 {
   margin: 0;
-  font-family: var(--font-display);
+  font-family: var(--font-title);
   font-weight: 400;
   font-size: clamp(1.5rem, 5vw, 2.5rem);
 }
@@ -89,8 +142,18 @@ button {
   border: none;
 }
 
+/* Yellow with a blue outline and shadow, like the Pokémon logo. */
+.app-title,
+.home-title {
+  color: var(--title-fill);
+  letter-spacing: 0.04em;
+  -webkit-text-stroke: 0.09em var(--title-outline);
+  paint-order: stroke fill;
+  text-shadow: 0.05em 0.07em 0 var(--title-shadow);
+}
+
 .app-title:hover {
-  color: var(--accent);
+  filter: brightness(1.1);
 }
 
 .header-actions {
@@ -165,8 +228,7 @@ button {
   content: ' ✓';
 }
 
-/* The pixel fonts have no Japanese or Chinese letters, so those fall back to
-   the system font, which runs larger; bring it closer to the pixel text. */
+/* DotGothic16 and ZCOOL KuaiLe run larger than VT323. */
 :root:lang(ja) body,
 :root:lang(zh) body {
   font-size: 1.05rem;
@@ -207,7 +269,7 @@ button {
 
 .versus {
   align-self: center;
-  font-family: var(--font-display);
+  font-family: var(--font-accent);
   font-size: 2rem;
   color: var(--accent);
 }
@@ -298,7 +360,7 @@ button {
   background: var(--accent);
   color: var(--accent-fg);
   border-radius: 4px;
-  font-family: var(--font-display);
+  font-family: var(--font-accent);
   font-size: 1.6rem;
 }
 
@@ -386,7 +448,7 @@ button {
 
 .team-streak {
   flex-shrink: 0;
-  font-family: var(--font-display);
+  font-family: var(--font-accent);
   font-size: 1.5rem;
   color: var(--accent);
 }
@@ -723,11 +785,10 @@ button {
 
 .home-title {
   margin: 0;
-  font-family: var(--font-display);
+  font-family: var(--font-title);
   font-weight: 400;
   font-size: clamp(3rem, 14vw, 6rem);
-  line-height: 1;
-  color: var(--accent);
+  line-height: 1.1;
 }
 
 .home-tagline {
@@ -961,6 +1022,7 @@ button.choice-card .choice-title {
 
 .team-record {
   font-family: var(--font-body);
+  font-size: 1.25rem;
 }
 
 /* Saved games */
