@@ -82,18 +82,19 @@ export function openSave(save) {
 }
 
 // What the saved games list shows, read straight from the stored form.
+// `progress` is { phase, placing?, left?, total? }; the list words it.
 export function summarizeSave(save) {
   const { phase, total, champion, queue, suddenDeath, ranking } = save.state
   let progress
   let leaderId
   if (phase === 'over') {
-    progress = 'Finished'
+    progress = { phase }
     leaderId = ranking[0]
   } else if (phase === 'suddenDeath') {
-    progress = `Sudden Death · placing ${suddenDeath.ranked.length + 1} of ${suddenDeath.total}`
+    progress = { phase, placing: suddenDeath.ranked.length + 1, total: suddenDeath.total }
     leaderId = suddenDeath.ranked[0]
   } else {
-    progress = `${queue.length} of ${total} left`
+    progress = { phase, left: queue.length, total }
     leaderId = champion
   }
   return {

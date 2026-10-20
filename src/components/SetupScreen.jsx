@@ -2,6 +2,7 @@ import { useMemo, useState } from 'react'
 import { getPokemonPool } from '../data/pokedex.js'
 import { GAME_GROUPS, GENERATIONS, TYPES } from '../data/filters.js'
 import { TYPE_LABELS } from '../data/typeArt.js'
+import { useI18n } from '../i18n/useI18n.js'
 import SavedGames from './SavedGames.jsx'
 
 const ALL_GAMES = GAME_GROUPS.flatMap((group) => group.games)
@@ -24,14 +25,16 @@ function Chip({ checked, onChange, children, title, className = 'chip' }) {
 }
 
 function FilterSection({ legend, count, onClear, children }) {
+  const { t } = useI18n()
+
   return (
     <fieldset className="filter-section">
       <legend className="filter-legend">{legend}</legend>
       <div className="filter-status">
-        <span>{count === 0 ? 'Any' : `${count} selected`}</span>
+        <span>{count === 0 ? t('any') : t('selected', count)}</span>
         {count > 0 && (
           <button type="button" className="filter-clear" onClick={onClear}>
-            Clear
+            {t('clear')}
           </button>
         )}
       </div>
@@ -43,6 +46,7 @@ function FilterSection({ legend, count, onClear, children }) {
 // Choose which Pokémon to play with. Within a section any selected option
 // matches; across sections all must match (Gen I + Fire = Fire types from Gen I).
 function SetupScreen({ initialFilters, saves, onStart, onResume, onDelete, onImport }) {
+  const { t, generationLabel, regionName, typeName, gameName } = useI18n()
   const [filters, setFilters] = useState(initialFilters)
   const pool = useMemo(() => getPokemonPool(filters), [filters])
   const canStart = pool.length >= 2
@@ -56,15 +60,12 @@ function SetupScreen({ initialFilters, saves, onStart, onResume, onDelete, onImp
   return (
     <>
       <SavedGames saves={saves} onResume={onResume} onDelete={onDelete} onImport={onImport} />
-      <section className="setup" aria-label="Choose your Pokémon">
-        <h2 className="setup-title">{saves.length > 0 ? 'New game' : 'Choose your Pokémon'}</h2>
-        <p className="setup-hint">
-          Leave a section empty to include everything. Sections combine: Gen I + Fire plays the Fire
-          types from Gen I.
-        </p>
+      <section className="setup" aria-label={t('chooseTitle')}>
+        <h2 className="setup-title">{saves.length > 0 ? t('newGame') : t('chooseTitle')}</h2>
+        <p className="setup-hint">{t('setupHint')}</p>
 
         <FilterSection
-          legend="Generation"
+          legend={t('generation')}
           count={filters.generations.length}
           onClear={() => update('generations', [])}
         >
@@ -72,20 +73,20 @@ function SetupScreen({ initialFilters, saves, onStart, onResume, onDelete, onImp
             {GENERATIONS.map((gen) => (
               <Chip
                 key={gen.value}
-                title={gen.region}
+                title={regionName(gen.region)}
                 checked={filters.generations.includes(gen.value)}
                 onChange={() =>
                   update('generations', toggle(filters.generations, gen.value, generationValues))
                 }
               >
-                {gen.label}
+                {generationLabel(gen.value)}
               </Chip>
             ))}
           </div>
         </FilterSection>
 
         <FilterSection
-          legend="Type"
+          legend={t('type')}
           count={filters.types.length}
           onClear={() => update('types', [])}
         >
@@ -98,9 +99,15 @@ function SetupScreen({ initialFilters, saves, onStart, onResume, onDelete, onImp
                 onChange={() => update('types', toggle(filters.types, type, TYPES))}
               >
                 {TYPE_LABELS.has(type) ? (
-                  <img src={TYPE_LABELS.get(type)} alt={type} width="200" height="40" />
+                  <img
+                    src={TYPE_LABELS.get(type)}
+                    alt={typeName(type)}
+                    title={typeName(type)}
+                    width="200"
+                    height="40"
+                  />
                 ) : (
-                  type
+                  typeName(type)
                 )}
               </Chip>
             ))}
@@ -108,15 +115,17 @@ function SetupScreen({ initialFilters, saves, onStart, onResume, onDelete, onImp
         </FilterSection>
 
         <FilterSection
-          legend="Game"
+          legend={t('game')}
           count={filters.games.length}
           onClear={() => update('games', [])}
         >
           <details className="game-groups" open={initialFilters.games.length > 0}>
-            <summary>Show games</summary>
+            <summary>{t('showGames')}</summary>
             {GAME_GROUPS.map((group) => (
               <div key={group.label} className="game-group">
-                <h3 className="game-group-title">{group.label}</h3>
+                <h3 className="game-group-title">
+                  {group.generation ? generationLabel(group.generation) : t('otherGames')}
+                </h3>
                 <div className="chip-list">
                   {group.games.map((game) => (
                     <Chip
@@ -124,7 +133,7 @@ function SetupScreen({ initialFilters, saves, onStart, onResume, onDelete, onImp
                       checked={filters.games.includes(game)}
                       onChange={() => update('games', toggle(filters.games, game, ALL_GAMES))}
                     >
-                      {game}
+                      {gameName(game)}
                     </Chip>
                   ))}
                 </div>
@@ -135,8 +144,8 @@ function SetupScreen({ initialFilters, saves, onStart, onResume, onDelete, onImp
 
         <div className="setup-start">
           <p className="setup-count" aria-live="polite">
-            <strong>{pool.length}</strong> Pokémon match
-            {!canStart && <span className="setup-warning"> — pick at least 2 to play</span>}
+            <strong>{pool.length}</strong> {t('pokemonMatch')}
+            {!canStart && <span className="setup-warning">{t('pickAtLeastTwo')}</span>}
           </p>
           <button
             type="button"
@@ -144,7 +153,7 @@ function SetupScreen({ initialFilters, saves, onStart, onResume, onDelete, onImp
             disabled={!canStart}
             onClick={() => onStart(filters, pool)}
           >
-            Start
+            {t('start')}
           </button>
         </div>
       </section>

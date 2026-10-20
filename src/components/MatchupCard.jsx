@@ -1,7 +1,10 @@
 import { TYPE_ICONS } from '../data/typeArt.js'
+import { useI18n } from '../i18n/useI18n.js'
 
 function MatchupCard({ pokemon, label, wins, onPick, onFavorite }) {
+  const { t, pokemonName, typeName } = useI18n()
   const showWins = wins !== undefined
+  const name = pokemonName(pokemon)
 
   return (
     <div className="card-slot">
@@ -18,7 +21,7 @@ function MatchupCard({ pokemon, label, wins, onPick, onFavorite }) {
           />
         )}
         <span className="card-name">
-          {pokemon.name}
+          {name}
           {pokemon.types.length > 0 && (
             <span className="card-types">
               {pokemon.types.map(
@@ -28,8 +31,8 @@ function MatchupCard({ pokemon, label, wins, onPick, onFavorite }) {
                       key={type}
                       className="card-type-icon"
                       src={TYPE_ICONS.get(type)}
-                      alt={type}
-                      title={type}
+                      alt={typeName(type)}
+                      title={typeName(type)}
                       width="170"
                       height="170"
                       draggable={false}
@@ -40,8 +43,8 @@ function MatchupCard({ pokemon, label, wins, onPick, onFavorite }) {
           )}
         </span>
         {showWins && (
-          <span className="card-wins" aria-label={`${wins} wins`}>
-            Wins: {wins}
+          <span className="card-wins" aria-label={t('winsLabel', wins)}>
+            {t('wins', wins)}
           </span>
         )}
       </button>
@@ -50,9 +53,9 @@ function MatchupCard({ pokemon, label, wins, onPick, onFavorite }) {
           type="button"
           className="card-favorite"
           onClick={onFavorite}
-          title={`Send ${pokemon.name} straight to Sudden Death`}
+          title={t('favoriteHint', name)}
         >
-          ★ Favorite
+          {t('favorite')}
         </button>
       )}
     </div>

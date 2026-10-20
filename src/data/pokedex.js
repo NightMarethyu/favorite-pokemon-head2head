@@ -1,4 +1,5 @@
 import rawPokedex from './pokemon_modified.json'
+import { LANGUAGES } from '../i18n/languages.js'
 
 // Sprite URLs keyed by Pokédex number. Files are named by zero-padded number
 // (0001.png); Vite copies them into the build with hashed names.
@@ -17,9 +18,15 @@ function normalize(entry) {
   return {
     id: entry.id,
     name: entry.name.english,
+    // Name in each site language, keyed by language code ('ja').
+    names: Object.fromEntries(
+      LANGUAGES.map((language) => [language.code, entry.name[language.nameKey] ?? null]),
+    ),
     types: entry.type ?? [],
     generation: entry.generation ?? null,
     games: entry.games ?? [],
+    // Games it can be obtained in without a trade, event, or transfer.
+    catchable: entry.catchable ?? entry.games ?? [],
     sprite: SPRITES.get(entry.id) ?? null,
   }
 }

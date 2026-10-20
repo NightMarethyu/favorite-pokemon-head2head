@@ -5,6 +5,9 @@ Bulbapedia scraper for favorite-pokemon-head2head.
 For every Pokémon in pokemon_modified.json this fills in:
   - "generation": int (e.g. 1 for Generation I)
   - "games":      list of main-series games where the Pokémon can be obtained
+  - "catchable":  the games from "games" where it can be obtained in that game
+                  itself (caught, evolved, received), not only by trade, event,
+                  or transfer from another game
 and downloads a sprite (the Pokémon HOME render, falling back to official artwork).
 
 Pokémon that aren't in the JSON yet get a new entry in the same format
@@ -74,6 +77,20 @@ LABEL_MAP = {
     "The Indigo Disk": ["Scarlet", "Violet"],
     "Mega Dimension": ["Legends: Z-A"],
 }
+
+# Location entries that mean the Pokémon has to come from outside the game.
+OUTSIDE_GAME = re.compile(
+    r"^(Trade|Event|Poké Transfer|Poké Transporter|Transfer|Pokémon Bank|Pokémon HOME"
+    r"|Time Capsule|Global Link|Pal Park)\b",
+    re.IGNORECASE,
+)
+
+
+def obtainable_in_game(location):
+    """True if any entry of a location cell is somewhere in the game itself."""
+    location = re.sub(r"\([^)]*\)", "", location)
+    entries = [entry.strip() for entry in re.split(r"\s*,\s*", location) if entry.strip()]
+    return any(not OUTSIDE_GAME.match(entry) for entry in entries)
 
 
 # --- Networking --------------------------------------------------------------
@@ -176,8 +193,11 @@ def parse_generation(soup):
     return None
 
 
-def parse_games(soup):
-    """Main-series games from the 'Game locations' table, skipping 'Unobtainable'."""
+def parse_games(soup, in_game_only=False):
+    """Main-series games from the 'Game locations' table, skipping 'Unobtainable'.
+
+    With in_game_only, also skip games where it only comes by trade, event, or
+    transfer (see OUTSIDE_GAME)."""
     anchor = soup.find(id="Game_locations")
     if not anchor:
         return []
@@ -197,6 +217,8 @@ def parse_games(soup):
             continue  # generation header row
         location = tds[-1].get_text(" ", strip=True)
         if not location or location.lower().startswith("unobtainable"):
+            continue
+        if in_game_only and not obtainable_in_game(location):
             continue
         for label in labels:
             for game in LABEL_MAP.get(label, [label]):
@@ -387,6 +409,7 @@ def build_entry(soup, dex):
         },
         "generation": parse_generation(soup),
         "games": parse_games(soup),
+        "catchable": parse_games(soup, in_game_only=True),
     }
 
 
@@ -449,9 +472,12 @@ def main():
                 if title and title.lower() != name.lower():
                     warnings.append(f"#{dex}: JSON says '{name}', page says '{title}'")
 
+                if entry.get("catchable") is None and entry.get("games") is not None:
+                    entry["catchable"] = parse_games(soup, in_game_only=True)
                 if args.force or entry.get("generation") is None or entry.get("games") is None:
                     entry["generation"] = parse_generation(soup)
                     entry["games"] = parse_games(soup)
+                    entry["catchable"] = parse_games(soup, in_game_only=True)
                     if entry["generation"] is None:
                         warnings.append(f"#{dex} {name}: no generation found")
                     if not entry["games"]:

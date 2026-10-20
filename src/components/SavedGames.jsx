@@ -1,9 +1,16 @@
 import { useRef, useState } from 'react'
 import { describeFilters } from '../data/filters.js'
 import { MAX_SAVES, exportSaves } from '../game/saves.js'
+import { useI18n } from '../i18n/useI18n.js'
 
-function formatTime(timestamp) {
-  return new Date(timestamp).toLocaleString(undefined, { dateStyle: 'medium', timeStyle: 'short' })
+function formatTime(timestamp, locale) {
+  return new Date(timestamp).toLocaleString(locale, { dateStyle: 'medium', timeStyle: 'short' })
+}
+
+function describeProgress({ phase, placing, left, total }, t) {
+  if (phase === 'over') return t('progressFinished')
+  if (phase === 'suddenDeath') return t('progressSuddenDeath', placing, total)
+  return t('progressLeft', left, total)
 }
 
 // Hands the browser a JSON file to save.
@@ -26,18 +33,17 @@ function exportFilename(label) {
   return `pokemon-head2head-${slug}-${date}.json`
 }
 
-function plural(count, word) {
-  return `${count} ${word}${count === 1 ? '' : 's'}`
-}
-
 // Games saved in this browser, most recently played first. Saves can be
-// exported to a file and imported on another device.
+// exported to a file and imported on another device. Export file names stay in
+// English so they are safe on any system.
 function SavedGames({ saves, onResume, onDelete, onImport }) {
+  const i18n = useI18n()
+  const { t, pokemonName } = i18n
   const fileInput = useRef(null)
   const [message, setMessage] = useState(null)
 
   function confirmDelete(save) {
-    if (window.confirm(`Delete the saved game "${describeFilters(save.filters)}"?`)) {
+    if (window.confirm(t('confirmDelete', describeFilters(save.filters, i18n)))) {
       onDelete(save.id)
     }
   }
@@ -50,26 +56,23 @@ function SavedGames({ saves, onResume, onDelete, onImport }) {
       const { imported, skipped } = onImport(JSON.parse(await file.text()))
       setMessage(
         imported === 0
-          ? 'No new games in that file.'
-          : `Imported ${plural(imported, 'game')}.` +
-              (skipped > 0 ? ` Skipped ${skipped} already here or unreadable.` : ''),
+          ? t('importNone')
+          : t('imported', imported) + (skipped > 0 ? t('importSkipped', skipped) : ''),
       )
     } catch {
-      setMessage("That file isn't a saved games file.")
+      setMessage(t('importInvalid'))
     }
   }
 
   return (
-    <section className="saves" aria-label="Saved games">
-      <h2 className="team-title">Saved Games</h2>
+    <section className="saves" aria-label={t('savedGames')}>
+      <h2 className="team-title">{t('savedGames')}</h2>
       {saves.length === 0 ? (
-        <p className="saves-empty">
-          No saved games yet. Games save as you play, or import a file from another device.
-        </p>
+        <p className="saves-empty">{t('savesEmpty')}</p>
       ) : (
         <ul className="saves-list">
           {saves.map((save) => {
-            const label = describeFilters(save.filters)
+            const label = describeFilters(save.filters, i18n)
             return (
               <li key={save.id} className="saves-item">
                 {save.leader?.sprite ? (
@@ -80,31 +83,36 @@ function SavedGames({ saves, onResume, onDelete, onImport }) {
                 <div className="saves-info">
                   <span className="saves-name">{label}</span>
                   <span className="saves-detail">
-                    {save.progress}
+                    {describeProgress(save.progress, t)}
                     {save.leader &&
-                      ` · ${save.isOver ? 'Favorite' : 'Leading'}: ${save.leader.name}`}
+                      ` · ${t('labelled', t(save.isOver ? 'leaderFavorite' : 'leaderLeading'), pokemonName(save.leader))}`}
                   </span>
-                  <span className="saves-detail">{formatTime(save.updatedAt)}</span>
+                  <span className="saves-detail">{formatTime(save.updatedAt, i18n.locale)}</span>
                 </div>
                 <div className="saves-actions">
                   <button type="button" className="restart" onClick={() => onResume(save.id)}>
-                    {save.isOver ? 'View' : 'Continue'}
+                    {save.isOver ? t('view') : t('continue')}
                   </button>
                   <button
                     type="button"
                     className="restart restart-subtle"
-                    onClick={() => download(exportSaves([save.id]), exportFilename(label))}
-                    aria-label={`Export saved game ${label}`}
+                    onClick={() =>
+                      download(
+                        exportSaves([save.id]),
+                        exportFilename(describeFilters(save.filters)),
+                      )
+                    }
+                    aria-label={t('exportGame', label)}
                   >
-                    Export
+                    {t('export')}
                   </button>
                   <button
                     type="button"
                     className="restart restart-subtle"
                     onClick={() => confirmDelete(save)}
-                    aria-label={`Delete saved game ${label}`}
+                    aria-label={t('deleteGame', label)}
                   >
-                    Delete
+                    {t('delete')}
                   </button>
                 </div>
               </li>
@@ -120,7 +128,7 @@ function SavedGames({ saves, onResume, onDelete, onImport }) {
             className="restart restart-subtle"
             onClick={() => download(exportSaves(), exportFilename('all-saves'))}
           >
-            Export all
+            {t('exportAll')}
           </button>
         )}
         <button
@@ -128,7 +136,7 @@ function SavedGames({ saves, onResume, onDelete, onImport }) {
           className="restart restart-subtle"
           onClick={() => fileInput.current.click()}
         >
-          Import
+          {t('import')}
         </button>
         <input
           ref={fileInput}
@@ -144,12 +152,7 @@ function SavedGames({ saves, onResume, onDelete, onImport }) {
         </p>
       )}
 
-      {saves.length > 0 && (
-        <p className="saves-note">
-          Saved in this browser only; export a game to move it to another device. The oldest are
-          removed after {MAX_SAVES} games.
-        </p>
-      )}
+      {saves.length > 0 && <p className="saves-note">{t('savesNote', MAX_SAVES)}</p>}
     </section>
   )
 }

@@ -28,6 +28,18 @@ Before the game starts, narrow the pool by **Generation**, **Type**, and **Game*
 - Each finalist is placed into a ranking by comparing it with Pokémon already ranked (a binary search), so you only make about *n* × log₂ *n* picks. Losing here only moves a Pokémon down the ranking; it is never knocked out.
 - **Your Final Team** is the top six of that ranking.
 
+### Games for your team
+
+When the game ends, **Games for Your Team** lists every main-series game your final team can be put together in, grouped by generation. Only Pokémon you can catch, evolve, or be given in that game count; ones that only arrive by trade, event, or transfer (Pokémon HOME, Poké Transfer, Pal Park) don't. DLC areas count toward their game.
+
+- If no single game has the whole team, it lists paired versions that do when you trade between them (Sword + Shield, for example).
+- If not even that works, it shows the games that come closest and which Pokémon each is missing.
+- Each game has a placeholder tile with its initials until its art is added (see **Game art** below).
+
+### Languages
+
+The site is in English, Japanese, Chinese (Simplified), and French. On the first visit it uses the first of your browser's preferred languages that it has, without asking, and falls back to English. The language button (next to the theme toggle) switches it and remembers your choice. Pokémon names come from the data; type, game, and region names and the rest of the text are in `src/i18n/messages.js`. The type label cards are images with English text, so they stay in English.
+
 ### Saved games
 
 - Every pick is saved in your browser (`localStorage`), so closing the tab or reloading picks up right where you left off.
@@ -42,6 +54,10 @@ Before the game starts, narrow the pool by **Generation**, **Type**, and **Game*
 - Hold **Shift** with an arrow key to mark that Pokémon as a favorite.
 - Dark mode is the default; the toggle in the header switches to light mode and remembers your choice.
 
+### Game art
+
+Put a cover or logo for a game in `src/assets/images/games/`, named after the game's slug: lowercase, accents and apostrophes dropped, other punctuation and spaces turned into `-` (`sword.png`, `lets-go-pikachu.png`, `legends-arceus.png`, `blue-japan.png`). PNG, JPG, WebP, and SVG all work. It replaces the placeholder tile on the next build; no code change is needed.
+
 ## Status
 
 - [x] Gather the Pokémon data and save it as a static file in the repo
@@ -52,9 +68,9 @@ Before the game starts, narrow the pool by **Generation**, **Type**, and **Game*
 - [x] Choose a generation, game, or type to play with
 - [x] Save game progress in the browser (`localStorage`), with several saved games at once
 - [ ] Double-elimination mode for players who don't know the Pokémon well yet and have no favorites to mark: every Pokémon gets a second chance after its first loss, so one strong early pick can't knock out the rest
-- [ ] Show which games (if any) you could build your final team in
+- [x] Show which games (if any) you could build your final team in (game art still to come)
 - [ ] A 3×3 grid of your favorite Pokémon
-- [ ] Multi-language support (the data already has names in English, Japanese, Chinese, and French)
+- [x] Multi-language support: English, Japanese, Chinese, and French
 - [ ] Pokémon knowledge quizzes: which has the higher base-stat total, egg groups, abilities, and more
 - [x] Type label cards on the type filter, and type icons beside each Pokémon's name on the matchup cards
 - [ ] Game cover art or title logos on the game filter for more visual impact
@@ -64,9 +80,10 @@ Before the game starts, narrow the pool by **Generation**, **Type**, and **Game*
 
 | Path                         | What it holds                                                        |
 | ---------------------------- | -------------------------------------------------------------------- |
-| `src/data/`                  | Pokémon JSON; `pokedex.js`, which normalizes it, attaches sprites, and builds the pool (`getPokemonPool(filters)`); `filters.js`, the generation, game, and type options |
+| `src/data/`                  | Pokémon JSON; `pokedex.js`, which normalizes it, attaches sprites, and builds the pool (`getPokemonPool(filters)`); `filters.js`, the generation, game, and type options; `teamGames.js`, which games a team fits in; `gameArt.js` and `typeArt.js`, the artwork |
 | `src/game/`                  | Pure game logic (`head2head.js`), its React hook (`useHead2Head.js`), and saved games in `localStorage` (`saves.js`) |
 | `src/components/`            | UI components                                                        |
+| `src/i18n/`                  | Languages, browser-language detection, every piece of site text per language (`messages.js`), and the `useI18n()` hook |
 | `src/hooks/`                 | Dark/light theme state (`useTheme.js`) and the saved games list (`useSaves.js`) |
 | `src/assets/images/sprites/` | One sprite per Pokémon, named by Pokédex number (`0001.png`)        |
 | `src/assets/fonts/`          | Self-hosted VT323 and Bytesized fonts, with their licenses (OFL)    |
