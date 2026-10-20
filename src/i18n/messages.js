@@ -154,6 +154,35 @@ const en = {
   recordLabel: (wins, losses) =>
     `${wins} win${wins === 1 ? '' : 's'}, ${losses} loss${losses === 1 ? '' : 'es'}`,
 
+  // Menu and footer
+  menu: 'Menu',
+  menuPlay: 'Play Pick-a-Mon',
+  menuTools: 'Tools',
+  disclaimer:
+    'Pick-a-Mon is an unofficial fan project. It is not affiliated with, endorsed, sponsored, or approved by Nintendo, Game Freak, Creatures, or The Pokémon Company. Pokémon and Pokémon character names are trademarks of Nintendo.',
+  developerLink: 'About the developer',
+
+  // 3×3 favorites grid
+  gridTitle: '3×3 Favorites',
+  gridHint:
+    'Pick nine Pokémon you love, then download the grid as an image to share. Choose a square, then a Pokémon to put in it.',
+  gridNameLabel: 'Grid title',
+  gridDefaultTitle: 'My favorite Pokémon',
+  gridSlot: (n, name) => (name ? `Square ${n}: ${name}` : `Square ${n}: empty`),
+  gridRemove: (name) => `Remove ${name}`,
+  gridPicked: (n, total) => `${n} of ${total} picked`,
+  gridDownload: 'Download image',
+  gridShare: 'Share',
+  gridClear: 'Clear grid',
+  gridConfirmClear: 'Remove every Pokémon from the grid?',
+  gridDownloaded: 'Image saved. Share it anywhere!',
+  gridImageFailed: "Couldn't make the image. Please try again.",
+  gridChoosing: (n) => `Choosing for square ${n}`,
+  gridSearch: 'Search by name or number',
+  gridAllGenerations: 'All generations',
+  gridNoMatches: 'No Pokémon match that search.',
+  gridInGrid: (name) => `${name} (in the grid, move here)`,
+
   types: {},
   games: {},
   regions: {},
@@ -291,6 +320,35 @@ const ja = {
   bracketHint: '2回負けると脱落します。',
   bestSoFar: '現在の上位',
   recordLabel: (wins, losses) => `${wins}勝${losses}敗`,
+
+  // メニューとフッター
+  menu: 'メニュー',
+  menuPlay: 'Pick-a-Monで遊ぶ',
+  menuTools: 'ツール',
+  disclaimer:
+    'Pick-a-Monは非公式のファンプロジェクトです。任天堂、ゲームフリーク、クリーチャーズ、株式会社ポケモンとは一切関係がなく、承認・後援を受けたものではありません。ポケモンおよびポケモンのキャラクター名は任天堂の商標です。',
+  developerLink: '開発者について',
+
+  // 3×3 お気に入り
+  gridTitle: '3×3 お気に入り',
+  gridHint:
+    '好きなポケモンを9匹選んで、画像として保存してシェアしよう。マスを選んでから、入れるポケモンを選んでください。',
+  gridNameLabel: 'タイトル',
+  gridDefaultTitle: '好きなポケモン',
+  gridSlot: (n, name) => (name ? `${n}番のマス：${name}` : `${n}番のマス：空き`),
+  gridRemove: (name) => `${name}を外す`,
+  gridPicked: (n, total) => `${n} / ${total}匹`,
+  gridDownload: '画像を保存',
+  gridShare: 'シェア',
+  gridClear: 'すべて外す',
+  gridConfirmClear: 'すべてのポケモンを外しますか？',
+  gridDownloaded: '画像を保存しました。シェアしよう！',
+  gridImageFailed: '画像を作れませんでした。もう一度お試しください。',
+  gridChoosing: (n) => `${n}番のマスに入れるポケモン`,
+  gridSearch: '名前か図鑑番号で検索',
+  gridAllGenerations: 'すべての世代',
+  gridNoMatches: '見つかりませんでした。',
+  gridInGrid: (name) => `${name}（配置済み・ここへ移動）`,
 
   types: {
     Normal: 'ノーマル',
@@ -502,6 +560,34 @@ const zh = {
   bracketHint: '宝可梦输两次即出局。',
   bestSoFar: '目前表现最好',
   recordLabel: (wins, losses) => `${wins}胜${losses}负`,
+
+  // 菜单和页脚
+  menu: '菜单',
+  menuPlay: '玩 Pick-a-Mon',
+  menuTools: '工具',
+  disclaimer:
+    'Pick-a-Mon 是非官方的粉丝作品，与任天堂、Game Freak、Creatures 及 The Pokémon Company 均无关联，也未获得其认可、赞助或批准。宝可梦及宝可梦角色名称是任天堂的商标。',
+  developerLink: '关于开发者',
+
+  // 3×3 最爱宝可梦
+  gridTitle: '3×3 最爱',
+  gridHint: '选出你最爱的 9 只宝可梦，再把九宫格保存成图片分享出去。先选一个格子，再选要放进去的宝可梦。',
+  gridNameLabel: '标题',
+  gridDefaultTitle: '我最爱的宝可梦',
+  gridSlot: (n, name) => (name ? `第 ${n} 格：${name}` : `第 ${n} 格：空`),
+  gridRemove: (name) => `移除${name}`,
+  gridPicked: (n, total) => `已选 ${n} / ${total}`,
+  gridDownload: '保存图片',
+  gridShare: '分享',
+  gridClear: '清空',
+  gridConfirmClear: '要移除九宫格里的所有宝可梦吗？',
+  gridDownloaded: '图片已保存，快去分享吧！',
+  gridImageFailed: '图片生成失败，请再试一次。',
+  gridChoosing: (n) => `正在为第 ${n} 格选择`,
+  gridSearch: '按名字或编号搜索',
+  gridAllGenerations: '全部世代',
+  gridNoMatches: '没有找到符合的宝可梦。',
+  gridInGrid: (name) => `${name}（已在格子里，移到这里）`,
 
   types: {
     Normal: '一般',
@@ -724,6 +810,35 @@ const fr = {
   bestSoFar: "Les meilleurs pour l'instant",
   recordLabel: (wins, losses) =>
     `${wins} victoire${wins > 1 ? 's' : ''}, ${losses} défaite${losses > 1 ? 's' : ''}`,
+
+  // Menu et pied de page
+  menu: 'Menu',
+  menuPlay: 'Jouer à Pick-a-Mon',
+  menuTools: 'Outils',
+  disclaimer:
+    "Pick-a-Mon est un projet de fan non officiel. Il n'est ni affilié à Nintendo, Game Freak, Creatures ou The Pokémon Company, ni approuvé, soutenu ou parrainé par eux. Pokémon et les noms des personnages Pokémon sont des marques de Nintendo.",
+  developerLink: 'À propos du développeur',
+
+  // Grille 3×3
+  gridTitle: 'Favoris 3×3',
+  gridHint:
+    "Choisissez neuf Pokémon que vous aimez, puis téléchargez la grille en image pour la partager. Choisissez une case, puis le Pokémon à y mettre.",
+  gridNameLabel: 'Titre de la grille',
+  gridDefaultTitle: 'Mes Pokémon préférés',
+  gridSlot: (n, name) => (name ? `Case ${n} : ${name}` : `Case ${n} : vide`),
+  gridRemove: (name) => `Retirer ${name}`,
+  gridPicked: (n, total) => `${n} sur ${total} choisis`,
+  gridDownload: "Télécharger l'image",
+  gridShare: 'Partager',
+  gridClear: 'Vider la grille',
+  gridConfirmClear: 'Retirer tous les Pokémon de la grille ?',
+  gridDownloaded: 'Image enregistrée. Partagez-la !',
+  gridImageFailed: "Impossible de créer l'image. Réessayez.",
+  gridChoosing: (n) => `Choix pour la case ${n}`,
+  gridSearch: 'Chercher par nom ou numéro',
+  gridAllGenerations: 'Toutes les générations',
+  gridNoMatches: 'Aucun Pokémon ne correspond.',
+  gridInGrid: (name) => `${name} (déjà dans la grille, le déplacer ici)`,
 
   types: {
     Normal: 'Normal',
