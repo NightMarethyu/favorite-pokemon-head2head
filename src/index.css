@@ -1218,3 +1218,266 @@ button.choice-card .choice-title {
 .team-games .game-group + .game-group {
   margin-top: 12px;
 }
+
+/* Site menu. Shares the language menu's look. */
+.site-menu .language-menu {
+  min-width: 190px;
+  white-space: nowrap;
+}
+
+.menu-heading {
+  padding: 8px 10px 2px;
+  color: var(--muted);
+  font-family: var(--font-display);
+  font-size: 0.9em;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  border-top: 1px solid var(--border);
+  margin-top: 4px;
+}
+
+.menu-tool {
+  padding-left: 18px;
+}
+
+@media (max-width: 480px) {
+  .menu-label {
+    display: none;
+  }
+}
+
+/* Footer */
+.app-footer {
+  margin-top: 40px;
+  padding-top: 16px;
+  border-top: 2px solid var(--border);
+  color: var(--muted);
+  font-size: 0.85em;
+  text-align: center;
+}
+
+.app-footer p {
+  margin: 0 auto 8px;
+  max-width: 60ch;
+}
+
+.app-footer a {
+  color: inherit;
+}
+
+.app-footer a:hover {
+  color: var(--fg);
+}
+
+/* 3×3 favorites grid */
+.grid-name {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  max-width: 420px;
+}
+
+.grid-name input,
+.grid-search input,
+.grid-search select {
+  padding: 6px 10px;
+  font: inherit;
+  color: var(--fg);
+  background: var(--surface);
+  border: 2px solid var(--border);
+  border-radius: 6px;
+}
+
+.grid-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 24px;
+  align-items: start;
+}
+
+@media (max-width: 760px) {
+  .grid-layout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.grid-board-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.grid-board-title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  text-align: center;
+  overflow-wrap: anywhere;
+}
+
+.grid-board {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.grid-cell-wrap {
+  position: relative;
+}
+
+.grid-cell {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  aspect-ratio: 1;
+  padding: 4px;
+  background: var(--surface);
+  border: 2px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.grid-cell:hover {
+  background: var(--surface-hover);
+}
+
+.grid-cell-active {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 2px var(--accent);
+}
+
+.grid-cell:focus-visible {
+  outline: 2px solid var(--fg);
+  outline-offset: 2px;
+}
+
+.grid-cell img {
+  width: 78%;
+  min-height: 0;
+  flex: 1 1 auto;
+  object-fit: contain;
+}
+
+.grid-cell-name {
+  max-width: 100%;
+  font-size: 0.85em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.grid-cell-empty {
+  color: var(--muted);
+  font-family: var(--font-accent);
+  font-size: 1.6rem;
+}
+
+.grid-cell-remove {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  width: 26px;
+  height: 26px;
+  padding: 0;
+  line-height: 1;
+  color: var(--muted);
+  background: var(--bg);
+  border: 2px solid var(--border);
+  border-radius: 50%;
+}
+
+.grid-cell-remove:hover,
+.grid-cell-remove:focus-visible {
+  color: var(--fg);
+  border-color: var(--fg);
+}
+
+.grid-board-wrap .setup-count {
+  text-align: center;
+}
+
+.grid-message {
+  min-height: 1.3em;
+  margin: 0;
+  color: var(--muted);
+  text-align: center;
+}
+
+.grid-picker {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-width: 0;
+}
+
+.grid-picker-lead {
+  margin: 0;
+  color: var(--accent);
+  font-family: var(--font-display);
+}
+
+.grid-search {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.grid-search input {
+  flex: 1 1 180px;
+  min-width: 0;
+}
+
+.grid-results {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(84px, 1fr));
+  gap: 6px;
+  max-height: 520px;
+  margin: 0;
+  padding: 4px;
+  overflow-y: auto;
+  list-style: none;
+  background: var(--surface);
+  border: 2px solid var(--border);
+  border-radius: 8px;
+}
+
+.grid-result {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 4px;
+  background: transparent;
+  border: 2px solid transparent;
+  border-radius: 6px;
+}
+
+.grid-result:hover,
+.grid-result:focus-visible {
+  background: var(--surface-hover);
+  border-color: var(--border);
+  outline: none;
+}
+
+.grid-result img {
+  width: 64px;
+  height: 64px;
+  object-fit: contain;
+}
+
+.grid-result span {
+  max-width: 100%;
+  font-size: 0.8em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.grid-result-picked {
+  opacity: 0.4;
+}

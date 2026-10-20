@@ -1,4 +1,5 @@
-import { useEffect, useRef, useState } from 'react'
+import { useCallback, useRef, useState } from 'react'
+import { useDismiss } from '../hooks/useDismiss.js'
 import { LANGUAGES } from '../i18n/languages.js'
 import { useI18n } from '../i18n/useI18n.js'
 
@@ -9,21 +10,8 @@ function LanguageSwitcher() {
   const [open, setOpen] = useState(false)
   const root = useRef(null)
 
-  useEffect(() => {
-    if (!open) return
-    function close(event) {
-      if (event.type === 'keydown' && event.key !== 'Escape') return
-      if (event.type === 'pointerdown' && root.current?.contains(event.target)) return
-      setOpen(false)
-      if (event.type === 'keydown') root.current?.querySelector('button')?.focus()
-    }
-    document.addEventListener('pointerdown', close)
-    document.addEventListener('keydown', close)
-    return () => {
-      document.removeEventListener('pointerdown', close)
-      document.removeEventListener('keydown', close)
-    }
-  }, [open])
+  const close = useCallback(() => setOpen(false), [])
+  useDismiss(open, close, root)
 
   const current = LANGUAGES.find((entry) => entry.code === language)
 
