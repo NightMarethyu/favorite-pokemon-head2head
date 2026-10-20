@@ -1,10 +1,30 @@
+import { wikiHash } from '../data/links.js'
 import { TEAM_SIZE } from '../game/head2head.js'
 import { useI18n } from '../i18n/useI18n.js'
 
-// Members show their streak (main round), their rank (Sudden Death / final), or
-// their wins and losses (double elimination).
-function TeamPanel({ team, title }) {
+// Sprite and name; on the final team, a link to its wiki page.
+function MemberName({ pokemon, linked }) {
   const { t, pokemonName } = useI18n()
+  const name = pokemonName(pokemon)
+  const content = (
+    <>
+      {pokemon.sprite && <img className="team-sprite" src={pokemon.sprite} alt="" />}
+      <span className="team-name">{name}</span>
+    </>
+  )
+  if (!linked) return content
+  return (
+    <a className="team-link" href={wikiHash(pokemon.id)} title={t('wikiOpen', name)}>
+      {content}
+    </a>
+  )
+}
+
+// Members show their streak (main round), their rank (Sudden Death / final), or
+// their wins and losses (double elimination). With `linked` (the final team)
+// each one links to its wiki page.
+function TeamPanel({ team, title, linked = false }) {
+  const { t } = useI18n()
   const slots = Array.from({ length: TEAM_SIZE }, (_, index) => team[index] ?? null)
 
   return (
@@ -14,10 +34,7 @@ function TeamPanel({ team, title }) {
         {slots.map((member, index) =>
           member ? (
             <li key={member.pokemon.id} className="team-slot">
-              {member.pokemon.sprite && (
-                <img className="team-sprite" src={member.pokemon.sprite} alt="" />
-              )}
-              <span className="team-name">{pokemonName(member.pokemon)}</span>
+              <MemberName pokemon={member.pokemon} linked={linked} />
               {member.rank !== undefined ? (
                 <span className="team-streak team-rank">#{member.rank}</span>
               ) : member.losses !== undefined ? (

@@ -1,5 +1,6 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { TYPES } from '../data/filters.js'
+import { typeChartHash } from '../data/links.js'
 import { TYPE_ICONS, TYPE_LABELS } from '../data/typeArt.js'
 import { attackGroups, defenseGroups, effectiveness, multiplierText } from '../data/typeChart.js'
 import { useI18n } from '../i18n/useI18n.js'
@@ -10,12 +11,30 @@ const ATTACK = 'attack'
 
 const CELL_TEXT = { 2: '2', 0.5: '½', 0: '0' }
 
+// '#types/Grass/Poison' -> ['Grass', 'Poison'], so other pages can link here
+// with types picked.
+function typesFromHash(hash) {
+  const [, ...types] = hash.split('/')
+  return types
+    .map(decodeURIComponent)
+    .filter((type) => TYPES.includes(type))
+    .slice(0, 2)
+}
+
 // The type chart tool: what one or two types are weak to, what one type hits
 // hard, and the whole 18 × 18 chart.
 function TypeChart() {
   const { t, typeName } = useI18n()
   const [side, setSide] = useState(DEFEND)
-  const [picked, setPicked] = useState([])
+  const [picked, setPicked] = useState(() => typesFromHash(window.location.hash))
+
+  // Keep the address in step with the defending types, so it can be shared.
+  useEffect(() => {
+    const hash = typeChartHash(side === DEFEND ? picked : [])
+    if (window.location.hash === hash) return
+    const { pathname, search } = window.location
+    window.history.replaceState(null, '', `${pathname}${search}${hash}`)
+  }, [side, picked])
 
   const limit = side === DEFEND ? 2 : 1
 

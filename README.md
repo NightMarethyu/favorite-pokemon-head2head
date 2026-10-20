@@ -57,6 +57,14 @@ When the game ends, **Games for Your Team** lists every main-series game your fi
 - If not even that works, it shows the games that come closest and which Pokémon each is missing.
 - Each game has a placeholder tile with its initials until its art is added (see **Game art** below).
 
+### Tools
+
+The **Menu** in the header has a **Tools** section:
+
+- **3×3 Favorites** (`#3x3`): pick nine Pokémon and download the grid as an image.
+- **Type Chart** (`#types`): pick one or two defending types to see what they're weak to, resist, and are immune to, or one attacking type to see what it beats; the full 18 × 18 chart is below. `#types/Grass/Poison` opens it with those types picked.
+- **Pokémon Wiki** (`#wiki`): search every Pokémon; each has a page (`#wiki/25`) with base stats (bars out of 255), types, profile, abilities, damage taken, evolution family, and the games it's in. When a game ends, each Pokémon on the final team links to its page, and the browser's back button returns to the results.
+
 ### Languages
 
 The site is in English, Japanese, Chinese (Simplified), and French. On the first visit it uses the first of your browser's preferred languages that it has, without asking, and falls back to English. The language button (next to the theme toggle) switches it and remembers your choice. Pokémon names come from the data; type, game, and region names and the rest of the text are in `src/i18n/messages.js`. The type label cards are images with English text, so they stay in English.
@@ -96,7 +104,8 @@ Put a cover or logo for a game in `src/assets/images/games/`, named after the ga
 - [ ] Pokémon knowledge quizzes: which has the higher base-stat total, egg groups, abilities, and more
 - [x] Type label cards on the type filter, and type icons beside each Pokémon's name on the matchup cards
 - [ ] Game cover art or title logos on the game filter for more visual impact
-- [ ] Link each Pokémon and type to more info: either its Bulbapedia page or a small internal wiki page
+- [x] A type chart and a small internal Pokémon wiki (Tools menu)
+- [x] Link each Pokémon and type to more info: the final team links to each Pokémon's wiki page, and wiki pages link to their types in the type chart
 
 ## Project layout
 
