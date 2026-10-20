@@ -1,21 +1,9 @@
 import { useMemo, useState } from 'react'
 import { EMPTY_FILTERS, GENERATIONS } from '../data/filters.js'
 import { ALL_POKEMON, getPokemonPool } from '../data/pokedex.js'
+import { STARTERS } from '../data/starters.js'
 import { DOUBLE_ELIMINATION, estimatePicks } from '../game/modes.js'
 import { useI18n } from '../i18n/useI18n.js'
-
-// Each generation's three starter Pokémon, shown on its tile.
-const STARTERS = {
-  1: [1, 4, 7],
-  2: [152, 155, 158],
-  3: [252, 255, 258],
-  4: [387, 390, 393],
-  5: [495, 498, 501],
-  6: [650, 653, 656],
-  7: [722, 725, 728],
-  8: [810, 813, 816],
-  9: [906, 909, 912],
-}
 
 const SPRITES = new Map(ALL_POKEMON.map((pokemon) => [pokemon.id, pokemon.sprite]))
 

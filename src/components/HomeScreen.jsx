@@ -1,28 +1,37 @@
+import { useState } from 'react'
 import { describeFilters } from '../data/filters.js'
 import { ALL_POKEMON } from '../data/pokedex.js'
+import { STARTERS } from '../data/starters.js'
+import { shuffle } from '../game/head2head.js'
 import { useI18n } from '../i18n/useI18n.js'
 import SavedGames from './SavedGames.jsx'
 
-const byId = (id) => ALL_POKEMON.find((pokemon) => pokemon.id === id)
-// Pikachu and Eevee face off on the title screen.
-const MASCOTS = [byId(25), byId(133)].filter(Boolean)
+// Two of these face off on the title screen, picked fresh on each visit:
+// Pikachu, Eevee, and every generation's starters.
+const MASCOT_IDS = [25, 133, ...Object.values(STARTERS).flat()]
+
+function pickMascots() {
+  const pool = ALL_POKEMON.filter((pokemon) => MASCOT_IDS.includes(pokemon.id) && pokemon.sprite)
+  return shuffle(pool).slice(0, 2)
+}
 
 // The title screen: continue the last game, or start one with as many or as
 // few options as the player wants.
 function HomeScreen({ lastGame, saves, onNewcomer, onExpert, onResume, onDelete, onImport }) {
   const i18n = useI18n()
   const { t } = i18n
+  const [mascots] = useState(pickMascots)
 
   return (
     <>
       <section className="home-hero">
         <h1 className="home-title">{t('siteTitle')}</h1>
         <p className="home-tagline">{t('tagline')}</p>
-        {MASCOTS.length === 2 && (
+        {mascots.length === 2 && (
           <div className="home-mascots" aria-hidden="true">
-            <img src={MASCOTS[0].sprite} alt="" />
+            <img src={mascots[0].sprite} alt="" />
             <span className="versus">{t('versus')}</span>
-            <img src={MASCOTS[1].sprite} alt="" />
+            <img src={mascots[1].sprite} alt="" />
           </div>
         )}
         {lastGame && (
