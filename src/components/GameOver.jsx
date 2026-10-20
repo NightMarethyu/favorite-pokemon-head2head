@@ -4,7 +4,7 @@ function GameOver({ champion, onRestart }) {
       <h2>That's everyone!</h2>
       {champion && (
         <p>
-          Last one standing: <strong>{champion.name}</strong>
+          Your favorite: <strong>{champion.name}</strong>
         </p>
       )}
       <button type="button" className="restart" onClick={onRestart}>

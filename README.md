@@ -8,11 +8,26 @@ Two Pokémon are shown side by side (stacked on small screens). You pick the one
 
 ## How it plays
 
+The game has two rounds: a main round that goes through every Pokémon, then **Sudden Death** to rank the best of them.
+
+### Main round
+
 - Every Pokémon appears exactly once, in a random order.
 - The winner of each matchup stays on the left (on top on mobile) as the champion. The number in its bottom-left corner counts how many Pokémon it has beaten in a row.
 - When a challenger wins, it becomes the new champion with 1 win.
+- **★ Favorite** sends a Pokémon straight to Sudden Death and takes it out of the main round. Without this, a Pokémon you love would knock out every other Pokémon you like until it was beaten, so they would end up with few or no wins. Marked favorites are listed under **Favorites**; remove one with **×** to put it back into the draw.
 - **Your Team** lists the six Pokémon with the longest win streaks, including the current champion.
-- Click a card, or use the arrow keys (←/↑ for the champion, →/↓ for the challenger).
+
+### Sudden Death
+
+- Once every Pokémon has been shown, your favorites and the six longest win streaks from the main round face off.
+- Each finalist is placed into a ranking by comparing it with Pokémon already ranked (a binary search), so you only make about *n* × log₂ *n* picks. Losing here only moves a Pokémon down the ranking; it is never knocked out.
+- **Your Final Team** is the top six of that ranking.
+
+### Controls
+
+- Click a card, or use the arrow keys (←/↑ for the left card, →/↓ for the right card).
+- Hold **Shift** with an arrow key to mark that Pokémon as a favorite.
 - Dark mode is the default; the toggle in the header switches to light mode and remembers your choice.
 
 ## Status
@@ -20,9 +35,11 @@ Two Pokémon are shown side by side (stacked on small screens). You pick the one
 - [x] Gather the Pokémon data and save it as a static file in the repo
 - [x] Plan the matchup logic and the page design
 - [x] Build the head-to-head interface (names only)
+- [x] Favorites and a Sudden Death round, so a top favorite can't block the Pokémon ranked just below it
 - [ ] Add Pokémon sprites
 - [ ] Choose a generation, game, or type to play with
 - [ ] Save game progress in the browser (`localStorage`)
+- [ ] Double-elimination mode for players who don't know the Pokémon well yet and have no favorites to mark: every Pokémon gets a second chance after its first loss, so one strong early pick can't knock out the rest
 
 ## Project layout
 

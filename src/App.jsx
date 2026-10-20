@@ -1,4 +1,5 @@
 import Arena from './components/Arena.jsx'
+import FavoritesPanel from './components/FavoritesPanel.jsx'
 import GameOver from './components/GameOver.jsx'
 import TeamPanel from './components/TeamPanel.jsx'
 import ThemeToggle from './components/ThemeToggle.jsx'
@@ -8,6 +9,12 @@ import { useTheme } from './hooks/useTheme.js'
 
 // Future generation / game / type options will build this pool from filters.
 const POOL = getPokemonPool()
+
+function teamTitle(phase) {
+  if (phase === 'over') return 'Your Final Team'
+  if (phase === 'suddenDeath') return 'Ranking So Far'
+  return 'Your Team'
+}
 
 function App() {
   const { theme, toggleTheme } = useTheme()
@@ -23,6 +30,21 @@ function App() {
       <main className="app-main">
         {game.isOver ? (
           <GameOver champion={game.champion} onRestart={game.restart} />
+        ) : game.phase === 'suddenDeath' ? (
+          <>
+            <p className="progress">
+              <strong className="phase-title">Sudden Death</strong>
+              Placing {game.suddenDeath.placing} of {game.suddenDeath.total}
+            </p>
+            <Arena
+              champion={game.champion}
+              challenger={game.challenger}
+              leftLabel="Finalist"
+              rightLabel="Finalist"
+              onPickLeft={game.pickLeft}
+              onPickRight={game.pickRight}
+            />
+          </>
         ) : (
           <>
             <p className="progress">
@@ -31,14 +53,22 @@ function App() {
             <Arena
               champion={game.champion}
               challenger={game.challenger}
-              streak={game.streak}
+              leftLabel={game.streak > 0 ? 'Champion' : 'Contender'}
+              rightLabel="Challenger"
+              wins={game.streak}
               onPickLeft={game.pickLeft}
               onPickRight={game.pickRight}
+              onFavoriteLeft={game.favoriteLeft}
+              onFavoriteRight={game.favoriteRight}
             />
           </>
         )}
 
-        <TeamPanel team={game.team} title={game.isOver ? 'Your Final Team' : 'Your Team'} />
+        <TeamPanel team={game.team} title={teamTitle(game.phase)} />
+
+        {game.phase === 'main' && (
+          <FavoritesPanel favorites={game.favorites} onRemove={game.unfavorite} />
+        )}
 
         {!game.isOver && (
           <button type="button" className="restart restart-subtle" onClick={game.restart}>
