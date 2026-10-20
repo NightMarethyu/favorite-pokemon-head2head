@@ -54,3 +54,77 @@ export function getPokemonPool({ generations, games, types } = {}) {
       matchesAny(types, pokemon.types),
   )
 }
+
+const RAW_BY_ID = new Map(rawPokedex.map((entry) => [entry.id, entry]))
+
+// The stats in the order the games show them, keyed as in the data.
+export const STATS = ['HP', 'Attack', 'Defense', 'Sp. Attack', 'Sp. Defense', 'Speed']
+
+// "87.5:12.5" (male:female) -> { male: 87.5, female: 12.5 }; null if genderless.
+function genderRatio(text) {
+  const match = /^([\d.]+):([\d.]+)$/.exec(text ?? '')
+  return match ? { male: Number(match[1]), female: Number(match[2]) } : null
+}
+
+// The first number in "1.7 m", or null.
+const measure = (text) => {
+  const value = Number.parseFloat(text)
+  return Number.isFinite(value) ? value : null
+}
+
+// Everything the wiki shows about one Pokémon. Species, Pokédex text,
+// abilities, and evolution methods are only in English in the data.
+export function pokemonDetails(id) {
+  const entry = RAW_BY_ID.get(id)
+  if (!entry) return null
+  const profile = entry.profile ?? {}
+  const evolution = entry.evolution ?? {}
+  return {
+    species: entry.species ?? '',
+    description: entry.description ?? '',
+    stats: STATS.map((stat) => ({ stat, value: entry.base?.[stat] ?? 0 })),
+    heightM: measure(profile.height),
+    weightKg: measure(profile.weight),
+    // "No Eggs Discovered" and "Undiscovered" are the same group.
+    eggGroups: [
+      ...new Set(
+        (profile.egg ?? []).map((group) =>
+          group === 'No Eggs Discovered' ? 'Undiscovered' : group,
+        ),
+      ),
+    ],
+    abilities: (profile.ability ?? []).map(([name, hidden]) => ({
+      name,
+      hidden: hidden === 'true',
+    })),
+    gender: genderRatio(profile.gender),
+    // { id, method } for what it evolves from and into.
+    evolvesFrom: evolution.prev
+      ? { id: Number(evolution.prev[0]), method: evolution.prev[1] }
+      : null,
+    evolvesTo: (evolution.next ?? []).map(([next, method]) => ({ id: Number(next), method })),
+  }
+}
+
+// The whole evolution family as stages: [[root], [its evolutions], ...].
+export function evolutionStages(id) {
+  let root = id
+  const seen = new Set([root])
+  for (let from = pokemonDetails(root)?.evolvesFrom; from && !seen.has(from.id); ) {
+    root = from.id
+    seen.add(root)
+    from = pokemonDetails(root)?.evolvesFrom
+  }
+  const stages = []
+  let stage = [{ id: root, method: null }]
+  const visited = new Set()
+  while (stage.length > 0) {
+    stages.push(stage)
+    stage.forEach((member) => visited.add(member.id))
+    stage = stage.flatMap(
+      (member) =>
+        pokemonDetails(member.id)?.evolvesTo.filter((next) => !visited.has(next.id)) ?? [],
+    )
+  }
+  return stages
+}
