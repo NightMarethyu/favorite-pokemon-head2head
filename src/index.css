@@ -82,16 +82,97 @@ button {
   font-size: clamp(1.5rem, 5vw, 2.5rem);
 }
 
-.theme-toggle {
+.header-actions {
+  display: flex;
   flex-shrink: 0;
+  gap: 8px;
+}
+
+.header-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
   padding: 6px 12px;
   background: var(--surface);
   border: 2px solid var(--border);
   border-radius: 6px;
 }
 
-.theme-toggle:hover {
+.header-button:hover,
+.header-button[aria-expanded='true'] {
   background: var(--surface-hover);
+}
+
+/* Language switcher. The icon is a mask so it takes the text color. */
+.language {
+  position: relative;
+}
+
+.language-icon {
+  width: 1.1em;
+  height: 1.1em;
+  background: currentColor;
+  mask: url('./assets/images/multilingual.svg') center / contain no-repeat;
+}
+
+.language-menu {
+  position: absolute;
+  top: calc(100% + 6px);
+  right: 0;
+  z-index: 10;
+  min-width: 140px;
+  margin: 0;
+  padding: 4px;
+  list-style: none;
+  background: var(--surface);
+  border: 2px solid var(--border);
+  border-radius: 6px;
+  box-shadow: 0 6px 18px rgb(0 0 0 / 0.3);
+}
+
+.language-option {
+  display: block;
+  width: 100%;
+  padding: 6px 10px;
+  text-align: left;
+  background: transparent;
+  border: none;
+  border-radius: 4px;
+}
+
+.language-option:hover,
+.language-option:focus-visible {
+  background: var(--surface-hover);
+  outline: none;
+}
+
+.language-option[aria-current='true'] {
+  color: var(--accent);
+}
+
+.language-option[aria-current='true']::after {
+  content: ' ✓';
+}
+
+/* The pixel fonts have no Japanese or Chinese letters, so those fall back to
+   the system font, which runs larger; bring it closer to the pixel text. */
+:root:lang(ja) body,
+:root:lang(zh) body {
+  font-size: 1.05rem;
+}
+
+@media (max-width: 480px) {
+  .app-header h1 {
+    font-size: 1.35rem;
+  }
+
+  .header-actions {
+    gap: 6px;
+  }
+
+  .header-button {
+    padding: 6px 8px;
+  }
 }
 
 .app-main {
@@ -718,4 +799,97 @@ button {
   .saves-actions .restart {
     flex: 1;
   }
+}
+
+/* Games the final team can be built in */
+.team-games {
+  padding: 12px 16px 16px;
+  background: var(--surface);
+  border: 2px solid var(--border);
+  border-radius: 12px;
+}
+
+.team-games-lead {
+  margin: 0 0 10px;
+  color: var(--muted);
+}
+
+.team-games-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.team-games-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 10px 6px 6px;
+  border: 2px solid var(--border);
+  border-radius: 6px;
+}
+
+.game-tiles {
+  display: flex;
+  flex-shrink: 0;
+  gap: 4px;
+}
+
+/* Stand-in until the game's art is added; art keeps the same footprint. */
+.game-tile {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  border: 2px dashed var(--border);
+  border-radius: 6px;
+  font-size: 1.4rem;
+  color: var(--muted);
+}
+
+.game-tile-art {
+  border: none;
+  object-fit: contain;
+}
+
+.team-games-info {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.team-games-name {
+  overflow-wrap: anywhere;
+}
+
+.team-games-detail {
+  color: var(--muted);
+  font-size: 1.1rem;
+}
+
+.team-games-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(96px, 1fr));
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.team-games-cell {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  text-align: center;
+  font-size: 1.1rem;
+  line-height: 1.1;
+}
+
+.team-games .game-group + .game-group {
+  margin-top: 12px;
 }

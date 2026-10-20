@@ -1,4 +1,5 @@
 import { useEffect } from 'react'
+import { useI18n } from '../i18n/useI18n.js'
 import MatchupCard from './MatchupCard.jsx'
 
 const LEFT_KEYS = ['ArrowLeft', 'ArrowUp']
@@ -16,6 +17,8 @@ function Arena({
   onFavoriteLeft,
   onFavoriteRight,
 }) {
+  const { t } = useI18n()
+
   useEffect(() => {
     function handleKeyDown(event) {
       if (event.repeat || event.altKey || event.ctrlKey || event.metaKey) return
@@ -38,7 +41,7 @@ function Arena({
   }, [onPickLeft, onPickRight, onFavoriteLeft, onFavoriteRight])
 
   return (
-    <section className="arena" aria-label="Pick your favorite">
+    <section className="arena" aria-label={t('pickYourFavorite')}>
       <MatchupCard
         pokemon={champion}
         label={leftLabel}
@@ -47,7 +50,7 @@ function Arena({
         onFavorite={onFavoriteLeft}
       />
       <span className="versus" aria-hidden="true">
-        VS
+        {t('versus')}
       </span>
       <MatchupCard
         pokemon={challenger}

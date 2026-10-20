@@ -1,7 +1,9 @@
 import { TEAM_SIZE } from '../game/head2head.js'
+import { useI18n } from '../i18n/useI18n.js'
 
 // Members show their streak (main round) or their rank (Sudden Death / final).
-function TeamPanel({ team, title = 'Your Team' }) {
+function TeamPanel({ team, title }) {
+  const { pokemonName } = useI18n()
   const slots = Array.from({ length: TEAM_SIZE }, (_, index) => team[index] ?? null)
 
   return (
@@ -14,7 +16,7 @@ function TeamPanel({ team, title = 'Your Team' }) {
               {member.pokemon.sprite && (
                 <img className="team-sprite" src={member.pokemon.sprite} alt="" />
               )}
-              <span className="team-name">{member.pokemon.name}</span>
+              <span className="team-name">{pokemonName(member.pokemon)}</span>
               {member.rank !== undefined ? (
                 <span className="team-streak team-rank">#{member.rank}</span>
               ) : (

@@ -1,14 +1,15 @@
+import { useI18n } from '../i18n/useI18n.js'
+
 // Pokémon marked as favorites, waiting for Sudden Death. During the main round
 // a favorite can be removed, which puts it back into the draw.
 function FavoritesPanel({ favorites, onRemove }) {
+  const { t, pokemonName } = useI18n()
+
   return (
-    <section className="favorites" aria-label="Favorites">
-      <h2 className="team-title">★ Favorites</h2>
+    <section className="favorites" aria-label={t('favorites')}>
+      <h2 className="team-title">{t('favorites')}</h2>
       {favorites.length === 0 ? (
-        <p className="favorites-empty">
-          Mark a Pokémon as a favorite to send it straight to Sudden Death, so it doesn't knock
-          out the others along the way.
-        </p>
+        <p className="favorites-empty">{t('favoritesEmpty')}</p>
       ) : (
         <ul className="favorites-list">
           {favorites.map((pokemon) => (
@@ -16,14 +17,14 @@ function FavoritesPanel({ favorites, onRemove }) {
               {pokemon.sprite && (
                 <img className="favorites-sprite" src={pokemon.sprite} alt="" />
               )}
-              <span>{pokemon.name}</span>
+              <span>{pokemonName(pokemon)}</span>
               {onRemove && (
                 <button
                   type="button"
                   className="favorites-remove"
                   onClick={() => onRemove(pokemon.id)}
-                  aria-label={`Remove ${pokemon.name} from favorites`}
-                  title="Put back into the draw"
+                  aria-label={t('removeFavorite', pokemonName(pokemon))}
+                  title={t('putBack')}
                 >
                   ×
                 </button>
