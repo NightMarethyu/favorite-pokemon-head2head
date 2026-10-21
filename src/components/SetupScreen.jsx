@@ -4,6 +4,7 @@ import { EMPTY_FILTERS, GAME_GROUPS, GENERATIONS, TYPES } from '../data/filters.
 import { TYPE_LABELS } from '../data/typeArt.js'
 import { DOUBLE_ELIMINATION, MODES, estimatePicks } from '../game/modes.js'
 import { useI18n } from '../i18n/useI18n.js'
+import GameTile from './GameTile.jsx'
 
 const ALL_GAMES = GAME_GROUPS.flatMap((group) => group.games)
 
@@ -155,14 +156,16 @@ function SetupScreen({ initialFilters, initialMode, onStart, onQuickStart }) {
                 <h3 className="game-group-title">
                   {group.generation ? generationLabel(group.generation) : t('otherGames')}
                 </h3>
-                <div className="chip-list">
+                <div className="game-chip-list">
                   {group.games.map((game) => (
                     <Chip
                       key={game}
+                      className="game-chip"
                       checked={filters.games.includes(game)}
                       onChange={() => update('games', toggle(filters.games, game, ALL_GAMES))}
                     >
-                      {gameName(game)}
+                      <GameTile game={game} />
+                      <span className="game-chip-name">{gameName(game)}</span>
                     </Chip>
                   ))}
                 </div>

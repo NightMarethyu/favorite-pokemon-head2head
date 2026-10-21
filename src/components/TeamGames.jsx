@@ -1,21 +1,10 @@
 import { useMemo } from 'react'
 import { GAME_GROUPS } from '../data/filters.js'
-import { gameArt, gameInitials } from '../data/gameArt.js'
 import { findTeamGames } from '../data/teamGames.js'
 import { useI18n } from '../i18n/useI18n.js'
+import GameTile from './GameTile.jsx'
 
 const LEADS = { single: 'teamGamesAll', pair: 'teamGamesPairs', closest: 'teamGamesClosest' }
-
-// The game's art once it has some; until then a tile with its initials.
-function GameTile({ game }) {
-  const art = gameArt(game)
-  if (art) return <img className="game-tile game-tile-art" src={art} alt="" />
-  return (
-    <span className="game-tile" aria-hidden="true">
-      {gameInitials(game)}
-    </span>
-  )
-}
 
 // Games that have the whole team, grouped by generation. A team from the early
 // generations fits in dozens of games, so these are kept small.

@@ -24,10 +24,10 @@ Fetched pages are cached in .bulbapedia_cache next to this script, so re-runs
 
 Usage:
     pip install requests beautifulsoup4 lxml
-    python scrape_bulbapedia.py              # full run
-    python scrape_bulbapedia.py --limit 5    # test on the first 5 Pokémon
-    python scrape_bulbapedia.py --force      # re-scrape entries that already have data
-    python scrape_bulbapedia.py --max-id 1025  # stop after a given dex number
+    python tools/scraper.py              # full run
+    python tools/scraper.py --limit 5    # test on the first 5 Pokémon
+    python tools/scraper.py --force      # re-scrape entries that already have data
+    python tools/scraper.py --max-id 1025  # stop after a given dex number
 """
 
 import argparse
@@ -44,8 +44,9 @@ import requests
 from bs4 import BeautifulSoup
 
 # --- Paths -------------------------------------------------------------------
-JSON_PATH = Path(r"C:\CodeBase\favorite-pokemon-head2head\src\data\pokemon_modified.json")
-SPRITE_DIR = Path(r"C:\CodeBase\favorite-pokemon-head2head\src\assets\images\sprites")
+REPO_ROOT = Path(__file__).resolve().parents[1]
+JSON_PATH = REPO_ROOT / "src" / "data" / "pokemon_modified.json"
+SPRITE_DIR = REPO_ROOT / "src" / "assets" / "images" / "sprites"
 CACHE_DIR = Path(__file__).resolve().with_name(".bulbapedia_cache")
 
 # --- Crawl settings ----------------------------------------------------------
