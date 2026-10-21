@@ -6968,6 +6968,12 @@
       "prev": [
         "56",
         "Level 28"
+      ],
+      "next": [
+        [
+          "979",
+          "use Rage Fist 20 times"
+        ]
       ]
     },
     "profile": {
@@ -10342,7 +10348,14 @@
     },
     "species": "Wild Duck Pokémon",
     "description": "Farfetch’d is always seen with a stalk from a plant of some sort. Apparently, there are good stalks and bad stalks. This Pokémon has been known to fight with others over stalks.",
-    "evolution": {},
+    "evolution": {
+      "next": [
+        [
+          "865",
+          "achieve 3 critical hits in one battle"
+        ]
+      ]
+    },
     "profile": {
       "height": "0.8 m",
       "weight": "15 kg",
@@ -15317,6 +15330,12 @@
       "prev": [
         "439",
         "after Mimic learned"
+      ],
+      "next": [
+        [
+          "866",
+          "Level 42"
+        ]
       ]
     },
     "profile": {
@@ -15437,6 +15456,10 @@
         [
           "212",
           "trade holding Metal Coat"
+        ],
+        [
+          "900",
+          "use Black Augurite"
         ]
       ]
     },
@@ -23730,6 +23753,10 @@
         [
           "195",
           "Level 20"
+        ],
+        [
+          "980",
+          "Level 20 (Paldean Wooper)"
         ]
       ]
     },
@@ -24732,7 +24759,14 @@
     },
     "species": "Long Neck Pokémon",
     "description": "Girafarig’s rear head contains a tiny brain that is too small for thinking. However, the rear head doesn’t need to sleep, so it can keep watch over its surroundings 24 hours a day.",
-    "evolution": {},
+    "evolution": {
+      "next": [
+        [
+          "981",
+          "level up knowing Twin Beam"
+        ]
+      ]
+    },
     "profile": {
       "height": "1.5 m",
       "weight": "41.5 kg",
@@ -25055,7 +25089,14 @@
     },
     "species": "Land Snake Pokémon",
     "description": "When it sees a person, it digs a hole with its tail to make its escape. If you happen to find one, consider yourself lucky.",
-    "evolution": {},
+    "evolution": {
+      "next": [
+        [
+          "982",
+          "level up knowing Hyper Drill"
+        ]
+      ]
+    },
     "profile": {
       "height": "1.5 m",
       "weight": "14 kg",
@@ -25613,7 +25654,14 @@
     },
     "species": "Balloon Pokémon",
     "description": "Qwilfish sucks in water, inflating itself. This Pokémon uses the pressure of the water it swallowed to shoot toxic quills all at once from all over its body. It finds swimming somewhat challenging.",
-    "evolution": {},
+    "evolution": {
+      "next": [
+        [
+          "904",
+          "use Barb Barrage in Strong Style 20 times"
+        ]
+      ]
+    },
     "profile": {
       "height": "0.5 m",
       "weight": "3.9 kg",
@@ -26068,6 +26116,10 @@
         [
           "461",
           "hold Razor Claw, Nighttime"
+        ],
+        [
+          "903",
+          "hold Razor Claw, Daytime"
         ]
       ]
     },
@@ -26294,6 +26346,12 @@
       "prev": [
         "216",
         "Level 30"
+      ],
+      "next": [
+        [
+          "901",
+          "use Peat Block, Full Moon"
+        ]
       ]
     },
     "profile": {
@@ -26876,7 +26934,14 @@
     },
     "species": "Coral Pokémon",
     "description": "In Alola, where their natural enemies Mareanie are plentiful, many Corsola have stubby branches on their heads.",
-    "evolution": {},
+    "evolution": {
+      "next": [
+        [
+          "864",
+          "Level 38"
+        ]
+      ]
+    },
     "profile": {
       "height": "0.6 m",
       "weight": "5 kg",
@@ -28237,7 +28302,14 @@
     },
     "species": "Big Horn Pokémon",
     "description": "Stantler’s magnificent antlers were traded at high prices as works of art. As a result, this Pokémon was hunted close to extinction by those who were after the priceless antlers.",
-    "evolution": {},
+    "evolution": {
+      "next": [
+        [
+          "899",
+          "use Psyshield Bash in Agile Style 20 times"
+        ]
+      ]
+    },
     "profile": {
       "height": "1.4 m",
       "weight": "71.2 kg",
@@ -58777,7 +58849,14 @@
     },
     "species": "Hostile Pokémon",
     "description": "When a school of Basculin appears in a lake, everything else disappears, except for Corphish and Crawdaunt. That’s how violent Basculin are.",
-    "evolution": {},
+    "evolution": {
+      "next": [
+        [
+          "902",
+          "lose 294 HP from recoil without fainting"
+        ]
+      ]
+    },
     "profile": {
       "height": "1 m",
       "weight": "18 kg",
@@ -65029,6 +65108,12 @@
       "prev": [
         "624",
         "Level 52"
+      ],
+      "next": [
+        [
+          "983",
+          "defeat 3 Bisharp holding Leader's Crest"
+        ]
       ]
     },
     "profile": {
@@ -79727,12 +79812,16 @@
     "evolution": {
       "next": [
         [
+          "1011",
+          "use Syrupy Apple"
+        ],
+        [
           "841",
-          "use "
+          "use Tart Apple"
         ],
         [
           "842",
-          "use "
+          "use Sweet Apple"
         ]
       ]
     },
@@ -79798,7 +79887,7 @@
     "evolution": {
       "prev": [
         "840",
-        "use "
+        "use Tart Apple"
       ]
     },
     "profile": {
@@ -79864,7 +79953,7 @@
     "evolution": {
       "prev": [
         "840",
-        "use "
+        "use Sweet Apple"
       ]
     },
     "profile": {
@@ -80610,7 +80699,7 @@
       "next": [
         [
           "855",
-          "use "
+          "use Cracked or Chipped Pot"
         ]
       ]
     },
@@ -80671,7 +80760,7 @@
     "evolution": {
       "prev": [
         "854",
-        "use "
+        "use Cracked or Chipped Pot"
       ]
     },
     "profile": {
@@ -82414,8 +82503,10 @@
     "description": "The special metal that composes its body is very light, so this Pokémon has considerable agility. It lives in caves because it dislikes the rain.",
     "evolution": {
       "next": [
-        1018,
-        "Metal Alloy"
+        [
+          "1018",
+          "use Metal Alloy"
+        ]
       ]
     },
     "profile": {
@@ -83242,7 +83333,7 @@
     "evolution": {
       "prev": [
         "234",
-        "Use Psyshield Bash in Agile Style 20 times"
+        "use Psyshield Bash in Agile Style 20 times"
       ]
     },
     "profile": {
@@ -83300,7 +83391,7 @@
     "evolution": {
       "prev": [
         "123",
-        "Black Augurite"
+        "use Black Augurite"
       ]
     },
     "profile": {
@@ -83360,7 +83451,7 @@
     "evolution": {
       "prev": [
         "217",
-        "Peat Block during a full moon"
+        "use Peat Block, Full Moon"
       ]
     },
     "profile": {
@@ -83418,7 +83509,7 @@
     "evolution": {
       "prev": [
         "550",
-        "leveled up after losing at least 294 HP from recoil damage without fainting"
+        "lose 294 HP from recoil without fainting"
       ]
     },
     "profile": {
@@ -83478,7 +83569,7 @@
     "evolution": {
       "prev": [
         "215",
-        "leveled up while holding a Razor Claw during the day"
+        "hold Razor Claw, Daytime"
       ]
     },
     "profile": {
@@ -83534,7 +83625,7 @@
     "evolution": {
       "prev": [
         "211",
-        "game-specific conditions relating to the move Barb Barrage"
+        "use Barb Barrage in Strong Style 20 times"
       ]
     },
     "profile": {
@@ -83643,8 +83734,10 @@
     "description": "The sweet scent its body gives off mesmerizes those around it. The scent grows stronger when this Pokémon is in the sun.",
     "evolution": {
       "next": [
-        "907",
-        "level 16"
+        [
+          "907",
+          "Level 16"
+        ]
       ]
     },
     "profile": {
@@ -83700,11 +83793,13 @@
     "evolution": {
       "prev": [
         "906",
-        "level 16"
+        "Level 16"
       ],
       "next": [
-        "908",
-        "level 36"
+        [
+          "908",
+          "Level 36"
+        ]
       ]
     },
     "profile": {
@@ -83761,7 +83856,7 @@
     "evolution": {
       "prev": [
         "907",
-        "level 36"
+        "Level 36"
       ]
     },
     "profile": {
@@ -83816,8 +83911,10 @@
     "description": "Its flame sac is small, so energy is always leaking out. This energy is released from the dent atop Fuecoco's head and flickers to and fro.",
     "evolution": {
       "next": [
-        "910",
-        "level 16"
+        [
+          "910",
+          "Level 16"
+        ]
       ]
     },
     "profile": {
@@ -83875,8 +83972,10 @@
         "Level 16"
       ],
       "next": [
-        "911",
-        "Level 36"
+        [
+          "911",
+          "Level 36"
+        ]
       ]
     },
     "profile": {
@@ -83986,8 +84085,10 @@
     "description": "Its strong legs let it easily swim around in even fast-flowing rivers. It likes to keep things tidy and is prone to overthinking things.",
     "evolution": {
       "next": [
-        "913",
-        "Level 16"
+        [
+          "913",
+          "Level 16"
+        ]
       ]
     },
     "profile": {
@@ -84046,8 +84147,10 @@
         "Level 16"
       ],
       "next": [
-        "914",
-        "Level 36"
+        [
+          "914",
+          "Level 36"
+        ]
       ]
     },
     "profile": {
@@ -84159,8 +84262,10 @@
     "description": "This Pokémon spurns all but the finest of foods. Its body gives off an herblike scent that bug Pokémon detest.",
     "evolution": {
       "next": [
-        "916",
-        "Level 18"
+        [
+          "916",
+          "Level 18"
+        ]
       ]
     },
     "profile": {
@@ -84269,8 +84374,10 @@
     "description": "The thread it secretes from its rear is as strong as wire. The secret behind the thread's strength is the topic of ongoing research.",
     "evolution": {
       "next": [
-        "918",
-        "Level 15"
+        [
+          "918",
+          "Level 15"
+        ]
       ]
     },
     "profile": {
@@ -84379,8 +84486,10 @@
     "description": "It's highly skilled at a fighting style in which it uses its jumping capabilities to dodge incoming attacks while also dealing damage to opponents.",
     "evolution": {
       "next": [
-        "920",
-        "Level 24"
+        [
+          "920",
+          "Level 24"
+        ]
       ]
     },
     "profile": {
@@ -84490,8 +84599,10 @@
     "description": "The pads of its paws are electricity-discharging organs. Pawmi fires electricity from its forepaws while standing unsteadily on its hind legs.",
     "evolution": {
       "next": [
-        "922",
-        "Level 18"
+        [
+          "922",
+          "Level 18"
+        ]
       ]
     },
     "profile": {
@@ -84550,8 +84661,10 @@
         "Level 18"
       ],
       "next": [
-        "923",
-        "leveled up while outside of its Poké Ball after the player walks 1000 steps using the Let's Go! feature"
+        [
+          "923",
+          "walk 1000 steps with Let's Go!, then level up"
+        ]
       ]
     },
     "profile": {
@@ -84607,7 +84720,7 @@
     "evolution": {
       "prev": [
         "922",
-        "leveled up while outside of its Poké Ball after the player walks 1000 steps using the Let's Go! feature"
+        "walk 1000 steps with Let's Go!, then level up"
       ]
     },
     "profile": {
@@ -84661,8 +84774,10 @@
     "description": "The pair sticks together no matter what. They split any food they find exactly in half and then eat it together.",
     "evolution": {
       "next": [
-        "925",
-        "Level 25"
+        [
+          "925",
+          "Level 25"
+        ]
       ]
     },
     "profile": {
@@ -84773,8 +84888,10 @@
     "description": "This Pokémon cultivates yeast within its body. It has lived with humans—and helped enrich their diets—since ancient times.",
     "evolution": {
       "next": [
-        "927",
-        "Level 26"
+        [
+          "927",
+          "Level 26"
+        ]
       ]
     },
     "profile": {
@@ -84890,8 +85007,10 @@
     "description": "This Pokémon converts nutrients into oil, which it stores in the fruit on its head. It can easily go a whole week without eating or drinking.",
     "evolution": {
       "next": [
-        "929",
-        "Level 25"
+        [
+          "929",
+          "Level 25"
+        ]
       ]
     },
     "profile": {
@@ -84950,8 +85069,10 @@
         "Level 25"
       ],
       "next": [
-        "930",
-        "Level 35"
+        [
+          "930",
+          "Level 35"
+        ]
       ]
     },
     "profile": {
@@ -85110,8 +85231,10 @@
     "description": "As Nacli treads along the ground, grains of rock salt are left behind. These trails have been called \"salt roads\" since long ago.",
     "evolution": {
       "next": [
-        "933",
-        "Level 24"
+        [
+          "933",
+          "Level 24"
+        ]
       ]
     },
     "profile": {
@@ -85171,8 +85294,10 @@
         "Level 24"
       ],
       "next": [
-        "934",
-        "Level 38"
+        [
+          "934",
+          "Level 38"
+        ]
       ]
     },
     "profile": {
@@ -85287,13 +85412,13 @@
       "next": [
         [
           "936",
-          "Auspicious Armor"
-      ],
-      [
-        "937",
-        "Malicious Armor"
+          "use Auspicious Armor"
+        ],
+        [
+          "937",
+          "use Malicious Armor"
+        ]
       ]
-    ]
     },
     "profile": {
       "height": "0.6 m",
@@ -85350,7 +85475,7 @@
     "evolution": {
       "prev": [
         "935",
-        "Auspicious Armor"
+        "use Auspicious Armor"
       ]
     },
     "profile": {
@@ -85408,7 +85533,7 @@
     "evolution": {
       "prev": [
         "935",
-        "Malicious Armor"
+        "use Malicious Armor"
       ]
     },
     "profile": {
@@ -85464,8 +85589,10 @@
     "description": "It floats using the electricity stored in its body. When thunderclouds are around, Tadbulb will float higher off the ground.",
     "evolution": {
       "next": [
-        "939",
-        "thunder stone"
+        [
+          "939",
+          "use Thunder Stone"
+        ]
       ]
     },
     "profile": {
@@ -85575,8 +85702,10 @@
     "description": "These Pokémon make their nests on coastal cliffs. The nests have a strange, crackling texture, and they're a popular delicacy.",
     "evolution": {
       "next": [
-        "941",
-        "Level 25"
+        [
+          "941",
+          "Level 25"
+        ]
       ]
     },
     "profile": {
@@ -85688,8 +85817,10 @@
     "description": "Packs of these Pokémon are incredibly close-knit. In order to be taken seriously, Maschiff intimidate others by wearing a grumpy expression.",
     "evolution": {
       "next": [
-        "943",
-        "Level 30"
+        [
+          "943",
+          "Level 30"
+        ]
       ]
     },
     "profile": {
@@ -85803,8 +85934,10 @@
     "description": "Shroodle protects itself from foes using both its poisonous saliva and its front teeth, which are disproportionately big and long for its small body.",
     "evolution": {
       "next": [
-        "945",
-        "Level 28"
+        [
+          "945",
+          "Level 28"
+        ]
       ]
     },
     "profile": {
@@ -85919,8 +86052,10 @@
     "description": "Not even Bramblin knows where it is headed as it tumbles across the wilderness, blown by the wind. It loathes getting wet.",
     "evolution": {
       "next": [
-        "947",
-        "leveled up while outside of its Poké Ball after the player walks 1000 steps using the Let's Go! feature"
+        [
+          "947",
+          "walk 1000 steps with Let's Go!, then level up"
+        ]
       ]
     },
     "profile": {
@@ -85976,7 +86111,7 @@
     "evolution": {
       "prev": [
         "946",
-        "leveled up while outside of its Poké Ball after the player walks 1000 steps using the Let's Go! feature"
+        "walk 1000 steps with Let's Go!, then level up"
       ]
     },
     "profile": {
@@ -86031,8 +86166,10 @@
     "description": "Though it looks like Tentacool, Toedscool is a completely different species. Its legs may be thin, but it can run at a speed of 30 mph.",
     "evolution": {
       "next": [
-        "949",
-        "Level 30"
+        [
+          "949",
+          "Level 30"
+        ]
       ]
     },
     "profile": {
@@ -86184,8 +86321,10 @@
     "description": "Capsakid is prone to intense mood swings, perhaps influenced by the spicy chemicals inside it. It will bite anything it takes a disliking to.",
     "evolution": {
       "next": [
-        "952",
-        "use Fire Stone"
+        [
+          "952",
+          "use Fire Stone"
+        ]
       ]
     },
     "profile": {
@@ -86299,8 +86438,10 @@
     "description": "It rolls its mud ball around while the energy it needs for evolution matures. Eventually the time comes for it to evolve.",
     "evolution": {
       "next": [
-        "954",
-        "leveled up while outside of its Poké Ball after the player walks 1000 steps using the Let's Go! feature"
+        [
+          "954",
+          "walk 1000 steps with Let's Go!, then level up"
+        ]
       ]
     },
     "profile": {
@@ -86356,7 +86497,7 @@
     "evolution": {
       "prev": [
         "953",
-        "leveled up while outside of its Poké Ball after the player walks 1000 steps using the Let's Go! feature"
+        "walk 1000 steps with Let's Go!, then level up"
       ]
     },
     "profile": {
@@ -86410,8 +86551,10 @@
     "description": "It spends its time running around wastelands. If anyone steals its beloved berries, it will chase them down and exact its revenge.",
     "evolution": {
       "next": [
-        "956",
-        "Level 35"
+        [
+          "956",
+          "Level 35"
+        ]
       ]
     },
     "profile": {
@@ -86521,8 +86664,10 @@
     "description": "Tinkatink cobbles together a suitable hammer for itself using tools and metal fragments it finds in mines.",
     "evolution": {
       "next": [
-        "958",
-        "Level 24"
+        [
+          "958",
+          "Level 24"
+        ]
       ]
     },
     "profile": {
@@ -86583,8 +86728,10 @@
         "Level 24"
       ],
       "next": [
-        "959",
-        "Level 38"
+        [
+          "959",
+          "Level 38"
+        ]
       ]
     },
     "profile": {
@@ -86698,8 +86845,10 @@
     "description": "Though it looks like Diglett, Wiglett is an entirely different species. The resemblance seems to be a coincidental result of environmental adaptation.",
     "evolution": {
       "next": [
-        "961",
-        "Level 26"
+        [
+          "961",
+          "Level 26"
+        ]
       ]
     },
     "profile": {
@@ -86859,8 +87008,10 @@
     "description": "Its water ring is made from seawater mixed with a sticky fluid that Finizen secretes from its blowhole.",
     "evolution": {
       "next": [
-        "964",
-        "leveled up while connected with another player via the Union Circle starting at level 38"
+        [
+          "964",
+          "Level 38, in Union Circle"
+        ]
       ]
     },
     "profile": {
@@ -86912,7 +87063,7 @@
     "evolution": {
       "prev": [
         "963",
-        "leveled up while connected with another player via the Union Circle starting at level 38"
+        "Level 38, in Union Circle"
       ]
     },
     "profile": {
@@ -86964,8 +87115,10 @@
     "description": "The steel section is Varoom's actual body. This Pokémon clings to rocks and converts the minerals within into energy to fuel its activities.",
     "evolution": {
       "next": [
-        "966",
-        "Level 40"
+        [
+          "966",
+          "Level 40"
+        ]
       ]
     },
     "profile": {
@@ -87179,8 +87332,10 @@
     "description": "Glimmet clings to the ceilings of caves. It defends itself by striking enemies with its bud, which is packed with poisonous components.",
     "evolution": {
       "next": [
-        "970",
-        "Level 35"
+        [
+          "970",
+          "Level 35"
+        ]
       ]
     },
     "profile": {
@@ -87294,8 +87449,10 @@
     "description": "This Pokémon loves to gambol and roughhouse. It rubs its fur up against others and absorbs their life force until they're utterly drained.",
     "evolution": {
       "next": [
-        "972",
-        "leveled up at night starting at level 30"
+        [
+          "972",
+          "Level 30, Nighttime"
+        ]
       ]
     },
     "profile": {
@@ -87352,7 +87509,7 @@
     "evolution": {
       "prev": [
         "971",
-        "leveled up at night starting at level 30"
+        "Level 30, Nighttime"
       ]
     },
     "profile": {
@@ -87461,8 +87618,10 @@
     "description": "It lives in frigid regions in pods of five or so individuals. It loves the minerals found in snow and ice.",
     "evolution": {
       "next": [
-        "975",
-        "use Ice Stone"
+        [
+          "975",
+          "use Ice Stone"
+        ]
       ]
     },
     "profile": {
@@ -87729,7 +87888,7 @@
     "evolution": {
       "prev": [
         "57",
-        "leveled up after using Rage Fist twenty times"
+        "use Rage Fist 20 times"
       ]
     },
     "profile": {
@@ -87787,7 +87946,7 @@
     "evolution": {
       "prev": [
         "194",
-        "Level 20"
+        "Level 20 (Paldean Wooper)"
       ]
     },
     "profile": {
@@ -87844,7 +88003,7 @@
     "evolution": {
       "prev": [
         "203",
-        "leveled up while knowing Twin Beam"
+        "level up knowing Twin Beam"
       ]
     },
     "profile": {
@@ -87898,8 +88057,8 @@
     "description": "A recent study uncovered that the number of segments a Dudunsparce’s body has is determined by the Pokémon’s genes.",
     "evolution": {
       "prev": [
-        "203",
-        "leveled up while knowing Hyper Drill"
+        "206",
+        "level up knowing Hyper Drill"
       ]
     },
     "profile": {
@@ -87955,7 +88114,7 @@
     "evolution": {
       "prev": [
         "625",
-        "leveling up after defeating three Bisharp that hold a Leader's Crest"
+        "defeat 3 Bisharp holding Leader's Crest"
       ]
     },
     "profile": {
@@ -88574,8 +88733,10 @@
     "description": "Frigibax's dorsal fin can convert heat from fiery moves into Ice-type energy to freeze the air.",
     "evolution": {
       "next": [
-        "997",
-        "Level 35"
+        [
+          "997",
+          "Level 35"
+        ]
       ]
     },
     "profile": {
@@ -88637,8 +88798,10 @@
         "Level 35"
       ],
       "next": [
-        "998",
-        "Level 54"
+        [
+          "998",
+          "Level 54"
+        ]
       ]
     },
     "profile": {
@@ -88754,8 +88917,10 @@
     "description": "If it senses it's about to be found by a human or a Pokémon, Gimmighoul will turn invisible to protect itself, leaving only its coin visible.",
     "evolution": {
       "next": [
-        "1000",
-        "leveled up while the player has 999 Gimmighoul Coins, consuming them in the process. Once the requirements are met, it is impossible to cancel the Evolution"
+        [
+          "1000",
+          "collect 999 Gimmighoul Coins"
+        ]
       ]
     },
     "profile": {
@@ -88813,7 +88978,7 @@
     "evolution": {
       "prev": [
         "999",
-        "leveled up while the player has 999 Gimmighoul Coins, consuming them in the process. Once the requirements are met, it is impossible to cancel the Evolution"
+        "collect 999 Gimmighoul Coins"
       ]
     },
     "profile": {
@@ -89335,11 +89500,13 @@
     "evolution": {
       "prev": [
         "840",
-        "Syrupy apple"
+        "use Syrupy Apple"
       ],
       "next": [
-        "1019",
-        "leveled up while knowing Dragon Cheer"
+        [
+          "1019",
+          "level up knowing Dragon Cheer"
+        ]
       ]
     },
     "profile": {
@@ -89395,8 +89562,10 @@
     "description": "It has taken up residence in a very expensive tea caddy. It takes an expert to distinguish the expensive tea caddies from the cheap ones.",
     "evolution": {
       "next": [
-        "1013",
-        "Unremarkable Teacup or a Masterpiece Teacup"
+        [
+          "1013",
+          "use Unremarkable or Masterpiece Teacup"
+        ]
       ]
     },
     "profile": {
@@ -89453,7 +89622,7 @@
     "evolution": {
       "prev": [
         "1012",
-        "Unremarkable Teacup or a Masterpiece Teacup"
+        "use Unremarkable or Masterpiece Teacup"
       ]
     },
     "profile": {
@@ -89709,7 +89878,7 @@
     "evolution": {
       "prev": [
         "884",
-        "Metal Alloy"
+        "use Metal Alloy"
       ]
     },
     "profile": {
@@ -89766,7 +89935,7 @@
     "evolution": {
       "prev": [
         "1011",
-        "leveled up while knowing Dragon Cheer"
+        "level up knowing Dragon Cheer"
       ]
     },
     "profile": {
