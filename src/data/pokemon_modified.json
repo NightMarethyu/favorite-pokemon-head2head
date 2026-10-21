@@ -6324,6 +6324,10 @@
         [
           "53",
           "Level 28"
+        ],
+        [
+          "863",
+          "Level 28 (Galarian Meowth)"
         ]
       ]
     },
@@ -10352,7 +10356,7 @@
       "next": [
         [
           "865",
-          "achieve 3 critical hits in one battle"
+          "achieve 3 critical hits in one battle (Galarian Farfetch'd)"
         ]
       ]
     },
@@ -15334,7 +15338,7 @@
       "next": [
         [
           "866",
-          "Level 42"
+          "Level 42 (Galarian Mr. Mime)"
         ]
       ]
     },
@@ -16741,7 +16745,7 @@
         ],
         [
           "700",
-          "High Affection and knowing Fairy move"
+          "High Affection, knowing Fairy move"
         ]
       ]
     },
@@ -26938,7 +26942,7 @@
       "next": [
         [
           "864",
-          "Level 38"
+          "Level 38 (Galarian Corsola)"
         ]
       ]
     },
@@ -31955,7 +31959,7 @@
     "description": "When Dustox flaps its wings, a fine dust is scattered all over. This dust is actually a powerful poison that will even make a pro wrestler sick. This Pokémon searches for food using its antennae like radar.",
     "evolution": {
       "prev": [
-        "265",
+        "268",
         "Level 10"
       ]
     },
@@ -33268,6 +33272,10 @@
         [
           "282",
           "Level 30"
+        ],
+        [
+          "475",
+          "use Dawn Stone, Male"
         ]
       ]
     },
@@ -59883,8 +59891,12 @@
     "evolution": {
       "next": [
         [
+          "563",
+          "Level 34"
+        ],
+        [
           "867",
-          "near Dusty Bowl"
+          "take 49+ damage, then walk under the Dusty Bowl arch (Galarian Yamask)"
         ]
       ]
     },
@@ -73301,7 +73313,7 @@
       "next": [
         [
           "738",
-          "Level up in a Magnetic Field area"
+          "level up in a Magnetic Field area, or use Thunder Stone (Gen 8+)"
         ]
       ]
     },
@@ -73366,7 +73378,7 @@
     "evolution": {
       "prev": [
         "737",
-        "use Thunder Stone, in Gen 8, or level up in a Magnetic Field area"
+        "level up in a Magnetic Field area, or use Thunder Stone (Gen 8+)"
       ]
     },
     "profile": {
@@ -76823,7 +76835,7 @@
         ],
         [
           "792",
-          "Level 53, in Pokémon Sun or Ultra Sun"
+          "Level 53, in Pokémon Moon or Ultra Moon"
         ]
       ]
     },
@@ -80324,7 +80336,7 @@
       "next": [
         [
           "849",
-          "Level 30, with a "
+          "Level 30"
         ]
       ]
     },
@@ -80389,11 +80401,9 @@
     "species": "Punk Pokémon",
     "description": "This short-tempered and aggressive Pokémon chugs stagnant water to absorb any toxins it might contain.",
     "evolution": {
-      "next": [
-        [
-          "849",
-          "Level 30, with a "
-        ]
+      "prev": [
+        "848",
+        "Level 30"
       ]
     },
     "profile": {
@@ -81281,7 +81291,7 @@
     "evolution": {
       "prev": [
         "52",
-        "Level 28"
+        "Level 28 (Galarian Meowth)"
       ]
     },
     "profile": {
@@ -81346,7 +81356,7 @@
     "evolution": {
       "prev": [
         "222",
-        "Level 38"
+        "Level 38 (Galarian Corsola)"
       ]
     },
     "profile": {
@@ -81403,7 +81413,7 @@
     "evolution": {
       "prev": [
         "83",
-        "achieve 3 critical hits in one battle"
+        "achieve 3 critical hits in one battle (Galarian Farfetch'd)"
       ]
     },
     "profile": {
@@ -81463,7 +81473,7 @@
     "evolution": {
       "prev": [
         "122",
-        "Level 42"
+        "Level 42 (Galarian Mr. Mime)"
       ]
     },
     "profile": {
@@ -81525,7 +81535,7 @@
     "evolution": {
       "prev": [
         "562",
-        "Level 34"
+        "take 49+ damage, then walk under the Dusty Bowl arch (Galarian Yamask)"
       ]
     },
     "profile": {
@@ -82917,11 +82927,7 @@
       "next": [
         [
           "892",
-          "Scroll of Darkness"
-        ],
-        [
-          "892",
-          "Scroll of Waters"
+          "use Scroll of Darkness or Scroll of Waters"
         ]
       ]
     },
@@ -82978,7 +82984,7 @@
     "evolution": {
       "prev": [
         "891",
-        "Scroll of Darkness"
+        "use Scroll of Darkness or Scroll of Waters"
       ]
     },
     "profile": {
