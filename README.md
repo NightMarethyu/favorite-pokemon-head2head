@@ -185,7 +185,7 @@ Put a cover or logo for a game in `src/assets/images/games/`, named after the ga
 
 ### Favicon
 
-Put the icon at `public/favicon.png`. `index.html` already links to it (through Vite's `%BASE_URL%`, so it works under the GitHub Pages subpath), and Vite copies everything in `public/` into the build as is.
+The icons and `site.webmanifest` live in `public/`, which Vite copies into the build as is. `index.html` links them through Vite's `%BASE_URL%`, so they resolve under the GitHub Pages subpath; paths inside `site.webmanifest` are relative to it for the same reason.
 
 ### Tech stack
 
