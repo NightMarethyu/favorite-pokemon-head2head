@@ -51,12 +51,20 @@ export function createGame(pool, random = Math.random) {
     suddenDeath: null,
     // Best first. Set when the game is over.
     ranking: [],
+    // Matchups won, by Pokédex number, over the whole game. Saves from before
+    // this was kept have none.
+    wins: {},
   }
   // With fewer than two Pokémon there is no matchup to play.
   return challenger ? state : endMainRound(state)
 }
 
 // --- Main round ---
+
+function addWin(state, pokemon) {
+  const wins = state.wins ?? {}
+  return { ...state, wins: { ...wins, [pokemon.id]: (wins[pokemon.id] ?? 0) + 1 } }
+}
 
 function nextMatchup(state) {
   if (state.queue.length === 0) return endMainRound(state)
@@ -65,12 +73,12 @@ function nextMatchup(state) {
 }
 
 function pickChampion(state) {
-  return nextMatchup({ ...state, streak: state.streak + 1 })
+  return nextMatchup({ ...addWin(state, state.champion), streak: state.streak + 1 })
 }
 
 function pickChallenger(state) {
   return nextMatchup({
-    ...state,
+    ...addWin(state, state.challenger),
     reigns: [...state.reigns, { pokemon: state.champion, streak: state.streak }],
     champion: state.challenger,
     // The challenger has just beaten the old champion.
@@ -157,7 +165,8 @@ function pickInSuddenDeath(state, candidateWins) {
   const { lo, hi } = state.suddenDeath
   const mid = Math.floor((lo + hi) / 2)
   const bounds = candidateWins ? { lo, hi: mid } : { lo: mid + 1, hi }
-  return placeNext({ ...state, suddenDeath: { ...state.suddenDeath, ...bounds } })
+  const winner = candidateWins ? state.challenger : state.champion
+  return placeNext({ ...addWin(state, winner), suddenDeath: { ...state.suddenDeath, ...bounds } })
 }
 
 function endGame(state, ranking) {
