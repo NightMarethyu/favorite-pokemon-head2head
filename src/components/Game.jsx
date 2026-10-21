@@ -3,6 +3,7 @@ import { useHead2Head } from '../game/useHead2Head.js'
 import { useI18n } from '../i18n/useI18n.js'
 import Arena from './Arena.jsx'
 import FavoritesPanel from './FavoritesPanel.jsx'
+import FullRanking from './FullRanking.jsx'
 import GameOver from './GameOver.jsx'
 import TeamGames from './TeamGames.jsx'
 import TeamPanel from './TeamPanel.jsx'
@@ -107,6 +108,8 @@ function Game({ pool, initialState, filterLabel, onSave, onChangeFilters }) {
       )}
 
       <TeamPanel team={game.team} title={t(teamTitleKey(game.phase))} linked={game.isOver} />
+
+      {game.isOver && <FullRanking state={game.state} pool={pool} />}
 
       {game.isOver && <TeamGames team={finalTeam} />}
 

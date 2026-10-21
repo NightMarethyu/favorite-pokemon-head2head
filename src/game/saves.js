@@ -50,6 +50,7 @@ function convertBracket(state, convert) {
     matches: mapMatches(state.matches, convert),
     eliminated: mapRecords(state.eliminated, convert),
     ranking: state.ranking.map(convert),
+    ...(state.winner && { winner: mapRecord(state.winner, convert) }),
   }
 }
 

@@ -114,7 +114,9 @@ function endGame(state, champion) {
     .map((record, order) => ({ ...record, order }))
     .sort((a, b) => b.round - a.round || b.wins - a.wins || b.order - a.order)
   const ranking = [...(champion ? [champion] : []), ...others].map((record) => record.pokemon)
-  return { ...state, phase: 'over', winners: [], losers: [], matches: [], ranking }
+  // The champion's record. Saves from before this was kept have none.
+  const winner = champion ?? null
+  return { ...state, phase: 'over', winners: [], losers: [], matches: [], ranking, winner }
 }
 
 export function bracketReducer(state, action) {
