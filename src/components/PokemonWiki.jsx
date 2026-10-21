@@ -8,6 +8,7 @@ import { defenseGroups } from '../data/typeChart.js'
 import { useHash } from '../hooks/useHash.js'
 import { LANGUAGES } from '../i18n/languages.js'
 import { useI18n } from '../i18n/useI18n.js'
+import GameTile from './GameTile.jsx'
 import MatchupGroups from './MatchupGroups.jsx'
 
 const BY_ID = new Map(ALL_POKEMON.map((pokemon) => [pokemon.id, pokemon]))
@@ -188,10 +189,11 @@ function GameList({ pokemon }) {
               {group.games.map((game) => (
                 <span
                   key={game}
-                  className={`wiki-game${catchable.has(game) ? ' wiki-game-catchable' : ''}`}
+                  className={`wiki-game-card${catchable.has(game) ? ' wiki-game-catchable' : ''}`}
                   title={t(catchable.has(game) ? 'wikiGamesCatchable' : 'wikiGamesTransfer')}
                 >
-                  {gameName(game)}
+                  <GameTile game={game} />
+                  <span className="game-chip-name">{gameName(game)}</span>
                 </span>
               ))}
             </dd>

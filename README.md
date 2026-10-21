@@ -50,7 +50,7 @@ The site opens on the **Pick-a-Mon** title screen. **Continue** picks up the las
 
 ### Choosing your Pokémon
 
-In the full setup, narrow the pool by **Generation**, **Type**, and **Game**. Leave a section empty to include everything. Within a section, a Pokémon only needs to match one of the selected options; across sections it must match all of them, so Gen I + Fire plays the Fire types from Gen I. The screen shows how many Pokémon match, and you need at least two to play. **Change filters** (during a game or at the end) goes back to the screen the game was set up on (quick start or full setup) with your last choices kept.
+In the full setup, narrow the pool by **Generation**, **Type**, and **Game** (each game shows its cover art or logo). Leave a section empty to include everything. Within a section, a Pokémon only needs to match one of the selected options; across sections it must match all of them, so Gen I + Fire plays the Fire types from Gen I. The screen shows how many Pokémon match, and you need at least two to play. **Change filters** (during a game or at the end) goes back to the screen the game was set up on (quick start or full setup) with your last choices kept.
 
 ### Classic
 
@@ -95,7 +95,7 @@ The **Menu** in the header has a **Tools** section. Each tool has its own addres
 
 - **3×3 Favorites** (`#3x3`): pick nine Pokémon, give the grid a title, and download it as an image (or share it, on browsers that can share files).
 - **Type Chart** (`#types`): pick one or two defending types to see what they're weak to, resist, and are immune to, or one attacking type to see what it beats; the full 18 × 18 chart is below. `#types/Grass/Poison` opens it with those types picked.
-- **Pokémon Wiki** (`#wiki`): search every Pokémon; each has a page (`#wiki/25`) with base stats (bars out of 255), types, profile, abilities, damage taken, evolution family, and the games it's in. Types link to the type chart.
+- **Pokémon Wiki** (`#wiki`): search every Pokémon; each has a page (`#wiki/25`) with base stats (bars out of 255), types, profile, abilities, damage taken, evolution family, and the games it's in, shown with their art (games it only reaches by trade or transfer are faded). Types link to the type chart.
 
 ![The wiki page for Charizard](docs/screenshots/wiki.png)
 
@@ -128,12 +128,12 @@ The site is in English, Japanese, Chinese (Simplified), and French. On the first
 - [x] Save game progress in the browser, with several saved games at once and export/import
 - [x] Double-elimination mode for players who don't know the Pokémon well yet
 - [x] Pick-a-Mon title screen, with a quick start for newcomers and the full setup for everyone else
-- [x] Show which games you could build your final team in, with game art
+- [x] Show which games you could build your final team in
+- [x] Game art on the results, the game filter, and the wiki
 - [x] A 3×3 grid of your favorite Pokémon
 - [x] English, Japanese, Chinese, and French
 - [x] A type chart and a Pokémon wiki, linked from the final team
 - [x] A full ranking of every Pokémon in a finished game, with CSV download
-- [ ] Game art on the game filter in the setup screen
 - [ ] Pokémon from *Pokémon Winds and Waves* (2027)
 
 ## Getting started
@@ -181,7 +181,11 @@ python tools/scraper.py             # full run
 
 ### Game art
 
-Put a cover or logo for a game in `src/assets/images/games/`, named after the game's slug: lowercase, accents and apostrophes dropped, other punctuation and spaces turned into `-` (`sword.png`, `lets-go-pikachu.png`, `legends-arceus.png`, `blue-japan.png`). PNG, JPG, WebP, and SVG all work. It replaces the placeholder tile (the game's initials) on the next build; no code change is needed. Every main-series game has art; Colosseum, XD, Pokéwalker, and Dream World still use placeholders.
+Put a cover or logo for a game in `src/assets/images/games/`, named after the game's slug: lowercase, accents and apostrophes dropped, other punctuation and spaces turned into `-` (`sword.png`, `lets-go-pikachu.png`, `legends-arceus.png`, `blue-japan.png`). PNG, JPG, WebP, and SVG all work. It replaces the placeholder tile (the game's initials) everywhere the game appears on the next build; no code change is needed. Every main-series game has art. The DLC entries (`sword-expansion-pass`, `shield-expansion-pass`, `the-hidden-treasure-of-area-zero-scarlet`, `the-hidden-treasure-of-area-zero-violet`) and Colosseum, XD, Pokéwalker, and Dream World still use placeholders.
+
+### Favicon
+
+Put the icon at `public/favicon.png`. `index.html` already links to it (through Vite's `%BASE_URL%`, so it works under the GitHub Pages subpath), and Vite copies everything in `public/` into the build as is.
 
 ### Tech stack
 
