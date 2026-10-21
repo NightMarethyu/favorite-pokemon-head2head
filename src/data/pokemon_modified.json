@@ -6324,6 +6324,10 @@
         [
           "53",
           "Level 28"
+        ],
+        [
+          "863",
+          "Level 28 (Galarian Meowth)"
         ]
       ]
     },
@@ -6968,6 +6972,12 @@
       "prev": [
         "56",
         "Level 28"
+      ],
+      "next": [
+        [
+          "979",
+          "use Rage Fist 20 times"
+        ]
       ]
     },
     "profile": {
@@ -10342,7 +10352,14 @@
     },
     "species": "Wild Duck Pokémon",
     "description": "Farfetch’d is always seen with a stalk from a plant of some sort. Apparently, there are good stalks and bad stalks. This Pokémon has been known to fight with others over stalks.",
-    "evolution": {},
+    "evolution": {
+      "next": [
+        [
+          "865",
+          "achieve 3 critical hits in one battle (Galarian Farfetch'd)"
+        ]
+      ]
+    },
     "profile": {
       "height": "0.8 m",
       "weight": "15 kg",
@@ -15317,6 +15334,12 @@
       "prev": [
         "439",
         "after Mimic learned"
+      ],
+      "next": [
+        [
+          "866",
+          "Level 42 (Galarian Mr. Mime)"
+        ]
       ]
     },
     "profile": {
@@ -15437,6 +15460,10 @@
         [
           "212",
           "trade holding Metal Coat"
+        ],
+        [
+          "900",
+          "use Black Augurite"
         ]
       ]
     },
@@ -16718,7 +16745,7 @@
         ],
         [
           "700",
-          "High Affection and knowing Fairy move"
+          "High Affection, knowing Fairy move"
         ]
       ]
     },
@@ -23730,6 +23757,10 @@
         [
           "195",
           "Level 20"
+        ],
+        [
+          "980",
+          "Level 20 (Paldean Wooper)"
         ]
       ]
     },
@@ -24732,7 +24763,14 @@
     },
     "species": "Long Neck Pokémon",
     "description": "Girafarig’s rear head contains a tiny brain that is too small for thinking. However, the rear head doesn’t need to sleep, so it can keep watch over its surroundings 24 hours a day.",
-    "evolution": {},
+    "evolution": {
+      "next": [
+        [
+          "981",
+          "level up knowing Twin Beam"
+        ]
+      ]
+    },
     "profile": {
       "height": "1.5 m",
       "weight": "41.5 kg",
@@ -25055,7 +25093,14 @@
     },
     "species": "Land Snake Pokémon",
     "description": "When it sees a person, it digs a hole with its tail to make its escape. If you happen to find one, consider yourself lucky.",
-    "evolution": {},
+    "evolution": {
+      "next": [
+        [
+          "982",
+          "level up knowing Hyper Drill"
+        ]
+      ]
+    },
     "profile": {
       "height": "1.5 m",
       "weight": "14 kg",
@@ -25613,7 +25658,14 @@
     },
     "species": "Balloon Pokémon",
     "description": "Qwilfish sucks in water, inflating itself. This Pokémon uses the pressure of the water it swallowed to shoot toxic quills all at once from all over its body. It finds swimming somewhat challenging.",
-    "evolution": {},
+    "evolution": {
+      "next": [
+        [
+          "904",
+          "use Barb Barrage in Strong Style 20 times"
+        ]
+      ]
+    },
     "profile": {
       "height": "0.5 m",
       "weight": "3.9 kg",
@@ -26068,6 +26120,10 @@
         [
           "461",
           "hold Razor Claw, Nighttime"
+        ],
+        [
+          "903",
+          "hold Razor Claw, Daytime"
         ]
       ]
     },
@@ -26294,6 +26350,12 @@
       "prev": [
         "216",
         "Level 30"
+      ],
+      "next": [
+        [
+          "901",
+          "use Peat Block, Full Moon"
+        ]
       ]
     },
     "profile": {
@@ -26876,7 +26938,14 @@
     },
     "species": "Coral Pokémon",
     "description": "In Alola, where their natural enemies Mareanie are plentiful, many Corsola have stubby branches on their heads.",
-    "evolution": {},
+    "evolution": {
+      "next": [
+        [
+          "864",
+          "Level 38 (Galarian Corsola)"
+        ]
+      ]
+    },
     "profile": {
       "height": "0.6 m",
       "weight": "5 kg",
@@ -28237,7 +28306,14 @@
     },
     "species": "Big Horn Pokémon",
     "description": "Stantler’s magnificent antlers were traded at high prices as works of art. As a result, this Pokémon was hunted close to extinction by those who were after the priceless antlers.",
-    "evolution": {},
+    "evolution": {
+      "next": [
+        [
+          "899",
+          "use Psyshield Bash in Agile Style 20 times"
+        ]
+      ]
+    },
     "profile": {
       "height": "1.4 m",
       "weight": "71.2 kg",
@@ -31883,7 +31959,7 @@
     "description": "When Dustox flaps its wings, a fine dust is scattered all over. This dust is actually a powerful poison that will even make a pro wrestler sick. This Pokémon searches for food using its antennae like radar.",
     "evolution": {
       "prev": [
-        "265",
+        "268",
         "Level 10"
       ]
     },
@@ -33196,6 +33272,10 @@
         [
           "282",
           "Level 30"
+        ],
+        [
+          "475",
+          "use Dawn Stone, Male"
         ]
       ]
     },
@@ -58777,7 +58857,14 @@
     },
     "species": "Hostile Pokémon",
     "description": "When a school of Basculin appears in a lake, everything else disappears, except for Corphish and Crawdaunt. That’s how violent Basculin are.",
-    "evolution": {},
+    "evolution": {
+      "next": [
+        [
+          "902",
+          "lose 294 HP from recoil without fainting"
+        ]
+      ]
+    },
     "profile": {
       "height": "1 m",
       "weight": "18 kg",
@@ -59804,8 +59891,12 @@
     "evolution": {
       "next": [
         [
+          "563",
+          "Level 34"
+        ],
+        [
           "867",
-          "near Dusty Bowl"
+          "take 49+ damage, then walk under the Dusty Bowl arch (Galarian Yamask)"
         ]
       ]
     },
@@ -65029,6 +65120,12 @@
       "prev": [
         "624",
         "Level 52"
+      ],
+      "next": [
+        [
+          "983",
+          "defeat 3 Bisharp holding Leader's Crest"
+        ]
       ]
     },
     "profile": {
@@ -73216,7 +73313,7 @@
       "next": [
         [
           "738",
-          "Level up in a Magnetic Field area"
+          "level up in a Magnetic Field area, or use Thunder Stone (Gen 8+)"
         ]
       ]
     },
@@ -73281,7 +73378,7 @@
     "evolution": {
       "prev": [
         "737",
-        "use Thunder Stone, in Gen 8, or level up in a Magnetic Field area"
+        "level up in a Magnetic Field area, or use Thunder Stone (Gen 8+)"
       ]
     },
     "profile": {
@@ -76738,7 +76835,7 @@
         ],
         [
           "792",
-          "Level 53, in Pokémon Sun or Ultra Sun"
+          "Level 53, in Pokémon Moon or Ultra Moon"
         ]
       ]
     },
@@ -79727,12 +79824,16 @@
     "evolution": {
       "next": [
         [
+          "1011",
+          "use Syrupy Apple"
+        ],
+        [
           "841",
-          "use "
+          "use Tart Apple"
         ],
         [
           "842",
-          "use "
+          "use Sweet Apple"
         ]
       ]
     },
@@ -79798,7 +79899,7 @@
     "evolution": {
       "prev": [
         "840",
-        "use "
+        "use Tart Apple"
       ]
     },
     "profile": {
@@ -79864,7 +79965,7 @@
     "evolution": {
       "prev": [
         "840",
-        "use "
+        "use Sweet Apple"
       ]
     },
     "profile": {
@@ -80235,7 +80336,7 @@
       "next": [
         [
           "849",
-          "Level 30, with a "
+          "Level 30"
         ]
       ]
     },
@@ -80300,11 +80401,9 @@
     "species": "Punk Pokémon",
     "description": "This short-tempered and aggressive Pokémon chugs stagnant water to absorb any toxins it might contain.",
     "evolution": {
-      "next": [
-        [
-          "849",
-          "Level 30, with a "
-        ]
+      "prev": [
+        "848",
+        "Level 30"
       ]
     },
     "profile": {
@@ -80610,7 +80709,7 @@
       "next": [
         [
           "855",
-          "use "
+          "use Cracked or Chipped Pot"
         ]
       ]
     },
@@ -80671,7 +80770,7 @@
     "evolution": {
       "prev": [
         "854",
-        "use "
+        "use Cracked or Chipped Pot"
       ]
     },
     "profile": {
@@ -81192,7 +81291,7 @@
     "evolution": {
       "prev": [
         "52",
-        "Level 28"
+        "Level 28 (Galarian Meowth)"
       ]
     },
     "profile": {
@@ -81257,7 +81356,7 @@
     "evolution": {
       "prev": [
         "222",
-        "Level 38"
+        "Level 38 (Galarian Corsola)"
       ]
     },
     "profile": {
@@ -81314,7 +81413,7 @@
     "evolution": {
       "prev": [
         "83",
-        "achieve 3 critical hits in one battle"
+        "achieve 3 critical hits in one battle (Galarian Farfetch'd)"
       ]
     },
     "profile": {
@@ -81374,7 +81473,7 @@
     "evolution": {
       "prev": [
         "122",
-        "Level 42"
+        "Level 42 (Galarian Mr. Mime)"
       ]
     },
     "profile": {
@@ -81436,7 +81535,7 @@
     "evolution": {
       "prev": [
         "562",
-        "Level 34"
+        "take 49+ damage, then walk under the Dusty Bowl arch (Galarian Yamask)"
       ]
     },
     "profile": {
@@ -82412,7 +82511,14 @@
     ],
     "species": "Alloy Pokémon",
     "description": "The special metal that composes its body is very light, so this Pokémon has considerable agility. It lives in caves because it dislikes the rain.",
-    "evolution": {},
+    "evolution": {
+      "next": [
+        [
+          "1018",
+          "use Metal Alloy"
+        ]
+      ]
+    },
     "profile": {
       "height": "2 m",
       "weight": "40 kg",
@@ -82821,11 +82927,7 @@
       "next": [
         [
           "892",
-          "Scroll of Darkness"
-        ],
-        [
-          "892",
-          "Scroll of Waters"
+          "use Scroll of Darkness or Scroll of Waters"
         ]
       ]
     },
@@ -82882,7 +82984,7 @@
     "evolution": {
       "prev": [
         "891",
-        "Scroll of Darkness"
+        "use Scroll of Darkness or Scroll of Waters"
       ]
     },
     "profile": {
@@ -83234,7 +83336,12 @@
     },
     "species": "Big Horn Pokémon",
     "description": "The black orbs shine with an uncanny light when the Pokémon is erecting invisible barriers. The fur shed from its beard retains heat well and is a highly useful material for winter clothing.",
-    "evolution": {},
+    "evolution": {
+      "prev": [
+        "234",
+        "use Psyshield Bash in Agile Style 20 times"
+      ]
+    },
     "profile": {
       "height": "1.8 m",
       "weight": "95.1 kg",
@@ -83287,7 +83394,12 @@
     },
     "species": "Axe Pokémon",
     "description": "Its stone axes get chipped away here and there during ferocious battles, but the process serves to make them sharper and sharper.",
-    "evolution": {},
+    "evolution": {
+      "prev": [
+        "123",
+        "use Black Augurite"
+      ]
+    },
     "profile": {
       "height": "1.8 m",
       "weight": "89.0 kg",
@@ -83342,7 +83454,12 @@
     },
     "species": "Peat Pokémon",
     "description": "This special Ursaluna can see in the dark with its left eye and protects itself with mud that is as hard as iron.",
-    "evolution": {},
+    "evolution": {
+      "prev": [
+        "217",
+        "use Peat Block, Full Moon"
+      ]
+    },
     "profile": {
       "height": "2.4 m",
       "weight": "290.0 kg",
@@ -83395,7 +83512,12 @@
     },
     "species": "Big Fish Pokémon",
     "description": "It can afflict a target with terrifying illusions that are under its control. The deeper the sadness in its friends' souls, the paler Basculegion becomes.",
-    "evolution": {},
+    "evolution": {
+      "prev": [
+        "550",
+        "lose 294 HP from recoil without fainting"
+      ]
+    },
     "profile": {
       "height": "3.0 m",
       "weight": "110.0 kg",
@@ -83450,7 +83572,12 @@
     },
     "species": "Free Climb Pokémon",
     "description": "Because of Sneasler's virulent poison and daunting physical prowess, no other species could hope to best it on the frozen highlands. Preferring solitude, this species does not form packs.",
-    "evolution": {},
+    "evolution": {
+      "prev": [
+        "215",
+        "hold Razor Claw, Daytime"
+      ]
+    },
     "profile": {
       "height": "1.3 m",
       "weight": "43.0 kg",
@@ -83501,7 +83628,12 @@
     },
     "species": "Pin Cluster Pokémon",
     "description": "Overqwil's poisonous spikes-now thicker, longer, and stronger-will automatically strike toward anything that moves.",
-    "evolution": {},
+    "evolution": {
+      "prev": [
+        "211",
+        "use Barb Barrage in Strong Style 20 times"
+      ]
+    },
     "profile": {
       "height": "2.5 m",
       "weight": "60.5 kg",
@@ -83606,7 +83738,14 @@
     },
     "species": "Grass Cat Pokémon",
     "description": "The sweet scent its body gives off mesmerizes those around it. The scent grows stronger when this Pokémon is in the sun.",
-    "evolution": {},
+    "evolution": {
+      "next": [
+        [
+          "907",
+          "Level 16"
+        ]
+      ]
+    },
     "profile": {
       "height": "0.4 m",
       "weight": "4.1 kg",
@@ -83657,7 +83796,18 @@
     },
     "species": "Grass Cat Pokémon",
     "description": "The hardness of Floragato's fur depends on the Pokémon's mood. When Floragato is prepared to battle, its fur becomes pointed and needle sharp.",
-    "evolution": {},
+    "evolution": {
+      "prev": [
+        "906",
+        "Level 16"
+      ],
+      "next": [
+        [
+          "908",
+          "Level 36"
+        ]
+      ]
+    },
     "profile": {
       "height": "0.9 m",
       "weight": "12.2 kg",
@@ -83709,7 +83859,12 @@
     },
     "species": "Magician Pokémon",
     "description": "With skillful misdirection, it rigs foes with pollen-packed flower bombs. Meowscarada sets off the bombs before its foes realize what's going on.",
-    "evolution": {},
+    "evolution": {
+      "prev": [
+        "907",
+        "Level 36"
+      ]
+    },
     "profile": {
       "height": "1.5 m",
       "weight": "31.2 kg",
@@ -83760,7 +83915,14 @@
     },
     "species": "Fire Croc Pokémon",
     "description": "Its flame sac is small, so energy is always leaking out. This energy is released from the dent atop Fuecoco's head and flickers to and fro.",
-    "evolution": {},
+    "evolution": {
+      "next": [
+        [
+          "910",
+          "Level 16"
+        ]
+      ]
+    },
     "profile": {
       "height": "0.4 m",
       "weight": "9.8 kg",
@@ -83810,7 +83972,18 @@
     },
     "species": "Fire Croc Pokémon",
     "description": "The valve in Crocalor's flame sac is closely connected to its vocal cords. This Pokémon utters a guttural cry as it spews flames every which way.",
-    "evolution": {},
+    "evolution": {
+      "prev": [
+        "909",
+        "Level 16"
+      ],
+      "next": [
+        [
+          "911",
+          "Level 36"
+        ]
+      ]
+    },
     "profile": {
       "height": "1.0 m",
       "weight": "30.7 kg",
@@ -83861,7 +84034,12 @@
     },
     "species": "Singer Pokémon",
     "description": "Skeledirge’s gentle singing soothes the souls of all that hear it. It burns its enemies to a crisp with flames of over 5,400 degrees Fahrenheit.",
-    "evolution": {},
+    "evolution": {
+      "prev": [
+        "910",
+        "Level 36"
+      ]
+    },
     "profile": {
       "height": "1.6 m",
       "weight": "326.5 kg",
@@ -83911,7 +84089,14 @@
     },
     "species": "Duckling Pokémon",
     "description": "Its strong legs let it easily swim around in even fast-flowing rivers. It likes to keep things tidy and is prone to overthinking things.",
-    "evolution": {},
+    "evolution": {
+      "next": [
+        [
+          "913",
+          "Level 16"
+        ]
+      ]
+    },
     "profile": {
       "height": "0.5 m",
       "weight": "6.1 kg",
@@ -83962,7 +84147,18 @@
     },
     "species": "Practicing Pokémon",
     "description": "The hardworking Quaxwell observes people and Pokémon from various regions and incorporates their movements into its own dance routines.",
-    "evolution": {},
+    "evolution": {
+      "prev": [
+        "912",
+        "Level 16"
+      ],
+      "next": [
+        [
+          "914",
+          "Level 36"
+        ]
+      ]
+    },
     "profile": {
       "height": "1.2 m",
       "weight": "21.5 kg",
@@ -84014,7 +84210,12 @@
     },
     "species": "Dancer Pokémon",
     "description": "Dancing in ways that evoke far-away places, this Pokémon mesmerizes all that see it. Flourishes of its decorative water feathers slice into its foes.",
-    "evolution": {},
+    "evolution": {
+      "prev": [
+        "913",
+        "Level 36"
+      ]
+    },
     "profile": {
       "height": "1.8 m",
       "weight": "61.9 kg",
@@ -84065,7 +84266,14 @@
     },
     "species": "Hog Pokémon",
     "description": "This Pokémon spurns all but the finest of foods. Its body gives off an herblike scent that bug Pokémon detest.",
-    "evolution": {},
+    "evolution": {
+      "next": [
+        [
+          "916",
+          "Level 18"
+        ]
+      ]
+    },
     "profile": {
       "height": "0.5 m",
       "weight": "10.2 kg",
@@ -84115,7 +84323,12 @@
     },
     "species": "Hog Pokémon",
     "description": "This is a meticulous Pokémon that likes to keep things tidy. It shrouds itself in a floral aroma that soothes the Pokémon around it.",
-    "evolution": {},
+    "evolution": {
+      "prev": [
+        "915",
+        "Level 18"
+      ]
+    },
     "profile": {
       "height": "1.0 m",
       "weight": "120.0 kg",
@@ -84165,7 +84378,14 @@
     },
     "species": "String Ball Pokémon",
     "description": "The thread it secretes from its rear is as strong as wire. The secret behind the thread's strength is the topic of ongoing research.",
-    "evolution": {},
+    "evolution": {
+      "next": [
+        [
+          "918",
+          "Level 15"
+        ]
+      ]
+    },
     "profile": {
       "height": "0.3 m",
       "weight": "4.0 kg",
@@ -84215,7 +84435,12 @@
     },
     "species": "Trap Pokémon",
     "description": "Spidops covers its territory in tough, sticky threads to set up traps for intruders.",
-    "evolution": {},
+    "evolution": {
+      "prev": [
+        "917",
+        "Level 15"
+      ]
+    },
     "profile": {
       "height": "1.0 m",
       "weight": "16.5 kg",
@@ -84265,7 +84490,14 @@
     },
     "species": "Grasshopper Pokémon",
     "description": "It's highly skilled at a fighting style in which it uses its jumping capabilities to dodge incoming attacks while also dealing damage to opponents.",
-    "evolution": {},
+    "evolution": {
+      "next": [
+        [
+          "920",
+          "Level 24"
+        ]
+      ]
+    },
     "profile": {
       "height": "0.2 m",
       "weight": "1.0 kg",
@@ -84316,7 +84548,12 @@
     },
     "species": "Grasshopper Pokémon",
     "description": "It uses its normally folded third set of legs when in Showdown Mode. This places a huge burden on its body, so it can't stay in this mode for long.",
-    "evolution": {},
+    "evolution": {
+      "prev": [
+        "919",
+        "Level 24"
+      ]
+    },
     "profile": {
       "height": "1.0 m",
       "weight": "17.5 kg",
@@ -84366,7 +84603,14 @@
     },
     "species": "Mouse Pokémon",
     "description": "The pads of its paws are electricity-discharging organs. Pawmi fires electricity from its forepaws while standing unsteadily on its hind legs.",
-    "evolution": {},
+    "evolution": {
+      "next": [
+        [
+          "922",
+          "Level 18"
+        ]
+      ]
+    },
     "profile": {
       "height": "0.3 m",
       "weight": "2.5 kg",
@@ -84417,7 +84661,18 @@
     },
     "species": "Mouse Pokémon",
     "description": "Pawmo uses a unique fighting technique in which it uses its forepaws to strike foes and zap them with electricity from its paw pads simultaneously.",
-    "evolution": {},
+    "evolution": {
+      "prev": [
+        "921",
+        "Level 18"
+      ],
+      "next": [
+        [
+          "923",
+          "walk 1000 steps with Let's Go!, then level up"
+        ]
+      ]
+    },
     "profile": {
       "height": "0.4 m",
       "weight": "6.5 kg",
@@ -84468,7 +84723,12 @@
     },
     "species": "Hands-On Pokémon",
     "description": "Pawmot's fluffy fur acts as a battery. It can store the same amount of electricity as an electric car.",
-    "evolution": {},
+    "evolution": {
+      "prev": [
+        "922",
+        "walk 1000 steps with Let's Go!, then level up"
+      ]
+    },
     "profile": {
       "height": "0.9 m",
       "weight": "41.0 kg",
@@ -84518,7 +84778,14 @@
     },
     "species": "Couple Pokémon",
     "description": "The pair sticks together no matter what. They split any food they find exactly in half and then eat it together.",
-    "evolution": {},
+    "evolution": {
+      "next": [
+        [
+          "925",
+          "Level 25"
+        ]
+      ]
+    },
     "profile": {
       "height": "0.3 m",
       "weight": "1.8 kg",
@@ -84569,7 +84836,12 @@
     },
     "species": "Family Pokémon",
     "description": "The larger pair protects the little ones during battles. When facing strong opponents, the whole group will join the fight.",
-    "evolution": {},
+    "evolution": {
+      "prev": [
+        "924",
+        "Level 25"
+      ]
+    },
     "profile": {
       "height": "0.3 m",
       "weight": "2.8 kg",
@@ -84620,7 +84892,14 @@
     },
     "species": "Puppy Pokémon",
     "description": "This Pokémon cultivates yeast within its body. It has lived with humans—and helped enrich their diets—since ancient times.",
-    "evolution": {},
+    "evolution": {
+      "next": [
+        [
+          "927",
+          "Level 26"
+        ]
+      ]
+    },
     "profile": {
       "height": "0.3 m",
       "weight": "10.9 kg",
@@ -84673,7 +84952,12 @@
     },
     "species": "Dog Pokémon",
     "description": "The appetizing scent of Dachsbun's body sends opponents' hunger into overdrive, wearing down their willpower and stamina.",
-    "evolution": {},
+    "evolution": {
+      "prev": [
+        "926",
+        "Level 26"
+      ]
+    },
     "profile": {
       "height": "0.5 m",
       "weight": "14.9 kg",
@@ -84727,7 +85011,14 @@
     },
     "species": "Olive Pokémon",
     "description": "This Pokémon converts nutrients into oil, which it stores in the fruit on its head. It can easily go a whole week without eating or drinking.",
-    "evolution": {},
+    "evolution": {
+      "next": [
+        [
+          "929",
+          "Level 25"
+        ]
+      ]
+    },
     "profile": {
       "height": "0.3 m",
       "weight": "6.5 kg",
@@ -84778,7 +85069,18 @@
     },
     "species": "Olive Pokémon",
     "description": "It basks in the sun to its heart's content until the fruits on its head ripen. After that, Dolliv departs from human settlements and goes on a journey.",
-    "evolution": {},
+    "evolution": {
+      "prev": [
+        "928",
+        "Level 25"
+      ],
+      "next": [
+        [
+          "930",
+          "Level 35"
+        ]
+      ]
+    },
     "profile": {
       "height": "0.6 m",
       "weight": "11.9 kg",
@@ -84829,7 +85131,12 @@
     },
     "species": "Olive Pokémon",
     "description": "This Pokémon drives back enemies by launching its rich, aromatic oil at them with enough force to smash a boulder.",
-    "evolution": {},
+    "evolution": {
+      "prev": [
+        "929",
+        "Level 35"
+      ]
+    },
     "profile": {
       "height": "1.4 m",
       "weight": "48.2 kg",
@@ -84928,7 +85235,14 @@
     },
     "species": "Rock Salt Pokémon",
     "description": "As Nacli treads along the ground, grains of rock salt are left behind. These trails have been called \"salt roads\" since long ago.",
-    "evolution": {},
+    "evolution": {
+      "next": [
+        [
+          "933",
+          "Level 24"
+        ]
+      ]
+    },
     "profile": {
       "height": "0.4 m",
       "weight": "16.0 kg",
@@ -84980,7 +85294,18 @@
     },
     "species": "Rock Salt Pokémon",
     "description": "This absent-minded Pokémon tends to forget about the prey it has salt-cured. It's even prone to forgetting the orders its Trainer has given it.",
-    "evolution": {},
+    "evolution": {
+      "prev": [
+        "932",
+        "Level 24"
+      ],
+      "next": [
+        [
+          "934",
+          "Level 38"
+        ]
+      ]
+    },
     "profile": {
       "height": "0.6 m",
       "weight": "105.0 kg",
@@ -85032,7 +85357,12 @@
     },
     "species": "Rock Salt Pokémon",
     "description": "Rock salt obtained from Garganacl has many restorative elements and is helpful for maintaining one's health.",
-    "evolution": {},
+    "evolution": {
+      "prev": [
+        "933",
+        "Level 38"
+      ]
+    },
     "profile": {
       "height": "2.3 m",
       "weight": "240.0 kg",
@@ -85084,7 +85414,18 @@
     },
     "species": "Fire Child Pokémon",
     "description": "This Pokémon is skilled at manipulating flames. Humans have prized it highly since ancient times.",
-    "evolution": {},
+    "evolution": {
+      "next": [
+        [
+          "936",
+          "use Auspicious Armor"
+        ],
+        [
+          "937",
+          "use Malicious Armor"
+        ]
+      ]
+    },
     "profile": {
       "height": "0.6 m",
       "weight": "10.5 kg",
@@ -85137,7 +85478,12 @@
     },
     "species": "Fire Warrior Pokémon",
     "description": "Though Armarouge pledges loyalty to its Trainer, it repeatedly leaves to go train on its own to strengthen its psychic energy.",
-    "evolution": {},
+    "evolution": {
+      "prev": [
+        "935",
+        "use Auspicious Armor"
+      ]
+    },
     "profile": {
       "height": "1.5 m",
       "weight": "85.0 kg",
@@ -85190,7 +85536,12 @@
     },
     "species": "Fire Blades Pokémon",
     "description": "It swears loyalty to its Trainer. Should anyone dare to show that Trainer hostility, Ceruledge will cut the offender down without a second thought.",
-    "evolution": {},
+    "evolution": {
+      "prev": [
+        "935",
+        "use Malicious Armor"
+      ]
+    },
     "profile": {
       "height": "1.6 m",
       "weight": "62.0 kg",
@@ -85242,7 +85593,14 @@
     },
     "species": "EleTadpole Pokémon",
     "description": "It floats using the electricity stored in its body. When thunderclouds are around, Tadbulb will float higher off the ground.",
-    "evolution": {},
+    "evolution": {
+      "next": [
+        [
+          "939",
+          "use Thunder Stone"
+        ]
+      ]
+    },
     "profile": {
       "height": "0.3 m",
       "weight": "0.4 kg",
@@ -85292,7 +85650,12 @@
     },
     "species": "EleFrog Pokémon",
     "description": "What appear to be eyeballs are actually organs for discharging the electricity generated by Bellibolt's belly-button dynamo.",
-    "evolution": {},
+    "evolution": {
+      "prev": [
+        "938",
+        "use Thunder Stone"
+      ]
+    },
     "profile": {
       "height": "1.2 m",
       "weight": "113.0 kg",
@@ -85343,7 +85706,14 @@
     },
     "species": "Storm Petrel Pokémon",
     "description": "These Pokémon make their nests on coastal cliffs. The nests have a strange, crackling texture, and they're a popular delicacy.",
-    "evolution": {},
+    "evolution": {
+      "next": [
+        [
+          "941",
+          "Level 25"
+        ]
+      ]
+    },
     "profile": {
       "height": "0.4 m",
       "weight": "3.6 kg",
@@ -85395,7 +85765,12 @@
     },
     "species": "Frigatebird Pokémon",
     "description": "It uses its throat sac to store electricity generated by its wings. There's hardly any oil in its feathers, so it is a poor swimmer.",
-    "evolution": {},
+    "evolution": {
+      "prev": [
+        "940",
+        "Level 25"
+      ]
+    },
     "profile": {
       "height": "1.4 m",
       "weight": "38.6 kg",
@@ -85446,7 +85821,14 @@
     },
     "species": "Rascal Pokémon",
     "description": "Packs of these Pokémon are incredibly close-knit. In order to be taken seriously, Maschiff intimidate others by wearing a grumpy expression.",
-    "evolution": {},
+    "evolution": {
+      "next": [
+        [
+          "943",
+          "Level 30"
+        ]
+      ]
+    },
     "profile": {
       "height": "0.5 m",
       "weight": "16.0 kg",
@@ -85498,7 +85880,12 @@
     },
     "species": "Boss Pokémon",
     "description": "Contrary to appearances, Mabosstiff has a kind heart-but it will relentlessly chase down and put an end to any foe that dares threaten its family.",
-    "evolution": {},
+    "evolution": {
+      "prev": [
+        "942",
+        "Level 30"
+      ]
+    },
     "profile": {
       "height": "1.1 m",
       "weight": "61.0 kg",
@@ -85551,7 +85938,14 @@
     },
     "species": "Toxic Mouse Pokémon",
     "description": "Shroodle protects itself from foes using both its poisonous saliva and its front teeth, which are disproportionately big and long for its small body.",
-    "evolution": {},
+    "evolution": {
+      "next": [
+        [
+          "945",
+          "Level 28"
+        ]
+      ]
+    },
     "profile": {
       "height": "0.2 m",
       "weight": "0.7 kg",
@@ -85604,7 +85998,12 @@
     },
     "species": "Toxic Monkey Pokémon",
     "description": "What Grafaiai eats affects the color of its saliva. With this saliva, it paints patterns on rocks and trees in order to protect its territory.",
-    "evolution": {},
+    "evolution": {
+      "prev": [
+        "944",
+        "Level 28"
+      ]
+    },
     "profile": {
       "height": "0.7 m",
       "weight": "27.2 kg",
@@ -85657,7 +86056,14 @@
     },
     "species": "Tumbleweed Pokémon",
     "description": "Not even Bramblin knows where it is headed as it tumbles across the wilderness, blown by the wind. It loathes getting wet.",
-    "evolution": {},
+    "evolution": {
+      "next": [
+        [
+          "947",
+          "walk 1000 steps with Let's Go!, then level up"
+        ]
+      ]
+    },
     "profile": {
       "height": "0.6 m",
       "weight": "0.6 kg",
@@ -85708,7 +86114,12 @@
     },
     "species": "Tumbleweed Pokémon",
     "description": "Brambleghast wanders around arid regions. On rare occasions, mass outbreaks of these Pokémon will bury an entire town.",
-    "evolution": {},
+    "evolution": {
+      "prev": [
+        "946",
+        "walk 1000 steps with Let's Go!, then level up"
+      ]
+    },
     "profile": {
       "height": "1.2 m",
       "weight": "6.0 kg",
@@ -85759,7 +86170,14 @@
     },
     "species": "Woodear Pokémon",
     "description": "Though it looks like Tentacool, Toedscool is a completely different species. Its legs may be thin, but it can run at a speed of 30 mph.",
-    "evolution": {},
+    "evolution": {
+      "next": [
+        [
+          "949",
+          "Level 30"
+        ]
+      ]
+    },
     "profile": {
       "height": "0.9 m",
       "weight": "33.0 kg",
@@ -85806,7 +86224,12 @@
     },
     "species": "Woodear Pokémon",
     "description": "It coils its 10 tentacles around prey and sucks out their nutrients, causing the prey pain. The folds along the rim of its head are a popular delicacy.",
-    "evolution": {},
+    "evolution": {
+      "prev": [
+        "948",
+        "Level 30"
+      ]
+    },
     "profile": {
       "height": "1.9 m",
       "weight": "58.0 kg",
@@ -85902,7 +86325,14 @@
     },
     "species": "Spicy Pepper Pokémon",
     "description": "Capsakid is prone to intense mood swings, perhaps influenced by the spicy chemicals inside it. It will bite anything it takes a disliking to.",
-    "evolution": {},
+    "evolution": {
+      "next": [
+        [
+          "952",
+          "use Fire Stone"
+        ]
+      ]
+    },
     "profile": {
       "height": "0.3 m",
       "weight": "3.0 kg",
@@ -85955,7 +86385,12 @@
     },
     "species": "Spicy Pepper Pokémon",
     "description": "Mega Evolution has dialed up this Pokémon's spiciness. It swings its \"necktie\" around to wallop its foes.",
-    "evolution": {},
+    "evolution": {
+      "prev": [
+        "951",
+        "use Fire Stone"
+      ]
+    },
     "profile": {
       "height": "0.9 m",
       "weight": "15.0 kg",
@@ -86007,7 +86442,14 @@
     },
     "species": "Rolling Pokémon",
     "description": "It rolls its mud ball around while the energy it needs for evolution matures. Eventually the time comes for it to evolve.",
-    "evolution": {},
+    "evolution": {
+      "next": [
+        [
+          "954",
+          "walk 1000 steps with Let's Go!, then level up"
+        ]
+      ]
+    },
     "profile": {
       "height": "0.2 m",
       "weight": "1.0 kg",
@@ -86058,7 +86500,12 @@
     },
     "species": "Rolling Pokémon",
     "description": "An infant sleeps inside the ball. Rabsca rolls the ball soothingly with its legs to ensure the infant sleeps comfortably.",
-    "evolution": {},
+    "evolution": {
+      "prev": [
+        "953",
+        "walk 1000 steps with Let's Go!, then level up"
+      ]
+    },
     "profile": {
       "height": "0.3 m",
       "weight": "3.5 kg",
@@ -86108,7 +86555,14 @@
     },
     "species": "Frill Pokémon",
     "description": "It spends its time running around wastelands. If anyone steals its beloved berries, it will chase them down and exact its revenge.",
-    "evolution": {},
+    "evolution": {
+      "next": [
+        [
+          "956",
+          "Level 35"
+        ]
+      ]
+    },
     "profile": {
       "height": "0.2 m",
       "weight": "1.5 kg",
@@ -86158,7 +86612,12 @@
     },
     "species": "Ostrich Pokémon",
     "description": "It emits psychic power from the gaps between its multicolored frills and sprints at speeds greater than 120 mph.",
-    "evolution": {},
+    "evolution": {
+      "prev": [
+        "955",
+        "Level 35"
+      ]
+    },
     "profile": {
       "height": "1.9 m",
       "weight": "90.0 kg",
@@ -86209,7 +86668,14 @@
     },
     "species": "Metalsmith Pokémon",
     "description": "Tinkatink cobbles together a suitable hammer for itself using tools and metal fragments it finds in mines.",
-    "evolution": {},
+    "evolution": {
+      "next": [
+        [
+          "958",
+          "Level 24"
+        ]
+      ]
+    },
     "profile": {
       "height": "0.4 m",
       "weight": "8.9 kg",
@@ -86262,7 +86728,18 @@
     },
     "species": "Hammer Pokémon",
     "description": "Tinkatuff sometimes come to human settlements, where they rummage through factories and warehouses to gather metal.",
-    "evolution": {},
+    "evolution": {
+      "prev": [
+        "957",
+        "Level 24"
+      ],
+      "next": [
+        [
+          "959",
+          "Level 38"
+        ]
+      ]
+    },
     "profile": {
       "height": "0.7 m",
       "weight": "59.1 kg",
@@ -86315,7 +86792,12 @@
     },
     "species": "Hammer Pokémon",
     "description": "A Tinkaton leader teaches the Tinkatink in its group the skills needed for pounding and shaping metal.",
-    "evolution": {},
+    "evolution": {
+      "prev": [
+        "958",
+        "Level 38"
+      ]
+    },
     "profile": {
       "height": "0.7 m",
       "weight": "112.8 kg",
@@ -86367,7 +86849,14 @@
     },
     "species": "Garden Eel Pokémon",
     "description": "Though it looks like Diglett, Wiglett is an entirely different species. The resemblance seems to be a coincidental result of environmental adaptation.",
-    "evolution": {},
+    "evolution": {
+      "next": [
+        [
+          "961",
+          "Level 26"
+        ]
+      ]
+    },
     "profile": {
       "height": "1.2 m",
       "weight": "1.8 kg",
@@ -86417,7 +86906,12 @@
     },
     "species": "Garden Eel Pokémon",
     "description": "A variety of fish Pokémon, Wugtrio was once considered to be a regional form of Dugtrio.",
-    "evolution": {},
+    "evolution": {
+      "prev": [
+        "960",
+        "Level 26"
+      ]
+    },
     "profile": {
       "height": "1.2 m",
       "weight": "5.4 kg",
@@ -86518,7 +87012,14 @@
     },
     "species": "Dolphin Pokémon",
     "description": "Its water ring is made from seawater mixed with a sticky fluid that Finizen secretes from its blowhole.",
-    "evolution": {},
+    "evolution": {
+      "next": [
+        [
+          "964",
+          "Level 38, in Union Circle"
+        ]
+      ]
+    },
     "profile": {
       "height": "1.3 m",
       "weight": "60.2 kg",
@@ -86565,7 +87066,12 @@
     },
     "species": "DolphinPokémonHeroPokémon",
     "description": "This hero of the ocean swims at a speed of 50 knots and saves drowning people and Pokémon.",
-    "evolution": {},
+    "evolution": {
+      "prev": [
+        "963",
+        "Level 38, in Union Circle"
+      ]
+    },
     "profile": {
       "height": "1.3 m",
       "weight": "60.2 kg",
@@ -86613,7 +87119,14 @@
     },
     "species": "Single-Cyl Pokémon",
     "description": "The steel section is Varoom's actual body. This Pokémon clings to rocks and converts the minerals within into energy to fuel its activities.",
-    "evolution": {},
+    "evolution": {
+      "next": [
+        [
+          "966",
+          "Level 40"
+        ]
+      ]
+    },
     "profile": {
       "height": "1.0 m",
       "weight": "35.0 kg",
@@ -86664,7 +87177,12 @@
     },
     "species": "Multi-Cyl Pokémon",
     "description": "Revavroom viciously threatens others with the sound of its exhaust. It sticks its tongue out from its cylindrical mouth and sprays toxic fluids.",
-    "evolution": {},
+    "evolution": {
+      "prev": [
+        "965",
+        "Level 40"
+      ]
+    },
     "profile": {
       "height": "1.8 m",
       "weight": "120.0 kg",
@@ -86818,7 +87336,14 @@
     },
     "species": "Ore Pokémon",
     "description": "Glimmet clings to the ceilings of caves. It defends itself by striking enemies with its bud, which is packed with poisonous components.",
-    "evolution": {},
+    "evolution": {
+      "next": [
+        [
+          "970",
+          "Level 35"
+        ]
+      ]
+    },
     "profile": {
       "height": "0.7 m",
       "weight": "8.0 kg",
@@ -86871,7 +87396,12 @@
     },
     "species": "Ore Pokémon",
     "description": "Glimmora's petals—now larger and separated from its main body—rotate around it to provide defense while scattering poisonous fragments.",
-    "evolution": {},
+    "evolution": {
+      "prev": [
+        "969",
+        "Level 35"
+      ]
+    },
     "profile": {
       "height": "1.5 m",
       "weight": "45.0 kg",
@@ -86923,7 +87453,14 @@
     },
     "species": "Ghost Dog Pokémon",
     "description": "This Pokémon loves to gambol and roughhouse. It rubs its fur up against others and absorbs their life force until they're utterly drained.",
-    "evolution": {},
+    "evolution": {
+      "next": [
+        [
+          "972",
+          "Level 30, Nighttime"
+        ]
+      ]
+    },
     "profile": {
       "height": "0.6 m",
       "weight": "35.0 kg",
@@ -86975,7 +87512,12 @@
     },
     "species": "Ghost Dog Pokémon",
     "description": "At some point during the many years it spent guarding the gravestone of its dearly departed master, it was reborn as a ghost Pokémon.",
-    "evolution": {},
+    "evolution": {
+      "prev": [
+        "971",
+        "Level 30, Nighttime"
+      ]
+    },
     "profile": {
       "height": "2.0 m",
       "weight": "15.0 kg",
@@ -87080,7 +87622,14 @@
     },
     "species": "Terra Whale Pokémon",
     "description": "It lives in frigid regions in pods of five or so individuals. It loves the minerals found in snow and ice.",
-    "evolution": {},
+    "evolution": {
+      "next": [
+        [
+          "975",
+          "use Ice Stone"
+        ]
+      ]
+    },
     "profile": {
       "height": "1.2 m",
       "weight": "45.0 kg",
@@ -87130,7 +87679,12 @@
     },
     "species": "Terra Whale Pokémon",
     "description": "Ice energy builds up in the horn on its upper jaw, causing the horn to reach cryogenic temperatures that freeze its surroundings.",
-    "evolution": {},
+    "evolution": {
+      "prev": [
+        "974",
+        "use Ice Stone"
+      ]
+    },
     "profile": {
       "height": "4.5 m",
       "weight": "700.0 kg",
@@ -87337,7 +87891,12 @@
     },
     "species": "Rage Monkey Pokémon",
     "description": "Primeape evolved into Annihilape after repeatedly using a move with enough force to burst the blood vessels in its head.",
-    "evolution": {},
+    "evolution": {
+      "prev": [
+        "57",
+        "use Rage Fist 20 times"
+      ]
+    },
     "profile": {
       "height": "1.2 m",
       "weight": "56.0 kg",
@@ -87390,7 +87949,12 @@
     },
     "species": "Spiny Fish Pokémon",
     "description": "It lives at the bottom of ponds and swamps. It will carry Wooper on its back and ferry them across water from one shore to the other.",
-    "evolution": {},
+    "evolution": {
+      "prev": [
+        "194",
+        "Level 20 (Paldean Wooper)"
+      ]
+    },
     "profile": {
       "height": "1.8 m",
       "weight": "223.0 kg",
@@ -87442,7 +88006,12 @@
     },
     "species": "Long Neck Pokémon",
     "description": "The hardened head from the tail protects the head of the main body as Farigiraf whips its long neck around to headbutt enemies.",
-    "evolution": {},
+    "evolution": {
+      "prev": [
+        "203",
+        "level up knowing Twin Beam"
+      ]
+    },
     "profile": {
       "height": "3.2 m",
       "weight": "160.0 kg",
@@ -87492,7 +88061,12 @@
     },
     "species": "Land Snake Pokémon",
     "description": "A recent study uncovered that the number of segments a Dudunsparce’s body has is determined by the Pokémon’s genes.",
-    "evolution": {},
+    "evolution": {
+      "prev": [
+        "206",
+        "level up knowing Hyper Drill"
+      ]
+    },
     "profile": {
       "height": "3.6 m",
       "weight": "39.2 kg",
@@ -87543,7 +88117,12 @@
     },
     "species": "Big Blade Pokémon",
     "description": "Though it commands a massive army in battle, it's not skilled at devising complex strategies. It just uses brute strength to keep pushing.",
-    "evolution": {},
+    "evolution": {
+      "prev": [
+        "625",
+        "defeat 3 Bisharp holding Leader's Crest"
+      ]
+    },
     "profile": {
       "height": "2.0 m",
       "weight": "120.0 kg",
@@ -88158,7 +88737,14 @@
     },
     "species": "Ice Fin Pokémon",
     "description": "Frigibax's dorsal fin can convert heat from fiery moves into Ice-type energy to freeze the air.",
-    "evolution": {},
+    "evolution": {
+      "next": [
+        [
+          "997",
+          "Level 35"
+        ]
+      ]
+    },
     "profile": {
       "height": "0.5 m",
       "weight": "17.0 kg",
@@ -88212,7 +88798,18 @@
     },
     "species": "Ice Fin Pokémon",
     "description": "Arctibax is armed with a bladed dorsal fin and a mask made of ice. It is agile in its movements, springing upon foes to deliver slashing attacks.",
-    "evolution": {},
+    "evolution": {
+      "prev": [
+        "996",
+        "Level 35"
+      ],
+      "next": [
+        [
+          "998",
+          "Level 54"
+        ]
+      ]
+    },
     "profile": {
       "height": "0.8 m",
       "weight": "30.0 kg",
@@ -88266,7 +88863,12 @@
     },
     "species": "Ice Dragon Pokémon",
     "description": "Baxcalibur's dorsal blade has grown even more massive thanks to Mega Evolution. This Pokémon fires beams from the hilt at its solar plexus.",
-    "evolution": {},
+    "evolution": {
+      "prev": [
+        "997",
+        "Level 54"
+      ]
+    },
     "profile": {
       "height": "2.1 m",
       "weight": "210.0 kg",
@@ -88319,7 +88921,14 @@
     },
     "species": "Coin ChestPokémonCoin HunterPokémon",
     "description": "If it senses it's about to be found by a human or a Pokémon, Gimmighoul will turn invisible to protect itself, leaving only its coin visible.",
-    "evolution": {},
+    "evolution": {
+      "next": [
+        [
+          "1000",
+          "collect 999 Gimmighoul Coins"
+        ]
+      ]
+    },
     "profile": {
       "height": "0.3 m",
       "weight": "5.0 kg",
@@ -88372,7 +88981,12 @@
     },
     "species": "Coin Entity Pokémon",
     "description": "This Pokémon likes lively places. Some wild Gholdengo even live in cities.",
-    "evolution": {},
+    "evolution": {
+      "prev": [
+        "999",
+        "collect 999 Gimmighoul Coins"
+      ]
+    },
     "profile": {
       "height": "1.2 m",
       "weight": "30.0 kg",
@@ -88889,7 +89503,18 @@
     },
     "species": "Candy Apple Pokémon",
     "description": "The head sticking out belongs to the fore-wyrm, while the tail belongs to the core-wyrm. The two share one apple and help each other out.",
-    "evolution": {},
+    "evolution": {
+      "prev": [
+        "840",
+        "use Syrupy Apple"
+      ],
+      "next": [
+        [
+          "1019",
+          "level up knowing Dragon Cheer"
+        ]
+      ]
+    },
     "profile": {
       "height": "0.4 m",
       "weight": "4.4 kg",
@@ -88941,7 +89566,14 @@
     },
     "species": "Matcha Pokémon",
     "description": "It has taken up residence in a very expensive tea caddy. It takes an expert to distinguish the expensive tea caddies from the cheap ones.",
-    "evolution": {},
+    "evolution": {
+      "next": [
+        [
+          "1013",
+          "use Unremarkable or Masterpiece Teacup"
+        ]
+      ]
+    },
     "profile": {
       "height": "0.1 m",
       "weight": "1.1 kg",
@@ -88993,7 +89625,12 @@
     },
     "species": "Matcha Pokémon",
     "description": "The more stirring it does with the tea whisk on its head, the more energy it builds up. It does this to prepare for battle.",
-    "evolution": {},
+    "evolution": {
+      "prev": [
+        "1012",
+        "use Unremarkable or Masterpiece Teacup"
+      ]
+    },
     "profile": {
       "height": "0.2 m",
       "weight": "2.2 kg",
@@ -89244,7 +89881,12 @@
     },
     "species": "Alloy Pokémon",
     "description": "It digs holes on mountains, searching for food. It’s so durable that being caught in a cave-in won’t faze it.",
-    "evolution": {},
+    "evolution": {
+      "prev": [
+        "884",
+        "use Metal Alloy"
+      ]
+    },
     "profile": {
       "height": "2.0 m",
       "weight": "60.0 kg",
@@ -89296,7 +89938,12 @@
     },
     "species": "Apple Hydra Pokémon",
     "description": "These capricious syrpents have banded together. On the rare occasion that their moods align, their true power is unleashed.",
-    "evolution": {},
+    "evolution": {
+      "prev": [
+        "1011",
+        "level up knowing Dragon Cheer"
+      ]
+    },
     "profile": {
       "height": "1.8 m",
       "weight": "93.0 kg",
