@@ -118,6 +118,12 @@ function App() {
 
   const runId = run?.id
   const saveRun = useCallback((state) => update(runId, state), [update, runId])
+
+  // A new screen or game starts at the top. Start buttons sit low on the page,
+  // so on a phone the first matchup would otherwise open half scrolled away.
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [shownScreen, runId])
   const lastGame = summaries.find((save) => save.id === activeSave?.id && !save.isOver) ?? null
 
   let content

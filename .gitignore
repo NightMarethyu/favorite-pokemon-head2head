@@ -22,3 +22,7 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Scraper backups and page cache
+*.bak
+tools/.bulbapedia_cache
